@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'capybara', '~> 2.3.0'
+gem 'capybara', :require => ['capybara/rspec']
 gem 'selenium-webdriver'
 gem 'shoulda-matchers'
 gem 'rspec'
 gem 'headless'
-gem 'activesupport', :require => 'active_support/dependencies'
+gem 'activesupport', :require => ['active_support/dependencies', 'active_support/inflector']
 gem 'settingslogic'

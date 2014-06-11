@@ -12,8 +12,9 @@ Capybara.default_wait_time = 10
 Capybara.ignore_hidden_elements = false
 
 RSpec.configure do |config|
-  config.before(:all) do
-    Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
-    Headless.new.start
-  end
+	config.include AppsAwareness
+	config.before(:all) do
+		Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
+		Headless.new.start
+	end
 end
