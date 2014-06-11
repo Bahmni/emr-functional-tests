@@ -1,0 +1,11 @@
+default: &default
+    root_url: http://localhost
+    firefox_path: /usr/bin/firefox
+
+development:
+    <<: *default
+    root_url: http://192.168.33.10
+    firefox_path: /Applications/Firefox.app/Contents/MacOS/firefox
+
+ci:
+    <<: *default
