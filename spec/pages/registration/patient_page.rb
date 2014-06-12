@@ -5,6 +5,7 @@ class Registration::PatientPage < Page
 		select patient[:gender], :from => 'gender'
 		fill_in 'ageYears', :with => patient[:age][:years]
 		fill_in 'Village', :with => patient[:village]
+		self
 	end
 
 	def start_visit(type)
