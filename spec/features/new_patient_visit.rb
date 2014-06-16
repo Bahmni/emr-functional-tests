@@ -8,6 +8,7 @@ feature "new patient visit" do
     	go_to_app(:registration) do
 			app.register_new_patient(:given_name => patient_given_name, :family_name => 'Singh', :gender => 'Male', :age => {:years => 40}, :village => 'Ganiyari')
 			   .start_visit('OPD')
+            visit_page.should_be_current_page
     	end
 
     	go_to_app(:clinical) do
