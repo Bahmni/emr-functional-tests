@@ -1,10 +1,10 @@
-class Registration::App < Page
+class Registration::App < App
 	def go_to_create_new
 		click_icon_link "Create New"
-		Registration::PatientPage.new
+		patient_page
 	end
 
-	def register_new_patient(patient)
-		go_to_create_new.fill(patient)
+	def register_new_patient(options)
+		go_to_create_new.fill(options[:patient]).start_visit(options[:visit_type])
 	end
 end

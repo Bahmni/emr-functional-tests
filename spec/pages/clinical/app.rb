@@ -1,2 +1,2 @@
-class Clinical::App < Page
+class Clinical::App < App
 end

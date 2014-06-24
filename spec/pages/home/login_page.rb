@@ -1,4 +1,4 @@
-class LoginPage < Page
+class Home::LoginPage < Page
 	set_url '/bahmni/home/#login'
 
 	def login(username, password)
