@@ -1,3 +1,3 @@
 class Registration::VisitPage < Page
-	set_url '/registration/#/patient/{patient_id}/visit'
+	set_url '/bahmni/registration/#/patient/{patient_id}/visit'
 end

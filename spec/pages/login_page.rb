@@ -1,5 +1,5 @@
 class LoginPage < Page
-	set_url '/home/#login'
+	set_url '/bahmni/home/#login'
 
 	def login(username, password)
 	    fill_in 'Username', :with => username

@@ -6,7 +6,7 @@ module AppsAwareness
 	end
 
 	def go_to_app(name, &block)
-		visit "/#{name}"
+		visit "/bahmni/#{name}"
 		in_app(name, &block)
 	end
 
