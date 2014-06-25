@@ -10,14 +10,17 @@ feature "new patient visit" do
     end
 
     scenario "registration and consultation" do
-    	go_to_app(:registration) do
-			register_new_patient(:patient => new_patient, :visit_type => 'OPD')
+        go_to_app(:registration) do
+            register_new_patient(:patient => new_patient, :visit_type => 'OPD')
             visit_page.should_be_current_page
-    	end
+            visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
+            visit_page.save_new_patient_visit(visit_info)
+        end
 
-    	go_to_app(:clinical) do
-			patient_search_page.should_have_patient(new_patient)
-			patient_search_page.show_active_patient(new_patient)
-    	end
+        go_to_app(:clinical) do
+            patient_search_page.should_have_active_patient(new_patient)
+            patient_search_page.view_patient(new_patient)
+            patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
+        end
     end
 end

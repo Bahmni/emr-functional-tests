@@ -14,12 +14,12 @@ Capybara.ignore_hidden_elements = false
 headless = Headless.new
 
 RSpec.configure do |config|
-	config.include AppsAwareness
-	config.before(:all) do
-		Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
-		headless.start
-	end
-	config.after(:all) do
-		headless.destroy
-	end
+    config.include AppsAwareness
+    config.before(:all) do
+        Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
+        headless.start
+    end
+    config.after(:all) do
+        headless.destroy
+    end
 end
