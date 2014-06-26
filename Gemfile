@@ -8,3 +8,4 @@ gem 'headless'
 gem 'activesupport', :require => ['active_support/dependencies', 'active_support/inflector']
 gem 'settingslogic'
 gem 'addressable', :require => ["addressable/template"]
+gem 'debugger'

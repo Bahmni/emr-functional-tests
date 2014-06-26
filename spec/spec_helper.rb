@@ -12,6 +12,7 @@ Capybara.default_wait_time = 10
 Capybara.ignore_hidden_elements = false
 
 headless = Headless.new
+Debugger.start
 
 RSpec.configure do |config|
     config.include AppsAwareness
