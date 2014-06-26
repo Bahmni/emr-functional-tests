@@ -21,6 +21,11 @@ feature "new patient visit" do
             patient_search_page.should_have_active_patient(new_patient)
             patient_search_page.view_patient(new_patient)
             patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
+            patient_dashboard_page.start_consultation
+            visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
+            visit_page.go_to_observations
+            observations_page.fill_history_and_examinations_section(:history_notes => "Smoking, Drinking")
+            observations_page.save.confirm_saved
         end
     end
 end

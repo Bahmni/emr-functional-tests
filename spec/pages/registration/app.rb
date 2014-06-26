@@ -1,6 +1,6 @@
 class Registration::App < App
     def go_to_create_new
-        click_icon_link "Create New"
+        click_link_with_text "Create New"
         patient_page
     end
 

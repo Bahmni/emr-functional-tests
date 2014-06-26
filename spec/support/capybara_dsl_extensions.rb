@@ -1,5 +1,5 @@
 module CapybaraDslExtensions
-    def click_icon_link(text)
+    def click_link_with_text(text)
         find('a', :text => text).click
     end
 

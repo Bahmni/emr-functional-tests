@@ -6,4 +6,8 @@ class Clinical::PatientDashboardPage < Page
         expect(vitals_section).to have_content("HEIGHT #{vitals[:height]}") if vitals.has_key? :height
         expect(vitals_section).to have_content("WEIGHT #{vitals[:weight]}") if vitals.has_key? :weight
     end
+
+    def start_consultation
+    	find("a.confirm", :text => 'Consultation').click
+    end
 end
