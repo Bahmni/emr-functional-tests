@@ -8,13 +8,13 @@ module Clinical::ConsultationHeader
     end
 
     def save
-    	click_on "Save"
+        click_on "Save"
         wait_for_overlay_to_be_hidden
-    	self
+        self
     end
 
     def confirm_saved
-    	expect(page).to have_selector('.info-message', :text => 'Saved')
+        expect(page).to have_selector('.info-message', :text => 'Saved')
     end
 
     private

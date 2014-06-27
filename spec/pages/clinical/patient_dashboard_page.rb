@@ -8,6 +8,6 @@ class Clinical::PatientDashboardPage < Page
     end
 
     def start_consultation
-    	find("a.confirm", :text => 'Consultation').click
+        find("a.confirm", :text => 'Consultation').click
     end
 end
