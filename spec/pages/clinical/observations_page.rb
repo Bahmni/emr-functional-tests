@@ -27,7 +27,7 @@ class Clinical::ObservationsPage < Page
         chief_complaints.each_with_index do |chief_complaint, index|
             chief_complaint_row = chief_compaint_rows[index]
             chief_complaint_row.fill_in 'Chief Complaint', :with => chief_complaint[:name]
-            chief_complaint_row.check 'Add New' unless chief_complaint[:coded]
+            chief_complaint_row.click_on 'Accept' unless chief_complaint[:coded]
             chief_complaint_row.find('.duration-value').set chief_complaint[:duration][:value]
             chief_complaint_row.find('.duration-unit').select chief_complaint[:duration][:unit]
         end
