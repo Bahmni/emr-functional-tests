@@ -24,6 +24,7 @@ class Clinical::ObservationsPage < Page
 
     def fill_chief_complaints(chief_complaints)
         chief_compaint_rows = page.all('.leaf-observation-node', :text => 'Chief Complaint')
+        raise "There are only #{chief_compaint_rows.size} rows to fill #{chief_complaints.size} chief complaints" if chief_compaint_rows.size < chief_complaints.size
         chief_complaints.each_with_index do |chief_complaint, index|
             chief_complaint_row = chief_compaint_rows[index]
             chief_complaint_row.fill_in 'Chief Complaint', :with => chief_complaint[:name]
