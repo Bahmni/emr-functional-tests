@@ -9,3 +9,4 @@ gem 'activesupport', :require => ['active_support/dependencies', 'active_support
 gem 'settingslogic'
 gem 'addressable', :require => ["addressable/template"]
 gem 'debugger'
+gem 'capybara-screenshot'
