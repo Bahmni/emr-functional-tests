@@ -2,6 +2,7 @@ class Clinical::ObservationsPage < Page
     include Clinical::ConsultationHeader
 
     def fill_history_and_examinations_section(details)
+        wait_for_overlay_to_be_hidden
         fill_chief_complaints details[:chief_complaints] if details.has_key? :chief_complaints
         fill_in "History Notes", :with => details[:history_notes] if details.has_key? :history_notes
     end
