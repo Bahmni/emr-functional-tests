@@ -3,13 +3,13 @@ class App
     include RSpec::Matchers
     include CapybaraDslExtensions
 
-    def self.create(name, spec)
+    def self.create(name, context)
         app_class_full_name = name.to_s.classify + '::' + 'App'
-        app_class_full_name.constantize.new(spec)
+        app_class_full_name.constantize.new(context)
     end
 
-    def initialize(spec)
-        @spec = spec
+    def initialize(context)
+        @context = context
     end
 
     def method_missing(method, *args, &block)
@@ -19,8 +19,8 @@ class App
             module_name = self.class.name.deconstantize
             full_name = module_name + "::" + class_name
             full_name.constantize.new
-        elsif @spec.respond_to? method
-            @spec.send method, *args, &block
+        elsif @context.respond_to? method
+            @context.send method, *args, &block
         else
             super
         end

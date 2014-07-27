@@ -4,7 +4,8 @@ Bundler.require(:default)
 require "capybara-screenshot"
 require "capybara-screenshot/rspec"
 
-ActiveSupport::Dependencies.autoload_paths += [File.expand_path("../support", __FILE__), File.expand_path("../pages", __FILE__)]
+auto_load_folders = ['framework', 'support', 'apps']
+ActiveSupport::Dependencies.autoload_paths += auto_load_folders.map { |folder_name| File.expand_path("../" + folder_name, __FILE__) }
 
 Capybara.default_driver = :selenium
 Capybara.javascript_driver = :selenium
