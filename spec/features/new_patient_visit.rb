@@ -11,7 +11,8 @@ feature "new patient visit" do
         chief_complaints = [{:name => 'Cough', :duration => {:value => 2, :unit => 'Days'}, :coded => false},
                             {:name => 'Fever', :duration => {:value => 3, :unit => 'Weeks'}, :coded => false}]
         history_and_examinations = {:chief_complaints => chief_complaints, :history_notes => "Smoking, Drinking"}
-        vitals = {:pulse => 72, :diastolic => 75, :systolic => 115, :temperature => 100, :rr => 18, :spo2 => 99}
+        vitals = {:pulse => 72, :diastolic => 75, :systolic => 115, :posture => 'Supine', :temperature => 100, :rr => 18, :spo2 => 99}
+        second_vitals = {:pulse => 75, :diastolic => 80, :systolic => 120, :posture => 'Sitting', :temperature => 105, :rr => 25, :spo2 => 95}
 
         go_to_app(:registration) do
             register_new_patient(:patient => new_patient, :visit_type => 'OPD')
@@ -27,11 +28,13 @@ feature "new patient visit" do
 
             observations_page.fill_history_and_examinations_section(history_and_examinations)
             observations_page.fill_vitals_section(vitals)
+            observations_page.fill_second_vitals_section(second_vitals)
             observations_page.save.confirm_saved
             observations_page.go_to_visit_page
 
             visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
             visit_page.verify_observations(vitals)
+            visit_page.verify_observations(second_vitals)
             visit_page.verify_observations(history_and_examinations)
         end
     end

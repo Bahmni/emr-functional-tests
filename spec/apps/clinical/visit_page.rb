@@ -16,6 +16,16 @@ class Clinical::VisitPage < Page
         expect(observations_section).to have_content("Pulse #{observations[:pulse]} /min") if observations.has_key? :pulse
         expect(observations_section).to have_content("Diastolic #{observations[:diastolic]} mm Hg") if observations.has_key? :diastolic
         expect(observations_section).to have_content("Systolic #{observations[:systolic]} mm Hg") if observations.has_key? :systolic
+        expect(observations_section).to have_content("Posture #{observations[:posture]}") if observations.has_key? :posture
+        expect(observations_section).to have_content("Temperature #{observations[:temperature]} F") if observations.has_key? :temperature
+        expect(observations_section).to have_content("RR #{observations[:rr]} /min") if observations.has_key? :rr
+        expect(observations_section).to have_content("SPO2 #{observations[:spo2]} %") if observations.has_key? :spo2
+
+        #Second Vitals
+        expect(observations_section).to have_content("Pulse #{observations[:pulse]} /min") if observations.has_key? :pulse
+        expect(observations_section).to have_content("Diastolic #{observations[:diastolic]} mm Hg") if observations.has_key? :diastolic
+        expect(observations_section).to have_content("Systolic #{observations[:systolic]} mm Hg") if observations.has_key? :systolic
+        expect(observations_section).to have_content("Posture #{observations[:posture]}") if observations.has_key? :posture
         expect(observations_section).to have_content("Temperature #{observations[:temperature]} F") if observations.has_key? :temperature
         expect(observations_section).to have_content("RR #{observations[:rr]} /min") if observations.has_key? :rr
         expect(observations_section).to have_content("SPO2 #{observations[:spo2]} %") if observations.has_key? :spo2
