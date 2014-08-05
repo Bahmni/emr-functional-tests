@@ -14,28 +14,28 @@ feature "new patient visit" do
         vitals = {:pulse => 72, :diastolic => 75, :systolic => 115, :posture => 'Supine', :temperature => 100, :rr => 18, :spo2 => 99}
         second_vitals = {:pulse => 75, :diastolic => 80, :systolic => 120, :posture => 'Sitting', :temperature => 105, :rr => 25, :spo2 => 95}
 
-        # go_to_app(:registration) do
-        #     register_new_patient(:patient => new_patient, :visit_type => 'OPD')
-        #     visit_page.should_be_current_page
-        #     visit_page.save_new_patient_visit(visit_info)
-        # end
+        go_to_app(:registration) do
+            register_new_patient(:patient => new_patient, :visit_type => 'OPD')
+            visit_page.should_be_current_page
+            visit_page.save_new_patient_visit(visit_info)
+        end
 
-        # go_to_app(:clinical) do
-        #     patient_search_page.should_have_active_patient(new_patient)
-        #     patient_search_page.view_patient(new_patient)
-        #     patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
-        #     patient_dashboard_page.start_consultation
+        go_to_app(:clinical) do
+            patient_search_page.should_have_active_patient(new_patient)
+            patient_search_page.view_patient(new_patient)
+            patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
+            patient_dashboard_page.start_consultation
 
-        #     observations_page.fill_history_and_examinations_section(history_and_examinations)
-        #     observations_page.fill_vitals_section(vitals)
-        #     observations_page.fill_second_vitals_section(second_vitals)
-        #     observations_page.save.confirm_saved
-        #     observations_page.go_to_visit_page
+            observations_page.fill_history_and_examinations_section(history_and_examinations)
+            observations_page.fill_vitals_section(vitals)
+            observations_page.fill_second_vitals_section(second_vitals)
+            observations_page.save.confirm_saved
+            observations_page.go_to_visit_page
 
-        #     visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
-        #     visit_page.verify_observations(vitals)
-        #     visit_page.verify_observations(second_vitals)
-        #     visit_page.verify_observations(history_and_examinations)
-        # end
+            visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
+            visit_page.verify_observations(vitals)
+            visit_page.verify_observations(second_vitals)
+            visit_page.verify_observations(history_and_examinations)
+        end
     end
 end
