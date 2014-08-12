@@ -10,3 +10,4 @@ gem 'settingslogic'
 gem 'addressable', :require => ["addressable/template"]
 gem 'debugger'
 gem 'capybara-screenshot'
+gem 'pry'

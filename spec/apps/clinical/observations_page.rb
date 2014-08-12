@@ -28,7 +28,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_chief_complaints(chief_complaints)
-        wait_until { page.find('.leaf-observation-node').visible? }
+        wait_until {first('.leaf-observation-node', :visible => true)}
         chief_complaint_rows = page.all('.leaf-observation-node', :text => 'Chief Complaint')
         raise "There are only #{chief_complaint_rows.size} rows to fill #{chief_complaints.size} chief complaints" if chief_complaint_rows.size < chief_complaints.size
         chief_complaints.each_with_index do |chief_complaint, index|
