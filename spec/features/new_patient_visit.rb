@@ -13,6 +13,9 @@ feature "new patient visit" do
         history_and_examinations = {:chief_complaints => chief_complaints, :history_notes => "Smoking, Drinking"}
         vitals = {:pulse => 72, :diastolic => 75, :systolic => 115, :posture => 'Supine', :temperature => 100, :rr => 18, :spo2 => 99}
         second_vitals = {:pulse => 75, :diastolic => 80, :systolic => 120, :posture => 'Sitting', :temperature => 105, :rr => 25, :spo2 => 95}
+        obstetrics = { :fundal_height => "4", :pa_presenting_part => "Breech", :fhs => "Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
+        gynaecology = {:ps_perSpeculum_cervix => ["Growth", "VIA +ve"] }
+
 
         go_to_app(:registration) do
             register_new_patient(:patient => new_patient, :visit_type => 'OPD')
@@ -29,6 +32,8 @@ feature "new patient visit" do
             observations_page.fill_history_and_examinations_section(history_and_examinations)
             observations_page.fill_vitals_section(vitals)
             observations_page.fill_second_vitals_section(second_vitals)
+            observations_page.fill_obstetrics_section(obstetrics)
+            observations_page.fill_gynaecology_section(gynaecology)
             observations_page.save.confirm_saved
             observations_page.go_to_visit_page
 
@@ -36,6 +41,8 @@ feature "new patient visit" do
             visit_page.verify_observations(vitals)
             visit_page.verify_observations(second_vitals)
             visit_page.verify_observations(history_and_examinations)
+            visit_page.verify_observations(obstetrics)
+            visit_page.verify_observations(gynaecology)
         end
     end
 end

@@ -17,6 +17,22 @@ class Clinical::ObservationsPage < Page
         fill_vitals_data(get_section("Second Vitals"), vitals)
     end
 
+    def fill_obstetrics_section(obstetrics)
+        expand_section("Obstetrics")
+        fill_in 'Fundal Height', :with => obstetrics[:fundal_height]  if obstetrics.has_key? :fundal_height
+        click_on(obstetrics[:pa_presenting_part]) if obstetrics.has_key? :pa_presenting_part
+        click_on(obstetrics[:fhs]) if obstetrics.has_key? :fhs
+        #fill_in 'LMP', :with => "23072014"
+        fill_in 'Amount of Liquor', :with => obstetrics[:amountOfLiquor] if obstetrics.has_key? :amountOfLiquor
+    end
+
+    def fill_gynaecology_section(gynaecology)
+        expand_section("Gynaecology")
+        gynaecology[:ps_perSpeculum_cervix].each{ |item|
+            click_on(item)
+          }
+    end
+
     private
     def get_section(name)
         page.all(".concept-set-group").find { |div| div.find(".concept-set-title").text == name }
