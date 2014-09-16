@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 feature "new patient visit" do
-    background do
-    end
-
     scenario "registration and consultation" do
         new_patient = {:given_name => "Ram#{Time.now.to_i}", :family_name => 'Singh', :gender => 'Male', :age => {:years => 40}, :village => 'Ganiyari'}
         visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
@@ -15,15 +12,13 @@ feature "new patient visit" do
         obstetrics = { :fundal_height => "4", :pa_presenting_part => "Breech", :fhs => "Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
         gynaecology = {:ps_perSpeculum_cervix => ["Growth", "VIA +ve"] }
 
-
-        login('superman', 'Admin123', 'Registration')
-        go_to_app(:registration) do
+        log_in_to_app(:registration, :location => 'Registration') do
             register_new_patient(:patient => new_patient, :visit_type => 'OPD')
             visit_page.should_be_current_page
             visit_page.save_new_patient_visit(visit_info)
         end
 
-        go_to_app(:clinical) do
+        log_in_to_app(:clinical, :location => 'OPD-1') do
             patient_search_page.should_have_active_patient(new_patient)
             patient_search_page.view_patient(new_patient)
             patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})

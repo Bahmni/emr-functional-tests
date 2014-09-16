@@ -4,7 +4,13 @@ module AppsAwareness
         App.create(name, self).instance_eval(&block)
     end
 
-    def login(*args)
-        go_to_app(:home) { login *args }
+    def log_in_to_app(name, credentials, &block)
+        Capybara.reset_sessions!
+    	login credentials
+    	go_to_app name, &block
+    end
+
+    def login(credentials)
+        go_to_app(:home) { login credentials }
     end
 end

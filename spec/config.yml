@@ -1,6 +1,8 @@
 default: &default
     root_url: https://localhost
     firefox_path: /usr/bin/firefox
+    default_username: superman
+    default_password: Admin123
 
 development:
     <<: *default
