@@ -2,7 +2,6 @@ require 'spec_helper'
 
 feature "new patient visit" do
     background do
-        login('superman', 'Admin123')
     end
 
     scenario "registration and consultation" do
@@ -17,6 +16,7 @@ feature "new patient visit" do
         gynaecology = {:ps_perSpeculum_cervix => ["Growth", "VIA +ve"] }
 
 
+        login('superman', 'Admin123', 'Registration')
         go_to_app(:registration) do
             register_new_patient(:patient => new_patient, :visit_type => 'OPD')
             visit_page.should_be_current_page
