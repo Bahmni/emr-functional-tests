@@ -10,6 +10,10 @@ Functional tests suit for emr apps
 
             rvm use 1.9.3
 
-* Run
+* Set up database using base dbdump
 
-            ./run.sh
+            ./scripts/setup-database.sh
+
+* Running tests
+
+            ./scripts/run.sh
