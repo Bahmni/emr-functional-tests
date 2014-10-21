@@ -46,8 +46,7 @@ class Clinical::VisitPage < Page
 
     def verify_chief_complaints(observations_section, chief_complaints)
         chief_complaints.each do |chief_complaint|
-            label = chief_complaint[:coded] ? "Chief Complaint" : "Non-Coded Chief Complaint"
-            expect(observations_section).to have_content("#{label} #{chief_complaint[:name]} since #{chief_complaint[:duration][:value]} #{chief_complaint[:duration][:unit]}")
+            expect(observations_section).to have_content("Chief Complaint #{chief_complaint[:name]} since #{chief_complaint[:duration][:value]} #{chief_complaint[:duration][:unit]}")
         end
     end
 end
