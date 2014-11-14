@@ -6,7 +6,7 @@ class Registration::VisitPage < Page
         fill_in("WEIGHT", :with => visit_info[:weight])  if visit_info.has_key? :weight
         fill_in("HEIGHT", :with => visit_info[:height])  if visit_info.has_key? :height
         fill_in("COMMENTS", :with => visit_info[:comments]) if visit_info.has_key? :comments
-        click_on("Save")
+        click_on("Save and Print")
         wait_for_overlay_to_be_hidden
     end
 end
