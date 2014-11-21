@@ -15,6 +15,6 @@ class Clinical::PatientSearchPage < Page
     end
 
     def search_active_patient(text)
-        fill_in "patientIdentifierInList", :with => text
+        fill_in "patientIdentifier", :with => text
     end
 end
