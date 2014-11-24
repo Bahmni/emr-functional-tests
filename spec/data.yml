@@ -1,13 +1,13 @@
 "Test DrugDataOne":
 
   "dashboard":
-    - header: "treatment-section"
+    - header: "active"
       drugs: ["Chana (Food Supplement) 1 Food Supplement, 3650 Day(s) 30 Sep 14",
               "Beclomethasone (Syrup) 2.25 Syrup, 3650 Day(s) 30 Sep 14",
               "B-Complex (Tablet) 1 Tablet(s), 3700 Day(s) 29 Sep 14",
               "Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic, 3650 Day(s) 29 Sep 14"]
 
-    - header: "treatment-section"
+    - header: "past"
       drugs: ["Chana (Food Supplement) 1 Food Supplement, 3650 Day(s) 30 Sep 14",
               "Beclomethasone (Syrup) 2.25 Syrup, 3650 Day(s) 30 Sep 14",
               "Povidine 15g (Ointment) 5 Ointment, 5 Day(s) 30 Sep 14"]
@@ -43,7 +43,7 @@
 "Test DrugDataTwo":
 
   "dashboard":
-    - header: "treatment-section"
+    - header: "active"
       drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler, 3650 Day(s) 03 Oct 14",
               "Paracetamol 60ml (Syrup)	6.5 Syrup, 3650 Day(s) 03 Oct 14",
               "Ipratropium Bromide Respirator Solution 15ml (Solution) 5.5 Solution, 3650 Day(s)	03 Oct 14",
@@ -58,7 +58,7 @@
               "Clobetasone 15g (Cream) 1 Cream, 3650 Day(s) 03 Oct 14",
               "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops, 3650 Day(s) 03 Oct 14"]
 
-    - header: "treatment-section"
+    - header: "past"
       drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler, 3650 Day(s) 03 Oct 14",
               "Paracetamol 60ml (Syrup)	6.5 Syrup, 3650 Day(s) 03 Oct 14",
               "Ipratropium Bromide Respirator Solution 15ml (Solution) 5.5 Solution, 3650 Day(s) 03 Oct 14",
