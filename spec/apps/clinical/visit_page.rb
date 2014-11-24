@@ -40,7 +40,6 @@ class Clinical::VisitPage < Page
 
         #Gynaecology
         expect(observations_section).to have_content("P/S (Per Speculum) - Cervix #{observations[:ps_perSpeculum_cervix][0]}, #{observations[:ps_perSpeculum_cervix][1]}") if observations.has_key? :ps_perSpeculum_cervix
-
     end
 
 
@@ -49,4 +48,19 @@ class Clinical::VisitPage < Page
             expect(observations_section).to have_content("Chief Complaint #{chief_complaint[:name]} since #{chief_complaint[:duration][:value]} #{chief_complaint[:duration][:unit]}")
         end
     end
-end
+
+    def verify_existing_drugs(sections)
+        sections.each do |section|
+          table = page.find('.treatment-section', text: section['date'])
+          section['drugs'].each do |drug|
+            expect(table).to have_content(drug)
+          end
+        end
+    end
+
+   def navigate_to_patient_search_page
+     find('.dashboard-header a', :text => "Dashboard").click
+     click_on "Patients"
+   end
+
+   end

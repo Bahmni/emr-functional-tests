@@ -19,8 +19,7 @@ feature "new patient visit" do
         end
 
         log_in_to_app(:clinical, :location => 'OPD-1') do
-            patient_search_page.should_have_active_patient(new_patient)
-            patient_search_page.view_patient(new_patient)
+            patient_search_page.view_patient_from_active_tab(new_patient[:given_name])
             patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
             patient_dashboard_page.start_consultation
 
