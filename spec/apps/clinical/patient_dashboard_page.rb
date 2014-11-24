@@ -10,4 +10,29 @@ class Clinical::PatientDashboardPage < Page
     def start_consultation
         find("a.confirm", :text => 'Consultation').click
     end
+
+    def verify_existing_drugs(sections)
+      sections.each do |section|
+        table = page.find('.' +section['header'])
+        section['drugs'].each do |drug|
+          expect(table).to have_content(drug)
+        end
+      end
+    end
+
+   def navigate_to_all_treatments_page
+     find('h2', :text =>'Treatments').click
+   end
+
+   def verify_drugs_all_treatments_page(sections)
+     navigate_to_all_treatments_page
+     sections.each do |section|
+       table = page.find('table', text: section['visit_date'])
+       section['drugs'].each do |drug|
+         expect(table).to have_content(drug)
+       end
+     end
+    click_on "Back"
+   end
+
 end

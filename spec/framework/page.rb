@@ -20,4 +20,13 @@ class Page
     def wait_for_overlay_to_be_hidden
         wait_until { !page.find('#overlay').visible? }
     end
+
+    def open_side_panel
+      find('button.toggle-patient').click
+    end
+
+    def navigate_to_visit_from_side_panel(visit_date)
+      open_side_panel
+      find("a", :text=>visit_date).click
+    end
 end
