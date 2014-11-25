@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "exisitng patient data verification" do
+feature "exisitng patient data verification", :needs_bug_fix => true do
   scenario "verify drug data" do
     patient1 = "Test DrugDataOne" # Has active drugs from Visit1 and Visit2. Last Prescription section shows drugs from Visit2. Visit3 and Visit4 has no treatment data
     patient2 = "Test DrugDataTwo" # Has active drugs from latest Visit -Visit2. Has drugs of various forms
