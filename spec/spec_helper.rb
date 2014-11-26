@@ -20,7 +20,6 @@ headless = Headless.new if Settings.headless
 Debugger.start
 
 RSpec.configure do |config|
-	config.filter_run_excluding :needs_bug_fix => true
     config.include AppsAwareness
     config.before(:all) do
         Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
