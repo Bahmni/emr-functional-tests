@@ -6,8 +6,8 @@ module AppsAwareness
 
     def log_in_to_app(name, credentials, &block)
         Capybara.reset_sessions!
-    	login credentials
-    	go_to_app name, &block
+        login credentials
+        go_to_app name, &block
     end
 
     def login(credentials)

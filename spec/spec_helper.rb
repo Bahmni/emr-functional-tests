@@ -14,18 +14,12 @@ Capybara.run_server = false
 Capybara.default_wait_time = 10
 Capybara.ignore_hidden_elements = false
 Capybara.save_and_open_page_path = File.expand_path("../../screenshots", __FILE__)
+Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
 
-headless = Headless.new if Settings.headless
+Headless.new.start if Settings.headless
 
 Debugger.start
 
 RSpec.configure do |config|
     config.include AppsAwareness
-    config.before(:all) do
-        Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
-        headless.start if Settings.headless
-    end
-    config.after(:all) do
-        headless.destroy if Settings.headless
-    end
 end
