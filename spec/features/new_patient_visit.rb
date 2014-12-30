@@ -6,11 +6,12 @@ feature "new patient visit" do
         visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
         chief_complaints = [{:name => 'Cough', :duration => {:value => 2, :unit => 'Days'}, :coded => false},
                             {:name => 'Fever', :duration => {:value => 3, :unit => 'Weeks'}, :coded => false}]
-        history_and_examinations = {:chief_complaints => chief_complaints, :history_notes => "Smoking, Drinking"}
+        history_and_examinations = {:chief_complaints => chief_complaints, :history_notes => "Smoking, Drinking", :examination_notes => "Concise text notes", :smoking_history => "No" }
         vitals = {:pulse => 72, :diastolic => 75, :systolic => 115, :posture => 'Supine', :temperature => 100, :rr => 18, :spo2 => 99}
         second_vitals = {:pulse => 75, :diastolic => 80, :systolic => 120, :posture => 'Sitting', :temperature => 105, :rr => 25, :spo2 => 95}
-        obstetrics = { :fundal_height => "4", :pa_presenting_part => "Breech", :fhs => "Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
-        gynaecology = {:ps_perSpeculum_cervix => ["Growth", "VIA +ve"] }
+        obstetrics = { :fundal_height => "4", :pa_presenting_part => "sn Breech", :fhs => "sn Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
+        gynaecology = {:ps_perSpeculum_cervix => ["Growth", "sn VIA +ve"] }
+
 
         log_in_to_app(:registration, :location => 'Registration') do
             register_new_patient(:patient => new_patient, :visit_type => 'OPD')
