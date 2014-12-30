@@ -13,7 +13,7 @@ class Clinical::PatientDashboardPage < Page
 
     def verify_existing_drugs(sections)
       sections.each do |section|
-        table = page.find('.' +section['header'])
+        table = page.find('.dashboard-treatment-section ' + '.' +section['header'])
         section['drugs'].each do |drug|
           expect(table).to have_content(drug)
         end

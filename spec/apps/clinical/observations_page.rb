@@ -6,6 +6,8 @@ class Clinical::ObservationsPage < Page
         expand_section "History and Examination"
         fill_chief_complaints details[:chief_complaints] if details.has_key? :chief_complaints
         fill_in "History Notes", :with => details[:history_notes] if details.has_key? :history_notes
+        fill_in "Examination Notes", :with => details[:examination_notes] if details.has_key? :examination_notes
+        click_on(details[:smoking_history]) if details.has_key? :smoking_history
     end
 
     def fill_vitals_section(vitals)

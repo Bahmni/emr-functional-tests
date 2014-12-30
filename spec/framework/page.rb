@@ -27,6 +27,6 @@ class Page
 
     def navigate_to_visit_from_side_panel(visit_date)
       open_side_panel
-      find("a", :text=>visit_date).click
+      find("a", :text=>visit_date, :match => :prefer_exact).click
     end
 end
