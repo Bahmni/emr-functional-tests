@@ -65,4 +65,8 @@ class Clinical::VisitPage < Page
      click_on "Patients"
    end
 
+   def navigate_to_dashboard
+     find('.dashboard-header a', :text => "Dashboard").click
+   end
+
    end
