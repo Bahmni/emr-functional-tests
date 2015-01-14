@@ -20,13 +20,9 @@ class Clinical::PatientDashboardPage < Page
       end
     end
 
-    def navigate_to_all_treatments_page
-      find('h2', :text =>'Treatments').click
-    end
-
-    def navigate_to_visit_page(visit_date)
-      find("a", :text=>visit_date, :match => :prefer_exact).click
-    end
+   def navigate_to_all_treatments_page
+     find('h2', :text =>'Treatments').click
+   end
 
    def verify_drugs_all_treatments_page(sections)
      navigate_to_all_treatments_page

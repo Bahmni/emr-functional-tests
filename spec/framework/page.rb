@@ -24,4 +24,9 @@ class Page
     def open_side_panel
       find('button.toggle-patient').click
     end
+
+    def navigate_to_visit_from_side_panel(visit_date)
+      open_side_panel
+      find("a", :text=>visit_date, :match => :prefer_exact).click
+    end
 end
