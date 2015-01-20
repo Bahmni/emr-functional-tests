@@ -1,27 +1,32 @@
 "Test DrugDataOne":
 
   "dashboard":
-    - header: "active"
-      drugs: ["Chana (Food Supplement) 1 Food Supplement, 3650 Day(s) 30 Sep 14",
-              "Beclomethasone (Syrup) 2.25 Syrup, 3650 Day(s) 30 Sep 14",
-              "B-Complex (Tablet) 1 Tablet(s), 3700 Day(s) 29 Sep 14",
-              "Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic, 3650 Day(s) 29 Sep 14"]
-
-    - header: "past"
-      drugs: ["Chana (Food Supplement) 1 Food Supplement, 3650 Day(s) 30 Sep 14",
-              "Beclomethasone (Syrup) 2.25 Syrup, 3650 Day(s) 30 Sep 14",
-              "Povidine 15g (Ointment) 5 Ointment, 5 Day(s) 30 Sep 14"]
-
-  "all_treatments_page":
-    - visit_date: "30 Sep, 2014"
+    - visit_date: "30 Sep 14"
       drugs: ["Povidine 15g (Ointment) 5 Ointment, 5 Day(s)",
               "Beclomethasone (Syrup) 2.25 Syrup, 3650 Day(s)",
               "Chana (Food Supplement) 1 Food Supplement, 3650 Day(s)"]
 
-    - visit_date: "29 Sep, 2014"
+    - visit_date: "29 Sep 14"
       drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic, 3650 Day(s)",
               "Paracetamol 2ml (Injection) 1 Injection, 10 Day(s)",
               "B-Complex (Tablet) 1 Tablet(s), 3700 Day(s)"]
+
+    - visit_date: "Other Active DrugOrders"
+      drugs: []
+
+  "all_treatments_page":
+    - visit_date: "30 Sep 14"
+      drugs: ["Povidine 15g (Ointment) 5 Ointment, 5 Day(s)",
+              "Beclomethasone (Syrup) 2.25 Syrup, 3650 Day(s)",
+              "Chana (Food Supplement) 1 Food Supplement, 3650 Day(s)"]
+
+    - visit_date: "29 Sep 14"
+      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic, 3650 Day(s)",
+              "Paracetamol 2ml (Injection) 1 Injection, 10 Day(s)",
+              "B-Complex (Tablet) 1 Tablet(s), 3700 Day(s)"]
+
+    - visit_date: "Other Active DrugOrders"
+      drugs: []
 
   "first_visit_date": "29 Sep 14 - 30 Sep 14"
 
@@ -43,42 +48,27 @@
 "Test DrugDataTwo":
 
   "dashboard":
-    - header: "active"
-      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 60ml (Syrup)	6.5 Syrup, 3650 Day(s) 03 Oct 14",
-              "Ipratropium Bromide Respirator Solution 15ml (Solution) 5.5 Solution, 3650 Day(s)	03 Oct 14",
-              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder, 3650 Day(s) 03 Oct 14",
-              "Metronidazole 20g (Gel) 1 Gel, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 120mg/5ml (Syrup) 5.5 Syrup, 3650 Day(s) 03 Oct 14",
-              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly, 3650 Day(s)	03 Oct 14",
-              "Placentex 60ml (Lotion) 3 Lotion, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 4.5 Litre (Syrup) 4.5 Syrup, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 500mg (Tablet) 2 Tablet(s), 3650 Day(s) 03 Oct 14",
-              "Paracetamol 2ml (Injection) 1 Injection, 3650 Day(s) 03 Oct 14",
-              "Clobetasone 15g (Cream) 1 Cream, 3650 Day(s) 03 Oct 14",
-              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops, 3650 Day(s) 03 Oct 14"]
-
-    - header: "past"
-      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 60ml (Syrup)	6.5 Syrup, 3650 Day(s) 03 Oct 14",
-              "Ipratropium Bromide Respirator Solution 15ml (Solution) 5.5 Solution, 3650 Day(s) 03 Oct 14",
-              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder, 3650 Day(s) 03 Oct 14",
-              "Metronidazole 20g (Gel) 1 Gel, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 120mg/5ml (Syrup) 5.5 Syrup, 3650 Day(s) 03 Oct 14",
-              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly, 3650 Day(s)	03 Oct 14",
-              "Placentex 60ml (Lotion) 3 Lotion, 3650 Day(s)	03 Oct 14",
-              "Paracetamol 4.5 Litre (Syrup) 4.5 Syrup, 3650 Day(s) 03 Oct 14",
-              "Paracetamol 500mg (Tablet) 2 Tablet(s), 3650 Day(s) 03 Oct 14",
-              "Paracetamol 2ml (Injection) 1 Injection, 3650 Day(s) 03 Oct 14",
-              "Clobetasone 15g (Cream) 1 Cream, 3650 Day(s) 03 Oct 14",
-              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops, 3650 Day(s)	03 Oct 14",
-              "Aciclovir 250mg (Injection) 1 Injection, 2 Day(s)	03 Oct 14",
-              "Aciclovir 200mg (Tablet)	1 Tablet(s), 2 Day(s) 03 Oct 14",
-              "Cephlexin 500mg (Capsule) 1 Capsule(s), 1 Day(s) 03 Oct 14",
-              "Hepatitis - B 10ml (Injection) 1 Injection, 1 Day(s) 03 Oct 14"]
+    - visit_date: "03 Oct 14"
+      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler, 3650 Day(s)",
+              "Paracetamol 60ml (Syrup)	6.5 Syrup, 3650 Day(s)",
+              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution, 3650 Day(s)",
+              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder, 3650 Day(s)",
+              "Metronidazole 20g (Gel)	1 Gel, 3650 Day(s)",
+              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup, 3650 Day(s)",
+              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly, 3650 Day(s)",
+              "Placentex 60ml (Lotion)	3 Lotion, 3650 Day(s)",
+              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup, 3650 Day(s)",
+              "Paracetamol 500mg (Tablet)	2 Tablet(s), 3650 Day(s)",
+              "Paracetamol 2ml (Injection)	1 Injection, 3650 Day(s)",
+              "Clobetasone 15g (Cream)	1 Cream, 3650 Day(s)",
+              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops, 3650 Day(s)",
+              "Aciclovir 250mg (Injection)	1 Injection, 2 Day(s)",
+              "Aciclovir 200mg (Tablet)	1 Tablet(s), 2 Day(s)",
+              "Cephlexin 500mg (Capsule) 1 Capsule(s), 1 Day(s)",
+              "Hepatitis - B 10ml (Injection)	1 Injection, 1 Day(s)"]
 
   "all_treatments_page":
-    - visit_date: "03 Oct, 2014"
+    - visit_date: "03 Oct 14"
       drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler, 3650 Day(s)",
               "Paracetamol 60ml (Syrup)	6.5 Syrup, 3650 Day(s)",
               "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution, 3650 Day(s)",
@@ -123,33 +113,16 @@
 "Test DrugDataForwardSync":
 
   "dashboard":
-    - header: "active"
-      drugs: ["Lignocaine Hydrochloride Jelly 2% (Jelly) 1.5 Unit(s), Once a day, Topical - 5 Day(s) 28 Dec 25",
-              "Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s) 27 Dec 25",
-              "Cephlexin 250mg (Tablet)	0-0-1.5 Tablet(s), 200 Month(s)	28 Dec 14",
-              "Cephlexin 500mg (Capsule) On alternate days, 200 Month(s) 28 Dec 14",
-              "Salbutamol inhaler (Inhaler)	2 Puff(s), Six days a week, Before meals, SOS, Inhalation - 200 Month(s) 27 Dec 14",
-              "Aciclovir 200mg (Tablet)	1-0-1.5 Tablet(s), Before meals, SOS, Oral - 200 Month(s) 24 Dec 14"]
-
-    - header: "past"
-      drugs: ["Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s) 27 Dec 25",
-              "Sodium Thiosulphate Camical 500gm (Powder) 2.5 mg, Once a day, Empty stomach, SOS, Topical - 3 Minute(s) 27 Dec 14",
-              "Salbutamol inhaler (Inhaler)	2 Puff(s), Six days a week, Before meals, SOS, Inhalation - 200 Month(s) 27 Dec 14"]
-
-  "all_treatments_page":
-    - visit_date: "24 Dec, 2014"
-      drugs: ["Aciclovir 200mg (Tablet)	1-0-1.5 Tablet(s), Before meals, SOS, Oral - 200 Month(s)",
-              "Chana (Food Supplement) 1.5-1-1 Unit(s), Before meals, SOS, Oral - 3 Hour(s)"]
-
-    - visit_date: "26 Dec, 2014"
+    - date: "26 Dec 14"
       drugs: ["Paracetamol 120mg/5ml (Syrup) Every Hour, 1 Hour(s)",
               "Paracetamol 60ml (Syrup) 1-0-1.5 ml, 3 Minute(s)"]
 
-    - visit_date: "27 Dec, 2014"
+    - date:  "27 Dec 14"
       drugs: ["Salbutamol inhaler (Inhaler) 2 Puff(s), Six days a week, Before meals, SOS, Inhalation - 200 Month(s)",
-              "Sodium Thiosulphate Camical 500gm (Powder) 2.5 mg, Once a day, Empty stomach, SOS, Topical - 3 Minute(s)"]
+              "Sodium Thiosulphate Camical 500gm (Powder) 2.5 mg, Once a day, Empty stomach, SOS, Topical - 3 Minute(s)",
+              "Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s)"]
 
-    - visit_date: "28 Dec, 2014"
+    - date:  "28 Dec 14"
       drugs: ["Ipratropium Bromide Respirator Solution 15ml (Solution) Once a day, 1 Minute(s)",
               "Clobetasone 15g (Cream) 1-1.5-2.5 Unit(s), 3 Hour(s)",
               "Clotrimazole+Lignocaine Ear Drop (Drops) 2.5 Drop, Once a day, Immediately, SOS, Nasal - 1 Hour(s)",
@@ -157,11 +130,31 @@
               "Cephlexin 250mg (Tablet) 0-0-1.5 Tablet(s), 200 Month(s)",
               "Cephlexin 500mg (Capsule) On alternate days, 200 Month(s)"]
 
-    - visit_date: "27 Dec, 2025"
-      drugs: ["Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s)"]
+    - date: "Other Active DrugOrders"
+      drugs: ["Aciclovir 200mg (Tablet)	1-0-1.5 Tablet(s), Before meals, SOS, Oral - 200 Month(s)"]
 
-    - visit_date: "28 Dec, 2025"
-      drugs: ["Lignocaine Hydrochloride Jelly 2% (Jelly) 1.5 Unit(s), Once a day, Topical - 5 Day(s)"]
+  "all_treatments_page":
+    - visit_date: "24 Dec 14"
+      drugs: ["Aciclovir 200mg (Tablet)	1-0-1.5 Tablet(s), Before meals, SOS, Oral - 200 Month(s)",
+              "Chana (Food Supplement) 1.5-1-1 Unit(s), Before meals, SOS, Oral - 3 Hour(s)"]
+
+    - visit_date: "26 Dec 14"
+      drugs: ["Paracetamol 120mg/5ml (Syrup) Every Hour, 1 Hour(s)",
+              "Paracetamol 60ml (Syrup) 1-0-1.5 ml, 3 Minute(s)"]
+
+    - visit_date: "27 Dec 14"
+      drugs: ["Salbutamol inhaler (Inhaler) 2 Puff(s), Six days a week, Before meals, SOS, Inhalation - 200 Month(s)",
+              "Sodium Thiosulphate Camical 500gm (Powder) 2.5 mg, Once a day, Empty stomach, SOS, Topical - 3 Minute(s)",
+              "Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s)"]
+
+    - visit_date: "28 Dec 14"
+      drugs: ["Ipratropium Bromide Respirator Solution 15ml (Solution) Once a day, 1 Minute(s)",
+              "Clobetasone 15g (Cream) 1-1.5-2.5 Unit(s), 3 Hour(s)",
+              "Clotrimazole+Lignocaine Ear Drop (Drops) 2.5 Drop, Once a day, Immediately, SOS, Nasal - 1 Hour(s)",
+              "Hepatitis - B 10ml (Injection) 1-1-1 Unit(s), Empty stomach, SOS, Intravenous - 3 Hour(s)",
+              "Cephlexin 250mg (Tablet) 0-0-1.5 Tablet(s), 200 Month(s)",
+              "Cephlexin 500mg (Capsule) On alternate days, 200 Month(s)",
+              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1.5 Unit(s), Once a day, Topical - 5 Day(s)"]
 
   "first_visit_date": "24 Dec 14 - 24 Dec 14"
 
@@ -172,30 +165,27 @@
   "latest_visit_date": "28 Dec 14"
 
   "first_visit":
-    - date:    "24 Dec 14"
+    - date: "24 Dec 14"
       drugs: ["Aciclovir 200mg (Tablet)	1-0-1.5 Tablet(s), Before meals, SOS, Oral - 200 Month(s)",
               "Chana (Food Supplement) 1.5-1-1 Unit(s), Before meals, SOS, Oral - 3 Hour(s)"]
 
   "second_visit":
-    - date:   "26 Dec 14"
+    - date: "26 Dec 14"
       drugs: ["Paracetamol 120mg/5ml (Syrup) Every Hour, 1 Hour(s)",
               "Paracetamol 60ml (Syrup) 1-0-1.5 ml, 3 Minute(s)"]
 
   "third_visit":
-      - date:   "27 Dec 25"
-        drugs: ["Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s)"]
-
-      - date:   "27 Dec 14"
-        drugs: ["Salbutamol inhaler (Inhaler) 2 Puff(s), Six days a week, Before meals, SOS, Inhalation - 200 Month(s)",
-                "Sodium Thiosulphate Camical 500gm (Powder) 2.5 mg, Once a day, Empty stomach, SOS, Topical - 3 Minute(s)"]
+    - date: "27 Dec 14"
+      drugs: ["Salbutamol inhaler (Inhaler) 2 Puff(s), Six days a week, Before meals, SOS, Inhalation - 200 Month(s)",
+              "Sodium Thiosulphate Camical 500gm (Powder) 2.5 mg, Once a day, Empty stomach, SOS, Topical - 3 Minute(s)",
+              "Metronidazole 20g (Gel) 1 Unit(s), Four times a day, SOS, Topical - 5 Day(s)"]
 
   "latest_visit":
-      - date:   "28 Dec 25"
-        drugs: ["Lignocaine Hydrochloride Jelly 2% (Jelly) 1.5 Unit(s), Once a day, Topical - 5 Day(s)"]
-
-      - date:   "28 Dec 14"
-        drugs: ["Cephlexin 500mg (Capsule) On alternate days, 200 Month(s)",
-                "Cephlexin 250mg (Tablet) 0-0-1.5 Tablet(s), 200 Month(s)",
-                "Ipratropium Bromide Respirator Solution 15ml (Solution) Once a day, 1 Minute(s)",
+      - date: "28 Dec 14"
+        drugs: ["Ipratropium Bromide Respirator Solution 15ml (Solution) Once a day, 1 Minute(s)",
                 "Clobetasone 15g (Cream) 1-1.5-2.5 Unit(s), 3 Hour(s)",
-                "Clotrimazole+Lignocaine Ear Drop (Drops) 2.5 Drop, Once a day, Immediately, SOS, Nasal - 1 Hour(s)"]
+                "Clotrimazole+Lignocaine Ear Drop (Drops) 2.5 Drop, Once a day, Immediately, SOS, Nasal - 1 Hour(s)",
+                "Hepatitis - B 10ml (Injection) 1-1-1 Unit(s), Empty stomach, SOS, Intravenous - 3 Hour(s)",
+                "Cephlexin 250mg (Tablet) 0-0-1.5 Tablet(s), 200 Month(s)",
+                "Cephlexin 500mg (Capsule) On alternate days, 200 Month(s)",
+                "Lignocaine Hydrochloride Jelly 2% (Jelly) 1.5 Unit(s), Once a day, Topical - 5 Day(s)"]

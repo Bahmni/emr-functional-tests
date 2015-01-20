@@ -13,7 +13,7 @@ class Clinical::PatientDashboardPage < Page
 
     def verify_existing_drugs(sections)
       sections.each do |section|
-        table = page.find('.dashboard-treatment-section ' + '.' +section['header'])
+        table = page.find('#dashboard-treatments', text: section['visit_date'])
         section['drugs'].each do |drug|
           expect(table).to have_content(drug)
         end
@@ -31,7 +31,7 @@ class Clinical::PatientDashboardPage < Page
    def verify_drugs_all_treatments_page(sections)
      navigate_to_all_treatments_page
      sections.each do |section|
-       table = page.find('table', text: section['visit_date'])
+       table = page.find('#treatment-summary', text: section['visit_date'])
        section['drugs'].each do |drug|
          expect(table).to have_content(drug)
        end
