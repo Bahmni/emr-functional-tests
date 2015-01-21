@@ -8,7 +8,7 @@ class Clinical::PatientDashboardPage < Page
     end
 
     def start_consultation
-        find("a.confirm", :text => 'Consultation').click
+        find("a", :text => 'Consultation', :match => :prefer_exact).click
     end
 
     def verify_existing_drugs(sections)
