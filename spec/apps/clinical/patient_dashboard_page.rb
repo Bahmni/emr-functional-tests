@@ -1,5 +1,26 @@
 class Clinical::PatientDashboardPage < Page
+
   TREATMENT_SECTION = "#dashboard-treatments"
+
+    def verify_current_dashboard(name)
+        dashboard = find('.dashboard a', :text => name, :match => :prefer_exact).parent
+        expect(dashboard).to have_selector('.tab-selected')
+    end
+
+    def add_dashboard(name)
+        find('#addDashboardButton').click
+        find('.unOpenedDashboard', :text => name, :match => :prefer_exact).click
+        wait_for_overlay_to_be_hidden
+    end
+
+    def navigate_to_dashboard(name)
+        find(".dashboard a", :text => name, :match => :prefer_exact).click
+        wait_for_overlay_to_be_hidden
+    end
+
+    def find_section(name)
+        find('.dashboard-section h2', :text => name).parent
+    end
 
     def verify_visit_vitals_info(vitals)
         vitals_section = find('.dashboard-section h2', :text => 'Vitals').parent
