@@ -14,9 +14,15 @@ feature "exisitng patient data verification" do
   log_in_to_app(:clinical, :location => 'OPD-1') do
     # Patient 1
     patient_search_page.view_patient_from_all_tab(patient1)
+    patient_dashboard_page.verify_current_dashboard("General")
     patient_dashboard_page.verify_existing_drugs(patient1_data["dashboard"])
     patient_dashboard_page.navigate_to_all_treatments_page
     summary_page.verify_existing_drugs(patient1_data["all_treatments_page"])
+
+    patient_dashboard_page.add_dashboard("General - 2")
+    patient_dashboard_page.verify_current_dashboard("General - 2")
+    patient_dashboard_page.find_section("Patient Information")
+    patient_dashboard_page.navigate_to_dashboard("General")
 
     patient_dashboard_page.navigate_to_visit_page(patient1_data["first_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["first_visit"])
@@ -24,7 +30,7 @@ feature "exisitng patient data verification" do
 
     patient_dashboard_page.navigate_to_visit_page(patient1_data["second_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["second_visit"])
-
+    
     # Patient 2
     visit_page.navigate_to_patient_search_page
     patient_search_page.view_patient_from_all_tab(patient2)
