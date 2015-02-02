@@ -1,4 +1,6 @@
 class Clinical::PatientDashboardPage < Page
+  @@treatment_section = "#dashboard-treatments"
+
     def verify_visit_vitals_info(vitals)
         vitals_section = find('.dashboard-section h2', :text => 'Vitals').parent
         expect(vitals_section).to have_content("BMI #{vitals[:bmi]}") if vitals.has_key? :bmi
@@ -13,7 +15,7 @@ class Clinical::PatientDashboardPage < Page
 
     def verify_existing_drugs(sections)
       sections.each do |section|
-        table = page.find('#dashboard-treatments', text: section['visit_date'])
+        table = page.find(@@treatment_section, text: section['visit_date'])
         section['drugs'].each do |drug|
           expect(table).to have_content(drug)
         end
@@ -28,15 +30,8 @@ class Clinical::PatientDashboardPage < Page
       find("a", :text=>visit_date, :match => :prefer_exact).click
     end
 
-   def verify_drugs_all_treatments_page(sections)
-     navigate_to_all_treatments_page
-     sections.each do |section|
-       table = page.find('#treatment-summary', text: section['visit_date'])
-       section['drugs'].each do |drug|
-         expect(table).to have_content(drug)
-       end
-     end
-    click_on "Back"
-   end
+    def verify_new_drugs(*drugs)
+      verify_drug_details(@@treatment_section, *drugs)
+    end
 
 end

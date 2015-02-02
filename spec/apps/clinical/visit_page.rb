@@ -1,6 +1,8 @@
 class Clinical::VisitPage < Page
     include Clinical::ConsultationHeader
 
+    @@treatment_section = ".treatment-section"
+
     def verify_observations(observations)
         observations_section = find('section.observation')
         expect(observations_section).to have_content("BMI #{observations[:bmi]}") if observations.has_key? :bmi
@@ -52,21 +54,30 @@ class Clinical::VisitPage < Page
     end
 
     def verify_existing_drugs(sections)
-        sections.each do |section|
-          table = page.find('.treatment-section', text: section['date'])
+       sections.each do |section|
+          table = page.find(@@treatment_section, text: section['date'])
           section['drugs'].each do |drug|
             expect(table).to have_content(drug)
           end
         end
     end
 
-   def navigate_to_patient_search_page
+    def verify_new_drugs(*drugs)
+      verify_drug_details(@@treatment_section, *drugs)
+    end
+
+    def navigate_to_patient_search_page
      find('.dashboard-header a', :text => "Dashboard").click
      click_on "Patients"
    end
 
-   def navigate_to_dashboard
+   def navigate_to_dashboard ##  use this method for navigating back from previous visit pages
      find('.dashboard-header a', :text => "Dashboard").click
+     end
+
+   def navigate_to_patient_dashboard ##  use this method for navigating back from current visit page
+     find('.patient-details a', :text => "Test").click
+     wait_for_overlay_to_be_hidden
    end
 
-   end
+end

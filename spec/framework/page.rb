@@ -24,4 +24,24 @@ class Page
     def open_side_panel
       find('button.toggle-patient').click
     end
+
+    def verify_drug_details(section, *drugs)
+      table = page.find(section)
+      drugs.each do |drug|
+        drug_details = create_drug_details_string(drug)
+        expect(table).to have_content([drug[:drug_name], drug_details].join(' '))
+      end
+    end
+
+    def create_drug_details_string(drug)
+      sos = "SOS" if drug[:sos]
+      dose = drug[:dose] if drug.has_key? :dose
+      else if drug.has_key? :morning_dose
+             dose = [drug[:morning_dose],drug[:noon_dose],drug[:night_dose]].join('-')
+           end
+      drug_details = [dose, drug[:dose_unit]].reject{|s| s.nil? || s.empty?}.join(' ').concat(", ")
+      drug_details.concat([drug[:frequency], drug[:instructions], sos, drug[:drug_route]].reject{|s| s.nil? || s.empty?}.join(', ')).concat(" - ")
+      drug_details.concat([drug[:duration], drug[:duration_unit]].reject{|s| s.nil? || s.empty?}.join(' '))
+      drug_details
+    end
 end
