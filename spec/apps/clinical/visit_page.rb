@@ -1,7 +1,7 @@
 class Clinical::VisitPage < Page
     include Clinical::ConsultationHeader
 
-    @@treatment_section = ".treatment-section"
+    TREATMENT_SECTION = ".treatment-section"
 
     def verify_observations(observations)
         observations_section = find('section.observation')
@@ -55,7 +55,7 @@ class Clinical::VisitPage < Page
 
     def verify_existing_drugs(sections)
        sections.each do |section|
-          table = page.find(@@treatment_section, text: section['date'])
+          table = page.find(TREATMENT_SECTION, text: section['date'])
           section['drugs'].each do |drug|
             expect(table).to have_content(drug)
           end
@@ -63,7 +63,7 @@ class Clinical::VisitPage < Page
     end
 
     def verify_new_drugs(*drugs)
-      verify_drug_details(@@treatment_section, *drugs)
+      verify_drug_details(TREATMENT_SECTION, *drugs)
     end
 
     def navigate_to_patient_search_page

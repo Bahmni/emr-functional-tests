@@ -1,5 +1,5 @@
 class Clinical::PatientDashboardPage < Page
-  @@treatment_section = "#dashboard-treatments"
+  TREATMENT_SECTION = "#dashboard-treatments"
 
     def verify_visit_vitals_info(vitals)
         vitals_section = find('.dashboard-section h2', :text => 'Vitals').parent
@@ -15,7 +15,7 @@ class Clinical::PatientDashboardPage < Page
 
     def verify_existing_drugs(sections)
       sections.each do |section|
-        table = page.find(@@treatment_section, text: section['visit_date'])
+        table = page.find(TREATMENT_SECTION, text: section['visit_date'])
         section['drugs'].each do |drug|
           expect(table).to have_content(drug)
         end
@@ -31,7 +31,7 @@ class Clinical::PatientDashboardPage < Page
     end
 
     def verify_new_drugs(*drugs)
-      verify_drug_details(@@treatment_section, *drugs)
+      verify_drug_details(TREATMENT_SECTION, *drugs)
     end
 
 end
