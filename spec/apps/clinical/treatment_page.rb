@@ -1,39 +1,56 @@
 class Clinical::TreatmentPage < Page
   include Clinical::ConsultationHeader
 
-  def fill_new_drug(details)
-    wait_for_overlay_to_be_hidden
+  def add_new_drug(*drugs)
+    drugs.each do|drug|
+      fill_drug_name(drug)
+      if drug.has_key? :dose
+        fill_uniform_dosing_details(drug) end
+      if drug.has_key? :morning_dose
+        fill_variable_dosing_details(drug) end
+      click_on("SOS") if drug[:sos]
+      select(drug[:instructions], :from => "instructions") if drug.has_key? :instructions
+      fill_in "duration", :with => drug[:duration] if drug.has_key? :duration
+      fill_in "start-date", :with => drug[:start_date] if drug.has_key? :start_date
+      fill_in "additional-instructions", :with => drug[:additional_instructions] if drug.has_key? :additional_instructions
+      click_on("Add")
+    end
+  end
+
+  def verify_drug_on_tab(tab_name, *drugs)
+    go_to_treatment_tab(tab_name)
+    drugs.each do |drug|
+      drug_details = create_drug_details_string(drug)
+      drug_details = [drug[:drug_name], drug_details].join(' - ')
+      drug_section = page.all(".tab").find { |div| div.find(".tab-label").text == tab_name }
+      expect(drug_section).to have_content(drug_details)
+      expect(drug_section).to have_content(drug[:additional_instructions])
+    end
+  end
+
+  def go_to_treatment_tab(tab_name)
+    find('.tab-label', :text => tab_name).click
+  end
+
+private
+
+  def fill_drug_name(details)
     searchable_drug_name = details[:drug_name].split(" (")[0];
     fill_in "drug-name", :with => searchable_drug_name if details.has_key? :drug_name
     find('.ui-menu-item').click
-    fill_in "uniform-dose", :with => details[:dose] if details.has_key? :dose
+  end
+
+  def fill_uniform_dosing_details(details)
+    fill_in "uniform-dose", :with => details[:dose]
     select(details[:frequency], :from => "frequency") if details.has_key? :frequency
-    click_on("SOS") if details[:sos]
-    select(details[:instructions], :from => "instructions") if details.has_key? :instructions
-    fill_in "duration", :with => details[:duration] if details.has_key? :duration
-    fill_in "start-date", :with => details[:start_date] if details.has_key? :start_date
-    click_on("Add")
   end
 
-  def verify_drug_on_tab(tab_name, drug)
-    drug_name = drug[:drug_name]
-    drug_details = create_drug_detail(drug)
-    go_to_tab(tab_name)
-    drug_section = page.all(".tab").find { |div| div.find(".tab-label").text == tab_name }
-    expect(drug_section).to have_content(drug_name)
-    expect(drug_section).to have_content(drug_details)
+  def fill_variable_dosing_details(details)
+    find('.variable-frequency', :visible => false).click
+    fill_in "morning-dose", :with => details[:morning_dose] if details.has_key? :morning_dose
+    fill_in "afternoon-dose", :with => details[:noon_dose] if details.has_key? :noon_dose
+    fill_in "evening-dose", :with => details[:night_dose] if details.has_key? :night_dose
+    fill_in "variable-dose-unit", :with => details[:dose_unit] if details.has_key? :dose_dose
   end
 
-  def create_drug_detail(drug)
-    sos = "SOS" if drug[:sos]
-    drug_details = [drug[:dose], drug[:dose_unit]].reject{|s| s.nil? || s.empty?}.join(' ').concat(", ")
-    drug_details.concat([drug[:frequency], drug[:instructions], sos, drug[:drug_route]].reject{|s| s.nil? || s.empty?}.join(', ')).concat(" - ")
-    drug_details.concat([drug[:duration], drug[:duration_unit]].reject{|s| s.nil? || s.empty?}.join(' '))
-    drug_details
-  end
-
-  private
-  def go_to_tab(tab_name)
-    find('.tab-label', :text => tab_name).click
-  end
 end
