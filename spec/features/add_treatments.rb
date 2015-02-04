@@ -23,7 +23,7 @@ feature "add treatments for existing patients" do
 
       observations_page.go_to_tab("Treatment")
       treatment_page.add_new_drug(drug1, drug2, drug3)
-      treatment_page.save.confirm_saved
+      treatment_page.save
       treatment_page.verify_drug_on_tab("Recent", drug1, drug2, drug3)
       treatment_page.verify_drug_on_tab(patient[:current_visit_date], drug1, drug2, drug3)
 
