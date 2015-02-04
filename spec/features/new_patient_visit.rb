@@ -29,7 +29,7 @@ feature "new patient visit" do
             observations_page.fill_second_vitals_section(second_vitals)
             observations_page.fill_obstetrics_section(obstetrics)
             observations_page.fill_gynaecology_section(gynaecology)
-            observations_page.save.confirm_saved
+            observations_page.save
             observations_page.go_to_visit_page
 
             visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
