@@ -2,12 +2,14 @@ class Clinical::TreatmentPage < Page
   include Clinical::ConsultationHeader
 
   def add_new_drug(*drugs)
-    drugs.each do|drug|
+    drugs.each do |drug|
       fill_drug_name(drug)
       if drug.has_key? :dose
-        fill_uniform_dosing_details(drug) end
+        fill_uniform_dosing_details(drug)
+      end
       if drug.has_key? :morning_dose
-        fill_variable_dosing_details(drug) end
+        fill_variable_dosing_details(drug)
+      end
       click_on("SOS") if drug[:sos]
       select(drug[:instructions], :from => "instructions") if drug.has_key? :instructions
       fill_in "duration", :with => drug[:duration] if drug.has_key? :duration
@@ -17,11 +19,31 @@ class Clinical::TreatmentPage < Page
     end
   end
 
+  def refill_drug(tab_name, *drugs)
+    go_to_treatment_tab(tab_name)
+    drugs.each do |drug|
+      drug_details = create_drug_details_string(drug)
+      tab_section = page.all(".tab").find { |div| div.find(".tab-label").text == tab_name }
+      drug_section = tab_section.all("#ordered-drug-orders").find { |li| li.find(".drug-details").text == drug_details }
+      drug_section.find(".refill-btn").click
+    end
+  end
+
+  def verify_drug_on_new_prescription(*drugs)
+    drugs.each do |drug|
+      drug_details = create_drug_details_string(drug)
+      drug_details = drug_details+"("+drug[:quantity]+" "+drug[:quantity_units]+")"
+      section = page.find(".new-drug-order")
+      drug_element = section.all('#new-drug-orders').find { |li| li.find(".drug-details").text == drug_details }
+      date_section = drug_element.all(".start-date").find { |div| div.text == "from " + drug[:start_date] }
+      expect(date_section).to have_content("from "+drug[:start_date])
+    end
+  end
+
   def verify_drug_on_tab(tab_name, *drugs)
     go_to_treatment_tab(tab_name)
     drugs.each do |drug|
       drug_details = create_drug_details_string(drug)
-      drug_details = [drug[:drug_name], drug_details].join(' - ')
       drug_section = page.all(".tab").find { |div| div.find(".tab-label").text == tab_name }
       expect(drug_section).to have_content(drug_details)
       expect(drug_section).to have_content(drug[:additional_instructions])
@@ -32,7 +54,7 @@ class Clinical::TreatmentPage < Page
     find('.tab-label', :text => tab_name).click
   end
 
-private
+  private
 
   def fill_drug_name(details)
     searchable_drug_name = details[:drug_name].split(" (")[0];
