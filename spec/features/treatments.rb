@@ -23,7 +23,7 @@ feature "treatments" do
 
       observations_page.go_to_tab("Treatment")
       treatment_page.add_new_drug(drug1, drug2, drug3)
-      treatment_page.save.confirm_saved
+      treatment_page.save
       treatment_page.verify_drug_on_tab("Recent", drug1, drug2, drug3)
       treatment_page.verify_drug_on_tab(patient[:current_visit_date], drug1, drug2, drug3)
 
@@ -61,6 +61,15 @@ feature "treatments" do
     refilled_cytalon= {:drug_name => "Cytalon 100mg (Injection)", :dose => "1.5", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => "15 Mar 30",
                        :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :quantity => "3", :quantity_units => "Unit(s)"}
 
+    active_placentex = {:drug_name => "Placentex 60ml (Lotion)", :dose => "1", :dose_unit => "Unit(s)", :frequency => "Once a month", :sos => false, :start_date => "04 Feb 15", :stop_date => "04 Oct 31",
+    :duration => "200", :duration_unit => "Month(s)", :drug_route => "Topical", :quantity => "200", :quantity_units => "Unit(s)"}
+
+    new_placentex = {:drug_name => "Placentex 60ml (Lotion)", :dose => "1", :dose_unit => "mg", :frequency => "Once a day", :sos => false, :start_date => date,
+                     :duration => "200", :duration_unit => "Day(s)", :drug_route => "Topical", :quantity => "200", :quantity_units => "Unit(s)"}
+
+    refilled_placentex = {:drug_name => "Placentex 60ml (Lotion)", :dose => "1", :dose_unit => "mg", :frequency => "Once a day", :sos => false, :start_date => "04 Oct 31",
+                         :duration => "200", :duration_unit => "Day(s)", :drug_route => "Topical", :quantity => "200", :quantity_units => "Unit(s)"}
+
     log_in_to_app(:clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
       patient_dashboard_page.start_consultation
@@ -69,15 +78,22 @@ feature "treatments" do
       treatment_page.verify_drug_on_tab("Recent", paracetamol, cytalon)
       treatment_page.refill_drug(patient[:current_visit_date], paracetamol, ipratropium, cytalon)
       treatment_page.verify_drug_on_new_prescription(refilled_cytalon, refilled_ipratropium, refilled_paracetamol)
-      treatment_page.save.confirm_saved
+      treatment_page.save
       treatment_page.verify_drug_on_tab(patient[:current_visit_date], paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon)
 
+      treatment_page.add_new_drug(new_placentex)
+      treatment_page.expect_popup(active_placentex)
+      treatment_page.refill_conflicting_drug()
+      treatment_page.verify_drug_on_new_prescription(refilled_placentex)
+      treatment_page.save
+
       treatment_page.go_to_tab("Visit")
-      visit_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon)
+      visit_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
       visit_page.navigate_to_patient_dashboard
-      patient_dashboard_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon)
+      patient_dashboard_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
       patient_dashboard_page.navigate_to_all_treatments_page
-      summary_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon)
+      summary_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
+
     end
   end
 end

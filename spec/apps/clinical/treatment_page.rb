@@ -40,6 +40,16 @@ class Clinical::TreatmentPage < Page
     end
   end
 
+  def expect_popup(drug)
+    section = page.find(".revise-refill-modal-wrapper")
+    expect(section).to have_content(drug[:drug_name]+" from "+ drug[:start_date]+" to "+drug[:stop_date]+" is conflicting with drug order you are trying to add. You can revise or refill instead.")
+  end
+
+  def refill_conflicting_drug()
+    section = page.find(".revise-refill-modal-wrapper")
+    section.find("#modal-refill-button").click
+  end
+
   def verify_drug_on_tab(tab_name, *drugs)
     go_to_treatment_tab(tab_name)
     drugs.each do |drug|
@@ -64,6 +74,7 @@ class Clinical::TreatmentPage < Page
 
   def fill_uniform_dosing_details(details)
     fill_in "uniform-dose", :with => details[:dose]
+    select(details[:dose_unit], :from => "uniform-dose-unit") if details.has_key? :dose_unit
     select(details[:frequency], :from => "frequency") if details.has_key? :frequency
   end
 
@@ -72,7 +83,7 @@ class Clinical::TreatmentPage < Page
     fill_in "morning-dose", :with => details[:morning_dose] if details.has_key? :morning_dose
     fill_in "afternoon-dose", :with => details[:noon_dose] if details.has_key? :noon_dose
     fill_in "evening-dose", :with => details[:night_dose] if details.has_key? :night_dose
-    fill_in "variable-dose-unit", :with => details[:dose_unit] if details.has_key? :dose_dose
+    select(details[:dose_unit], :from => "variable-dose-unit") if details.has_key? :dose_unit
   end
 
 end
