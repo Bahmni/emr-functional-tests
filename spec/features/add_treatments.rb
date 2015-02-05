@@ -21,18 +21,18 @@ feature "add treatments for existing patients" do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
       patient_dashboard_page.start_consultation
 
-      observations_page.go_to_tab("Treatment")
-      treatment_page.add_new_drug(drug1, drug2, drug3)
-      treatment_page.save
-      treatment_page.verify_drug_on_tab("Recent", drug1, drug2, drug3)
-      treatment_page.verify_drug_on_tab(patient[:current_visit_date], drug1, drug2, drug3)
-
-      treatment_page.go_to_tab("Visit")
-      visit_page.verify_new_drugs(drug1, drug2, drug3)
-      visit_page.navigate_to_patient_dashboard
-      patient_dashboard_page.verify_new_drugs(drug1, drug2, drug3)
-      patient_dashboard_page.navigate_to_all_treatments_page
-      summary_page.verify_new_drugs(drug1, drug2, drug3)
+      # observations_page.go_to_tab("Treatment")
+      # treatment_page.add_new_drug(drug1, drug2, drug3)
+      # treatment_page.save
+      # treatment_page.verify_drug_on_tab("Recent", drug1, drug2, drug3)
+      # treatment_page.verify_drug_on_tab(patient[:current_visit_date], drug1, drug2, drug3)
+      #
+      # treatment_page.go_to_tab("Visit")
+      # visit_page.verify_new_drugs(drug1, drug2, drug3)
+      # visit_page.navigate_to_patient_dashboard
+      # patient_dashboard_page.verify_new_drugs(drug1, drug2, drug3)
+      # patient_dashboard_page.navigate_to_all_treatments_page
+      # summary_page.verify_new_drugs(drug1, drug2, drug3)
 
     end
   end

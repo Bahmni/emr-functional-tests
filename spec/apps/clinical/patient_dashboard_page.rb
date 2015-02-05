@@ -51,6 +51,11 @@ class Clinical::PatientDashboardPage < Page
       find("a", :text=>visit_date, :match => :prefer_exact).click
     end
 
+    def navigate_to_current_visit
+      find(".visits i[title='Current Visit']").click
+      wait_for_overlay_to_be_hidden
+    end
+
     def verify_new_drugs(*drugs)
       verify_drug_details(TREATMENT_SECTION, *drugs)
     end
