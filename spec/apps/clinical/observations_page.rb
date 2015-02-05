@@ -36,7 +36,6 @@ class Clinical::ObservationsPage < Page
           }
     end
 
-    private
     def get_section(name)
         page.all(".concept-set-group").find { |div| div.find(".concept-set-title").text == name }
     end

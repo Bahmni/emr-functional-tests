@@ -6,8 +6,8 @@ default: &default
 
 development:
     <<: *default
-    root_url: https://172.18.2.18
-    firefox_path: /Applications/Firefox.app/Contents/MacOS/firefox
+    root_url: https://192.168.33.10
+    firefox_path: /usr/bin/firefox
     headless: false
 
 ci:
