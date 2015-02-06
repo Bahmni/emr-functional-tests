@@ -27,7 +27,7 @@ feature "treatments" do
       treatment_page.verify_drug_on_tab("Recent", drug1, drug2, drug3)
       treatment_page.verify_drug_on_tab(patient[:current_visit_date], drug1, drug2, drug3)
 
-      treatment_page.go_to_tab("Visit")
+      treatment_page.go_to_visit_page
       visit_page.verify_new_drugs(drug1, drug2, drug3)
       visit_page.navigate_to_patient_dashboard
       patient_dashboard_page.verify_new_drugs(drug1, drug2, drug3)
@@ -87,7 +87,7 @@ feature "treatments" do
       treatment_page.verify_drug_on_new_prescription(refilled_placentex)
       treatment_page.save
 
-      treatment_page.go_to_tab("Visit")
+      treatment_page.go_to_visit_page
       visit_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
       visit_page.navigate_to_patient_dashboard
       patient_dashboard_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
