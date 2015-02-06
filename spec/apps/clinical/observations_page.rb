@@ -3,7 +3,7 @@ class Clinical::ObservationsPage < Page
 
     def fill_history_and_examinations_section(details)
         wait_for_overlay_to_be_hidden
-        expand_section "History and Examination"
+        expand_section "History_and_Examination"
         fill_chief_complaints details[:chief_complaints] if details.has_key? :chief_complaints
         fill_in "History Notes", :with => details[:history_notes] if details.has_key? :history_notes
         fill_in "Examination Notes", :with => details[:examination_notes] if details.has_key? :examination_notes
@@ -16,7 +16,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_second_vitals_section(vitals)
-        expand_section "Second Vitals"
+        expand_section "Second_Vitals"
         fill_vitals_data(get_section("Second Vitals"), vitals)
     end
 
@@ -41,7 +41,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def expand_section(name)
-        find(".concept-set-title", :text => name, :match => :prefer_exact).click
+        find("##{name}").click
         wait_for_overlay_to_be_hidden
     end
 
