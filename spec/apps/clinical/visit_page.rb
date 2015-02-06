@@ -76,7 +76,7 @@ class Clinical::VisitPage < Page
      end
 
    def navigate_to_patient_dashboard ##  use this method for navigating back from current visit page
-     find('.patient-details a', :text => "Test").click
+     find('.back-btn').click
      wait_for_overlay_to_be_hidden
    end
 
