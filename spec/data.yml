@@ -11,9 +11,6 @@
               "Paracetamol 2ml (Injection) 1 Injection, 10 Day(s)",
               "B-Complex (Tablet) 1 Tablet(s), 3700 Day(s)"]
 
-    - visit_date: "Other Active DrugOrders"
-      drugs: []
-
   "all_treatments_page":
     - visit_date: "30 Sep 14"
       drugs: ["Povidine 15g (Ointment) 5 Ointment, 5 Day(s)",
@@ -24,9 +21,6 @@
       drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic, 3650 Day(s)",
               "Paracetamol 2ml (Injection) 1 Injection, 10 Day(s)",
               "B-Complex (Tablet) 1 Tablet(s), 3700 Day(s)"]
-
-    - visit_date: "Other Active DrugOrders"
-      drugs: []
 
   "first_visit_date": "29 Sep 14 - 30 Sep 14"
 
