@@ -80,4 +80,20 @@ class Clinical::VisitPage < Page
      wait_for_overlay_to_be_hidden
    end
 
+  def verify_current_tab(name)
+    tab = find('#consultation-header', :text => name, :match => :prefer_exact).parent
+    expect(tab).to have_selector('.tab-selected')
+  end
+
+  def add_tab(name)
+    find('#addTabButton').click
+    find('.unOpenedDashboard', :text => name, :match => :prefer_exact).click
+    wait_for_overlay_to_be_hidden
+  end
+
+  def find_section(name)
+    find('.dashboard-section h2', :text => name).parent
+  end
+
+
 end
