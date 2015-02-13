@@ -21,7 +21,8 @@ feature "exisitng patient data verification" do
 
     patient_dashboard_page.add_dashboard("General - 2")
     patient_dashboard_page.verify_current_dashboard("General - 2")
-    patient_dashboard_page.find_section("Patient Information")
+    # TODO: use variable instead of hard coding.
+    patient_dashboard_page.find_section("Test Drugdataone")
     patient_dashboard_page.navigate_to_dashboard("General")
 
     patient_dashboard_page.navigate_to_visit_page(patient1_data["first_visit_date"])
