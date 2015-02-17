@@ -60,4 +60,10 @@ class Clinical::PatientDashboardPage < Page
       verify_drug_details(TREATMENT_SECTION, *drugs)
     end
 
+    def verify_patient_profile_section(name)
+      # todo: add more verification
+      patient_section = find("#patient_information")
+      expect(patient_section).to have_content(name)
+    end
+
 end
