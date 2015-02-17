@@ -28,16 +28,16 @@ feature "exisitng patient data verification" do
     patient_dashboard_page.navigate_to_visit_page(patient1_data["first_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["first_visit"])
 
+    visit_page.navigate_to_dashboard
+
+    patient_dashboard_page.navigate_to_visit_page(patient1_data["second_visit_date"])
+    visit_page.verify_existing_drugs(patient1_data["second_visit"])
+
     visit_page.verify_current_tab("General")
     visit_page.add_tab("General - 2")
     visit_page.verify_current_tab("General - 2")
     visit_page.find_section("Pivot table")
 
-    visit_page.navigate_to_dashboard
-
-    patient_dashboard_page.navigate_to_visit_page(patient1_data["second_visit_date"])
-    visit_page.verify_existing_drugs(patient1_data["second_visit"])
-    
     # Patient 2
     visit_page.navigate_to_patient_search_page
     patient_search_page.view_patient_from_all_tab(patient2)
