@@ -21,10 +21,6 @@ class Page
     wait_until { !page.find('#overlay').visible? }
   end
 
-  def open_side_panel
-    find('button.toggle-patient').click
-  end
-
   def verify_drug_details(section, *drugs)
     table = page.find(section)
     drugs.each do |drug|
@@ -45,5 +41,15 @@ class Page
     drug_details.concat([drug[:duration], drug[:duration_unit]].reject { |s| s.nil? || s.empty? }.join(' '))
     drug_details = [drug[:drug_name], drug_details].reject { |s| s.nil? || s.empty? }.join(' ')
     drug_details
+  end
+
+  def find_section(name)
+    find('.dashboard-section h2', :text => name).parent
+  end
+
+  def verify_disposition_details(disposition_details)
+    disposition_section = page.find('#disposition')
+    expect(disposition_section.find(".disposition-state")).to have_content(disposition_details[:disposition])
+    expect(disposition_section.find(".notes")).to have_content(disposition_details[:notes])
   end
 end
