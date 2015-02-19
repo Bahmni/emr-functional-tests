@@ -18,10 +18,6 @@ class Clinical::PatientDashboardPage < Page
         wait_for_overlay_to_be_hidden
     end
 
-    def find_section(name)
-        find('.dashboard-section h2', :text => name).parent
-    end
-
     def verify_visit_vitals_info(vitals)
         vitals_section = find('.dashboard-section h2', :text => 'Vitals').parent
         expect(vitals_section).to have_content("BMI #{vitals[:bmi]}") if vitals.has_key? :bmi

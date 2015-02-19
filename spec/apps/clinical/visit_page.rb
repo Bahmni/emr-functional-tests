@@ -1,5 +1,6 @@
 class Clinical::VisitPage < Page
     include Clinical::ConsultationHeader
+    include Clinical::ControlPanel
 
     TREATMENT_SECTION = ".treatment-section"
 
@@ -90,10 +91,5 @@ class Clinical::VisitPage < Page
     find('.unOpenedDashboard', :text => name, :match => :prefer_exact).click
     wait_for_overlay_to_be_hidden
   end
-
-  def find_section(name)
-    find('.dashboard-section h2', :text => name).parent
-  end
-
 
 end
