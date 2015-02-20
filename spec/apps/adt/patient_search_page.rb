@@ -4,15 +4,15 @@ class Adt::PatientSearchPage < Page
       search_patient_in_all_tab( patient)
     end
 
-    def view_patient_from_To_Admit_tab(patient)
+    def view_patient_from_To_admit_tab(patient)
       search_patient_in_tab("To Admit", patient)
       end
 
-    def view_patient_from_To_Discharge_tab(patient)
+    def view_patient_from_To_discharge_tab(patient)
       search_patient_in_tab("To Discharge", patient)
       end
 
-    def view_patient_from_Admitted_tab(patient)
+    def view_patient_from_admitted_tab(patient)
       search_patient_in_tab("Admitted", patient)
     end
 
