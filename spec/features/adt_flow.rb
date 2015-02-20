@@ -30,7 +30,7 @@ feature "existing patient admit and discharge verification" do
       end
     end
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_as_different_user(:clinical) do
       patient_search_page.view_patient_from_active_tab(patient1)
       patient_dashboard_page.start_consultation
       disposition_page.go_to_tab("Disposition")
