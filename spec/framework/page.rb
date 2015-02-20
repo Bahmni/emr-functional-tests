@@ -49,7 +49,7 @@ class Page
 
   def verify_disposition_details(disposition_details)
     disposition_section = page.find('#disposition')
-    expect(disposition_section.find(".disposition-state")).to have_content(disposition_details[:disposition])
-    expect(disposition_section.find(".notes")).to have_content(disposition_details[:notes])
+    expect(disposition_section).to have_content(disposition_details[:disposition])
+    expect(disposition_section).to have_content(disposition_details[:notes])
   end
 end
