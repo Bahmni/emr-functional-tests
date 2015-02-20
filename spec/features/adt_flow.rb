@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "existing patient admit and discharge verification" do
+feature "patient admit and discharge verification" do
   scenario "verify admit and discharge" do
 
     patient1 = "Test AdtFlow"
@@ -13,9 +13,7 @@ feature "existing patient admit and discharge verification" do
     log_in_to_app(:clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_active_tab(patient1)
       patient_dashboard_page.start_consultation
-      disposition_page.go_to_tab("Disposition")
       disposition_page.provide_disposition(admit_disposition_details)
-      disposition_page.save
 
       disposition_page.go_to_dashboard_page
       patient_dashboard_page.verify_disposition_details(admit_disposition_details)
@@ -23,7 +21,7 @@ feature "existing patient admit and discharge verification" do
       visit_page.verify_disposition_details(admit_disposition_details)
       visit_page.navigate_to_home
       go_to_app("adt") do
-        patient_search_page.view_patient_from_To_admit_tab(patient1)
+        patient_search_page.view_patient_from_to_admit_tab(patient1)
         patient_dashboard_page.verify_disposition_details(admit_disposition_details)
         patient_dashboard_page.perform_admit_action(admit_details)
         patient_search_page.view_patient_from_admitted_tab(patient1)
@@ -33,9 +31,7 @@ feature "existing patient admit and discharge verification" do
     log_in_as_different_user(:clinical) do
       patient_search_page.view_patient_from_active_tab(patient1)
       patient_dashboard_page.start_consultation
-      disposition_page.go_to_tab("Disposition")
       disposition_page.provide_disposition(discharge_disposition_details)
-      disposition_page.save
 
       disposition_page.go_to_dashboard_page
       patient_dashboard_page.verify_disposition_details(discharge_disposition_details)
@@ -43,7 +39,7 @@ feature "existing patient admit and discharge verification" do
       visit_page.verify_disposition_details(discharge_disposition_details)
       visit_page.navigate_to_home
       go_to_app("adt") do
-        patient_search_page.view_patient_from_To_discharge_tab(patient1)
+        patient_search_page.view_patient_from_to_discharge_tab(patient1)
         patient_dashboard_page.verify_disposition_details(discharge_disposition_details)
         patient_dashboard_page.perform_discharge_action(discharge_details)
         patient_search_page.view_patient_from_all_tab(patient1)
@@ -52,5 +48,25 @@ feature "existing patient admit and discharge verification" do
       end
     end
 
+  end
+  scenario "verify undo disposition" do
+    patient = "Test AddDrugScenario"
+    admit_disposition_details = {:disposition => "Admit Patient", :notes => "Admit the patient"}
+    undo_disposition_details = {:disposition => "", :notes => "undo disposition"}
+
+    log_in_to_app(:clinical, :location => 'OPD-1') do
+      patient_search_page.view_patient_from_active_tab(patient)
+      patient_dashboard_page.start_consultation
+      disposition_page.provide_disposition(admit_disposition_details)
+      disposition_page.provide_disposition(undo_disposition_details)
+      disposition_page.go_to_dashboard_page
+      patient_dashboard_page.verify_absence_of_disposition_details(admit_disposition_details)
+      patient_dashboard_page.navigate_to_current_visit
+      visit_page.verify_absence_of_disposition_details(admit_disposition_details)
+      visit_page.navigate_to_home
+      go_to_app("adt") do
+        patient_search_page.verify_patient_not_found_in_to_admit_tab(patient)
+      end
+    end
   end
 end

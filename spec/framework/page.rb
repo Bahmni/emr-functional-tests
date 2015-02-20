@@ -52,4 +52,10 @@ class Page
     expect(disposition_section).to have_content(disposition_details[:disposition])
     expect(disposition_section).to have_content(disposition_details[:notes])
   end
+
+  def verify_absence_of_disposition_details(disposition_details)
+    disposition_section = page.find('#disposition')
+    expect(disposition_section).to have_no_content(disposition_details[:disposition])
+    expect(disposition_section).to have_content("No dispositions available.")
+  end
 end
