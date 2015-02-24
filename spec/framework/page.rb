@@ -58,4 +58,11 @@ class Page
     expect(disposition_section).to have_no_content(disposition_details[:disposition])
     expect(disposition_section).to have_content("No dispositions available.")
   end
+
+  def verify_patient_profile_information(patient_details)
+    patient_information_section = page.find("#patient_information")
+    expect(patient_information_section.find(".patient-name").text().downcase()).to eql(patient_details[:patientNameAndIdentifier])
+    expect(patient_information_section.find(".patient-gender-age")).to have_content(patient_details[:genderAsText])
+    expect(patient_information_section.find(".patient-address")).to have_content(patient_details[:address])
+  end
 end
