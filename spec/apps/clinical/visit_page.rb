@@ -68,16 +68,12 @@ class Clinical::VisitPage < Page
     end
 
     def navigate_to_patient_search_page
-     find('.dashboard-header a', :text => "Dashboard").click
+      find('#patients-link').click
      click_on "Patients"
    end
 
-   def navigate_to_dashboard ##  use this method for navigating back from previous visit pages
-     find('.dashboard-header a', :text => "Dashboard").click
-     end
-
    def navigate_to_patient_dashboard ##  use this method for navigating back from current visit page
-     find('.back-btn').click
+     find('#dashboard-link').click
      wait_for_overlay_to_be_hidden
    end
 

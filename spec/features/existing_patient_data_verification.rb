@@ -28,7 +28,7 @@ feature "exisitng patient data verification" do
     patient_dashboard_page.navigate_to_visit_page(patient1_data["first_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["first_visit"])
 
-    visit_page.navigate_to_dashboard
+    visit_page.navigate_to_patient_dashboard
 
     patient_dashboard_page.navigate_to_visit_page(patient1_data["second_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["second_visit"])
@@ -57,15 +57,15 @@ feature "exisitng patient data verification" do
 
     patient_dashboard_page.navigate_to_visit_page(patient3_data["first_visit_date"])
     visit_page.verify_existing_drugs(patient3_data["first_visit"])
-    visit_page.navigate_to_dashboard
+    visit_page.navigate_to_patient_dashboard
 
     patient_dashboard_page.navigate_to_visit_page(patient3_data["second_visit_date"])
     visit_page.verify_existing_drugs(patient3_data["second_visit"])
-    visit_page.navigate_to_dashboard
+    visit_page.navigate_to_patient_dashboard
 
     patient_dashboard_page.navigate_to_visit_page(patient3_data["third_visit_date"])
     visit_page.verify_existing_drugs(patient3_data["third_visit"])
-    visit_page.navigate_to_dashboard
+    visit_page.navigate_to_patient_dashboard
 
     patient_dashboard_page.navigate_to_visit_page(patient3_data["latest_visit_date"])
     visit_page.verify_existing_drugs(patient3_data["latest_visit"])
