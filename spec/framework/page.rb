@@ -61,8 +61,25 @@ class Page
 
   def verify_patient_profile_information(patient_details)
     patient_information_section = page.find("#patient_information")
-    expect(patient_information_section.find(".patient-name").text().downcase()).to eql(patient_details[:patientNameAndIdentifier])
-    expect(patient_information_section.find(".patient-gender-age")).to have_content(patient_details[:genderAsText])
+    expect(patient_information_section.find(".patient-name")).to have_content((patient_details[:given_name] + " " + patient_details[:family_name]))
+    expect(patient_information_section.find(".patient-gender-age")).to have_content(patient_details[:gender])
+    expect(patient_information_section.find(".patient-gender-age")).to have_content(patient_details[:age][:years])
     expect(patient_information_section.find(".patient-address")).to have_content(patient_details[:address])
+    expect(patient_information_section).to have_content("Caste #{patient_details[:caste]}")
+    expect(patient_information_section).to have_content("Class #{patient_details[:class]}")
+    expect(patient_information_section).to have_content("Education Details #{patient_details[:education_details]}")
+    expect(patient_information_section).to have_content("Occupation #{patient_details[:occupation]}")
+    expect(patient_information_section).to have_content("debt (in Rs) #{patient_details[:debt]}")
+    expect(patient_information_section).to have_content("distanceFromCenter (in km) #{patient_details[:distanceFromCenter]}")
+    expect(patient_information_section).to have_content("isUrban #{patient_details[:is_urban]}")
+    expect(patient_information_section).to have_content("cluster #{patient_details[:cluster]}")
+    expect(patient_information_section).to have_content("RationCard #{patient_details[:ration_card]}")
+    expect(patient_information_section).to have_content("Family Income (per month in Rs) #{patient_details[:family_income]}")
+    end
+
+  def verify_admission_details(patient_details)
+    admission_details_section = page.find("#admissionDetails")
+    expect(admission_details_section).to have_content(patient_details[:admit_details])
+    expect(admission_details_section).to have_content(patient_details[:discharge_details])
   end
 end
