@@ -1,13 +1,9 @@
 require 'spec_helper'
 
-feature "Multiple dashboard & display of patient profile" do
-  scenario "Verify display of patient profile on ADT, dashboard & Visit page" do
+feature "Multiple dashboard & display of admission details" do
+  scenario "Verify display of admission details on ADT, dashboard & Visit page" do
 
     patient = "Test AdtDashboard"
-    patient_details = {:patientNameAndIdentifier => "test adtdashboard (gan200016)",
-                       :genderAsText => "Female", :ageAsText => "", :address => "155, gram panchayat, RAJENDRA GRAM",
-                       :caste => "hindu", :class => "OBC", :education_details => "Uneducated", :occupation => "Unemployed", :debt => "120000", :distanceFromCenter  => "15.8",
-                       :is_urban => "Yes", :cluster => "Semariya", :ration_card => "None", :family_income => ">=36017"}
     admission_details = {:admit_details => "Admission Date	25 Feb 15", :discharge_details => "Discharge Date	25 Feb 15"}
 
     log_in_to_app(:clinical, :location => 'OPD-1') do
