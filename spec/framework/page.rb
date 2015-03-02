@@ -82,4 +82,15 @@ class Page
     expect(admission_details_section).to have_content(patient_details[:admit_details])
     expect(admission_details_section).to have_content(patient_details[:discharge_details])
   end
+
+  def verify_diagnosis_details(diagnosis_details)
+    diagnosis_details_section = page.find("#diagnosisSection")
+    diagnosis_details.each_with_index { |diagnosis,index |
+    expect(diagnosis_details_section.all("#diagnosisName")[index]).to have_content(diagnosis[:freeTextAnswer])
+    expect(diagnosis_details_section.all("#order")[index]).to have_content(diagnosis[:order])
+    expect(diagnosis_details_section.all("#certainty")[index]).to have_content(diagnosis[:certainty])
+    expect(diagnosis_details_section.all("#diagnosisComments")[index]).to have_content(diagnosis[:comments])
+    expect(diagnosis_details_section.all("#diagnosisDate")[index]).to have_content(diagnosis[:diagnosisDate])
+    }
+  end
 end
