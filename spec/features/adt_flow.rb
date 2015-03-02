@@ -47,8 +47,9 @@ feature "patient admit and discharge verification" do
         patient_search_page.view_patient_from_admitted_tab(patient1)
       end
     end
-
   end
+
+
   scenario "verify undo disposition" do
     patient = "Test AddDrugScenario"
     admit_disposition_details = {:disposition => "Admit Patient", :notes => "Admit the patient"}

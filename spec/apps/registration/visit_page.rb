@@ -9,4 +9,9 @@ class Registration::VisitPage < Page
         click_on("Save")
         wait_for_overlay_to_be_hidden
     end
+
+  def navigate_to_home
+    click_link_with_text("Home")
+  end
+
 end

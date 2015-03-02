@@ -19,24 +19,12 @@ feature "exisitng patient data verification" do
     patient_dashboard_page.navigate_to_all_treatments_page
     summary_page.verify_existing_drugs(patient1_data["all_treatments_page"])
 
-    patient_dashboard_page.add_dashboard("General - 2")
-    patient_dashboard_page.verify_current_dashboard("General - 2")
-    # TODO: use variable instead of hard coding.
-    patient_dashboard_page.verify_patient_profile_section("Test Drugdataone")
-    patient_dashboard_page.navigate_to_dashboard("General")
-
     patient_dashboard_page.navigate_to_visit_page(patient1_data["first_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["first_visit"])
 
     visit_page.navigate_to_patient_dashboard
-
     patient_dashboard_page.navigate_to_visit_page(patient1_data["second_visit_date"])
     visit_page.verify_existing_drugs(patient1_data["second_visit"])
-
-    visit_page.verify_current_tab("General")
-    visit_page.add_tab("General - 2")
-    visit_page.verify_current_tab("General - 2")
-    visit_page.find_section("Pivot table")
 
     # Patient 2
     visit_page.navigate_to_patient_search_page
