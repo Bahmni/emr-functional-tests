@@ -11,6 +11,7 @@ feature "new patient visit" do
         second_vitals = {:pulse => 75, :diastolic => 80, :systolic => 120, :posture => 'Sitting', :temperature => 105, :rr => 25, :spo2 => 95}
         obstetrics = { :fundal_height => "4", :pa_presenting_part => "sn Breech", :fhs => "sn Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
         gynaecology = {:ps_perSpeculum_cervix => ["Growth", "sn VIA +ve"] }
+        diagnosis = {:index => 0, :name => 'cold', :order => 'PRIMARY', :certainty => 'PRESUMED'}
 
 
         log_in_to_app(:registration, :location => 'Registration') do
@@ -23,6 +24,7 @@ feature "new patient visit" do
             patient_search_page.view_patient_from_active_tab(new_patient[:given_name])
             patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
             patient_dashboard_page.start_consultation
+            diagnosis_page.add_diagnosis(diagnosis)
 
             observations_page.fill_history_and_examinations_section(history_and_examinations)
             observations_page.fill_vitals_section(vitals)
