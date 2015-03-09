@@ -2,6 +2,7 @@ class Clinical::ObservationsPage < Page
     include Clinical::ConsultationHeader
 
     def fill_history_and_examinations_section(details)
+        go_to_tab ("Observations")
         wait_for_overlay_to_be_hidden
         expand_section "History_and_Examination"
         fill_chief_complaints details[:chief_complaints] if details.has_key? :chief_complaints
