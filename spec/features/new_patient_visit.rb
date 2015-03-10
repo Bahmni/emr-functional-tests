@@ -32,6 +32,7 @@ feature "new patient visit" do
             observations_page.fill_obstetrics_section(obstetrics)
             observations_page.fill_gynaecology_section(gynaecology)
             observations_page.save
+            diagnosis_page.delete_diagnosis(diagnosis)
             observations_page.go_to_dashboard_page
             patient_dashboard_page.navigate_to_current_visit
             visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
