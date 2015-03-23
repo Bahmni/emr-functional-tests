@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "patient admit and discharge verification" do
-  scenario "verify admit and discharge" do
+  skip "verify admit and discharge" do
 
     patient1 = "Test AdtFlow"
     admit_disposition_details = {:disposition => "Admit Patient", :notes => "Admit the patient"}
