@@ -1,7 +1,4 @@
-#!/bin/sh
-if [[ -s "/etc/profile.d/rvm.sh" ]] ; then
-  source /etc/profile.d/rvm.sh
-fi
+#!/bin/bash --login
 rvm use 1.9.3
 set -ex
 bundle install
