@@ -9,6 +9,7 @@ class Adt::PatientDashboardPage < Page
     perform_action(action_details)
     click_on "Admit"
     wait_for_overlay_to_be_hidden
+    sleep(1)
   end
 
   def perform_cancel_action(action_details)
