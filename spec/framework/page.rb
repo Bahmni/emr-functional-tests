@@ -91,6 +91,7 @@ class Page
     expect(diagnosis_details_section.all("#certainty")[index]).to have_content(diagnosis[:certainty])
     expect(diagnosis_details_section.all("#diagnosisComments")[index]).to have_content(diagnosis[:comments])
     expect(diagnosis_details_section.all("#diagnosisDate")[index]).to have_content(diagnosis[:diagnosisDate])
+    expect(diagnosis_details_section.all("#status")[index]).to have_content(diagnosis[:status])
     }
   end
 end
