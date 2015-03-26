@@ -24,7 +24,7 @@ feature "new patient visit" do
             patient_search_page.view_patient_from_active_tab(new_patient[:given_name])
             patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
             patient_dashboard_page.start_consultation
-            diagnosis_page.add_diagnosis(diagnosis)
+            diagnosis_page.add_non_coded_diagnosis(diagnosis)
 
             observations_page.fill_history_and_examinations_section(history_and_examinations)
             observations_page.fill_vitals_section(vitals)
