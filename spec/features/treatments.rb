@@ -47,6 +47,9 @@ feature "treatments" do
     refilled_paracetamol = {:drug_name => "Paracetamol 4.5 Litre (Syrup)", :dose => "1", :dose_unit => "ml", :frequency => "Once a month", :sos => true, :start_date => "15 Sep 31",
                             :instructions => "At bedtime", :duration => "200", :duration_unit => "Month(s)", :drug_route => "Oral", :additional_instructions => "On medication",
                             :quantity => "200", :quantity_units => "Unit(s)"}
+    merged_paracetamol = {:drug_name => "Paracetamol 4.5 Litre (Syrup)", :dose => "1", :dose_unit => "ml", :frequency => "Once a month", :sos => true, :start_date => "15 Jan 15",
+                            :instructions => "At bedtime", :duration => "400", :duration_unit => "Month(s)", :drug_route => "Oral", :additional_instructions => "On medication",
+                            :quantity => "400", :quantity_units => "Unit(s)"}
 
     ipratropium = {:drug_name => "Ipratropium Bromide Respirator Solution 15ml (Solution)", :morning_dose => "3", :noon_dose => "0", :night_dose => "0", :dose_unit => "ml", :sos => true, :start_date => "15 Jan 15",
                    :instructions => "Immediately", :duration => "3", :duration_unit => "Day(s)", :drug_route => "Intravenous", :additional_instructions => "On medication immediately..",
@@ -61,6 +64,9 @@ feature "treatments" do
 
     refilled_cytalon= {:drug_name => "Cytalon 100mg (Injection)", :dose => "1.5", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => "15 Mar 30",
                        :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :quantity => "3", :quantity_units => "Unit(s)"}
+
+    merged_cytalon= {:drug_name => "Cytalon 100mg (Injection)", :dose => "1.5", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => "15 Jan 30",
+                       :duration => "4", :duration_unit => "Month(s)", :drug_route => "Intravenous", :quantity => "3", :quantity_units => "Unit(s)"}
 
     active_placentex = {:drug_name => "Placentex 60ml (Lotion)", :dose => "1", :dose_unit => "Unit(s)", :frequency => "Once a month", :sos => false, :start_date => "04 Feb 15", :stop_date => "04 Oct 31",
     :duration => "200", :duration_unit => "Month(s)", :drug_route => "Topical", :quantity => "200", :quantity_units => "Unit(s)"}
@@ -91,11 +97,11 @@ feature "treatments" do
       treatment_page.go_to_dashboard_page
       patient_dashboard_page.navigate_to_current_visit
 
-      visit_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
+      visit_page.verify_new_drugs(merged_paracetamol, ipratropium, refilled_ipratropium, merged_cytalon, refilled_placentex)
       visit_page.navigate_to_patient_dashboard
-      patient_dashboard_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
+      patient_dashboard_page.verify_new_drugs(merged_paracetamol, ipratropium, refilled_ipratropium, merged_cytalon, refilled_placentex)
       patient_dashboard_page.navigate_to_all_treatments_page
-      summary_page.verify_new_drugs(paracetamol, ipratropium, cytalon, refilled_paracetamol, refilled_ipratropium, refilled_cytalon, refilled_placentex)
+      summary_page.verify_new_drugs(merged_paracetamol, ipratropium, refilled_ipratropium, merged_cytalon, refilled_placentex)
 
     end
   end
