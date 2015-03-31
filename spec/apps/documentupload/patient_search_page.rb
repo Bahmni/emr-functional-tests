@@ -1,0 +1,2 @@
+class Documentupload::PatientSearchPage < CommonPatientSearchPage
+end

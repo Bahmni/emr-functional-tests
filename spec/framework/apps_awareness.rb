@@ -10,6 +10,21 @@ module AppsAwareness
         go_to_app name, &block
     end
 
+    def go_to_app_with_params(name, query_param, &block)
+        app_name = name
+        if name == 'documentupload'
+            app_name = "document-upload"
+        end
+        visit "/bahmni/#{app_name}" + "?encounterType=" + query_param
+        App.create(name, self).instance_eval(&block)
+    end
+
+    def log_in_to_app_with_params(name, query_param, credentials, &block)
+        Capybara.reset_sessions!
+        login credentials
+        go_to_app_with_params name,query_param, &block
+    end
+
     def login(credentials)
         go_to_app(:home) { login credentials }
     end
