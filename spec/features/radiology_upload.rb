@@ -57,14 +57,14 @@ feature "new patient visit" do
       expect(radiology_section).to have_content("LEG Foot AP")
 
       patient_dashboard_page.navigate_to_current_visit
-      radiology_section = find(".radiology-investigations")
+      radiology_section = find(".dashboard-radiology-section")
       expect(radiology_section).to have_content("ARM Hand AP")
       expect(radiology_section).to have_content("SPINE Lumbo-sacral AP/PA")
       expect(radiology_section).to have_content("LEG Foot AP")
 
       visit_page.navigate_to_patient_dashboard
       patient_dashboard_page.navigate_to_visit_page('1 Mar 15')
-      radiology_section = find(".radiology-investigations")
+      radiology_section = find(".dashboard-radiology-section")
       expect(radiology_section).to have_content("LEG Foot AP")
     end
 
