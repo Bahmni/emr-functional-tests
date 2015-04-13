@@ -3,3 +3,4 @@ Gemfile.lock
 screenshots
 .idea
 *.iml
+results.html
