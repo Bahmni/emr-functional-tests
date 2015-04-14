@@ -9,7 +9,8 @@ class Clinical::SummaryPage < Page
         expect(table).to have_content(drug)
       end
     end
-  click_on "Back"
+    find('.back-btn .icon-circle-arrow-left').click
+  # click_on "Back"
   end
 
   def verify_new_drugs(*drugs)
