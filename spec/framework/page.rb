@@ -39,6 +39,7 @@ class Page
     drug_details = [dose, drug[:dose_unit]].reject { |s| s.nil? || s.empty? }.join(' ').concat(", ")
     drug_details.concat([drug[:frequency], drug[:instructions], sos, drug[:drug_route]].reject { |s| s.nil? || s.empty? }.join(', ')).concat(" - ")
     drug_details.concat([drug[:duration], drug[:duration_unit]].reject { |s| s.nil? || s.empty? }.join(' '))
+    drug_details.concat("\(").concat([drug[:quantity], drug[:quantity_units]].reject { |s| s.nil? || s.empty? }.join(' ')).concat("\)")
     drug_details = [drug[:drug_name], drug_details].reject { |s| s.nil? || s.empty? }.join(' ')
     drug_details
   end

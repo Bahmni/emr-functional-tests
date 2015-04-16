@@ -7,15 +7,15 @@ feature "treatments" do
     patient = {:given_name => "Test AddDrugScenario", :current_visit_date => "15 Jan 15"}
     drug1 = {:drug_name => "Albendazole 400mg (Tablet)", :dose => "2", :dose_unit => "Tablet(s)", :frequency => "Twice a day", :sos => false, :start_date => date.strftime("%F"),
              :instructions => "After meals", :duration => "1", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "On medication",
-             :quanity => "10"}
+             :quanity => "10", :quantity_units => "Unit(s)"}
 
     drug2 = {:drug_name => "Albendazole 400mg (Tablet)", :morning_dose => "1.5", :noon_dose => "0", :night_dose => "1", :dose_unit => "Tablet(s)", :sos => true, :start_date => (date + 1).strftime("%F"),
              :instructions => "After meals", :duration => "4", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "Take medicine as required",
-             :quanity => "10"}
+             :quanity => "10", :quantity_units => "Unit(s)"}
 
     drug3 = {:drug_name => "Hepatitis - B 1ml (Injection)", :dose => "1", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => (date + 20).strftime("%F"),
              :instructions => "In the morning", :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :additional_instructions => "Injection to be taken..",
-             :quanity => "10"}
+             :quanity => "10", :quantity_units => "Unit(s)"}
 
     log_in_to_app(:clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
