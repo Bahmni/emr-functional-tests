@@ -22,8 +22,9 @@ class Clinical::TreatmentPage < Page
   def refill_drug(tab_name, *drugs)
     go_to_treatment_tab(tab_name)
     drugs.each do |drug|
-      drug_details = create_drug_details_string(drug)
+      drug_details = create_drug_details_string_with_quantity(drug)
       tab_section = page.all(".tab").find { |div| div.find(".tab-label").text == tab_name }
+      expect(tab_section).to have_content(drug_details)
       drug_section = tab_section.all("#ordered-drug-orders").find { |li| li.find(".drug-details").text == drug_details }
       drug_section.find(".refill-btn").click
     end
@@ -31,9 +32,9 @@ class Clinical::TreatmentPage < Page
 
   def verify_drug_on_new_prescription(*drugs)
     drugs.each do |drug|
-      drug_details = create_drug_details_string(drug)
-      drug_details = drug_details+"("+drug[:quantity]+" "+drug[:quantity_units]+")"
+      drug_details = create_drug_details_string_with_quantity(drug)
       section = page.find(".new-drug-order")
+      expect(section).to have_content(drug_details)
       drug_element = section.all('#new-drug-orders').find { |li| li.find(".drug-details").text == drug_details }
       date_section = drug_element.all(".start-date").find { |div| div.text == "from " + drug[:start_date] }
       expect(date_section).to have_content("from "+drug[:start_date])
@@ -53,7 +54,7 @@ class Clinical::TreatmentPage < Page
   def verify_drug_on_tab(tab_name, *drugs)
     go_to_treatment_tab(tab_name)
     drugs.each do |drug|
-      drug_details = create_drug_details_string(drug)
+      drug_details = create_drug_details_string_with_quantity(drug)
       drug_section = page.all(".tab").find { |div| div.find(".tab-label").text == tab_name }
       expect(drug_section).to have_content(drug_details)
       expect(drug_section).to have_content(drug[:additional_instructions])
@@ -86,4 +87,9 @@ class Clinical::TreatmentPage < Page
     select(details[:dose_unit], :from => "variable-dose-unit") if details.has_key? :dose_unit
   end
 
+  def create_drug_details_string_with_quantity(drug)
+    drug_details = create_drug_details_string(drug)
+    drug_details.concat("\(").concat([drug[:quantity], drug[:quantity_units]].reject { |s| s.nil? || s.empty? }.join(' ')).concat("\)")
+    drug_details
+  end
 end
