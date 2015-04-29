@@ -4,69 +4,41 @@ feature "new patient visit" do
   scenario "registration and consultation" do
     log_in_to_app_with_params("documentupload", "RADIOLOGY", :location => 'OPD-1' ) do
       patient_search_page.view_patient_from_active_tab('Test Radiology')
+      upload_page.upload_image_for_concepts([{:image => "spec/images/sample-hand-scan.jpg", :concept_name=> 'ARM Hand AP'},
+                                            {:image =>"spec/images/sample-head-scan.jpg", :concept_name=>'HEAD Nose lateral'},
+                                            {:image =>"spec/images/sample-leg-scan.jpg", :concept_name=>'LEG Foot AP'}])
+      upload_page.save_changes
+      upload_page.verify_images_in_order(['LEG Foot AP', 'HEAD Nose lateral', 'ARM Hand AP'])
 
-      attach_file('image-document-upload', File.expand_path("spec/images/sample-hand-scan.jpeg"))
-      fill_in "image0", :with => 'ARM Hand AP'
-      find(".ui-menu-item").click
+      upload_page.create_new_visit('LAB VISIT', '2015-03-01', '2015-03-02')
+      upload_page.scan_image_for_new_visit("spec/images/sample-leg-scan.jpg", 'LEG Foot AP')
+      upload_page.save_changes
 
-      attach_file('image-document-upload', File.expand_path("spec/images/sample-head-scan.jpg"))
-      fill_in "image0", :with => 'HEAD Nose lateral'
-      find(".ui-menu-item").click
+      upload_page.expand_current_visit
+      upload_page.remove_nth_image_in_current_visit(1)
+      upload_page.remove_nth_image_in_current_visit(2)
+      upload_page.undo_remove_nth_image_in_current_visit(1)
 
-      attach_file('image-document-upload', File.expand_path("spec/images/sample-leg-scan.jpg"))
-      fill_in "image0", :with => 'LEG Foot AP'
-      find(".ui-menu-item").click
-
-      find(".icon-save", :visible => true).click
-      expect(find(:xpath, '//input[contains(@name,"image0")]').value).to eq('LEG Foot AP')
-      expect(find(:xpath, '//input[contains(@name,"image1")]').value).to eq('HEAD Nose lateral')
-      expect(find(:xpath, '//input[contains(@name,"image2")]').value).to eq('ARM Hand AP')
-
-      first(".icon-plus-sign", :visible => true).click
-      select 'LAB VISIT'
-      fill_in 'endDate', :with => '2015-03-02'
-      fill_in 'startDate', :with => '2015-03-01'
-      attach_file('file-browse', File.expand_path("spec/images/sample-leg-scan.jpg"))
-      fill_in 'image0', :with => 'LEG Foot AP', :visible => true
-      find(".ui-menu-item").click
-      find(".icon-save", :visible => true).click
-
-      find(".icon-star").click
-      find_by_id('remove-image0', :visible => true).click
-      find_by_id('remove-image1', :visible => true).click
-      find_by_id('remove-image0', :visible => true).click
-
-      attach_file('image-document-upload', File.expand_path("spec/images/sample-spine-scan.jpg"), :visible => true)
-      fill_in "image0", :with => 'SPINE Lumbo-sacral AP/PA', :visible => true
-      find(".ui-menu-item").click
-      find(".icon-save", :visible => true).click
-
-      expect(find(:xpath, '//input[contains(@name,"image0")]', :visible => true).value).to eq('SPINE Lumbo-sacral AP/PA')
-      expect(find(:xpath, '//input[contains(@name,"image1")]', :visible => true).value).to eq('LEG Foot AP')
-      expect(find(:xpath, '//input[contains(@name,"image2")]', :visible => true).value).to eq('ARM Hand AP')
+      upload_page.upload_image_for_concepts([{:image => "spec/images/sample-spine-scan.jpg", :concept_name=>'SPINE Lumbo-sacral AP/PA'}])
+      upload_page.save_changes
+      upload_page.verify_images_in_order(['SPINE Lumbo-sacral AP/PA', 'LEG Foot AP', 'ARM Hand AP'])
     end
 
     go_to_app("clinical") do
       sleep 2
       patient_search_page.view_patient_from_active_tab('Test Radiology')
-      patient_dashboard_page.navigate_to_dashboard("General")
 
-      radiology_section = find(".dashboard-radiology-section")
-      expect(radiology_section).to have_content("ARM Hand AP")
-      expect(radiology_section).to have_content("SPINE Lumbo-sacral AP/PA")
-      expect(radiology_section).to have_content("LEG Foot AP")
+      patient_dashboard_page.navigate_to_dashboard("General")
+      patient_dashboard_page.verify_radiology_section([{:concept_name => 'SPINE Lumbo-sacral AP/PA'}, {:concept_name => 'LEG Foot AP', :image_count => 2},{:concept_name => 'ARM Hand AP'}])
 
       patient_dashboard_page.navigate_to_current_visit
-      radiology_section = find(".dashboard-radiology-section")
-      expect(radiology_section).to have_content("ARM Hand AP")
-      expect(radiology_section).to have_content("SPINE Lumbo-sacral AP/PA")
-      expect(radiology_section).to have_content("LEG Foot AP")
+      visit_page.verify_radiology_section([{:concept_name => 'SPINE Lumbo-sacral AP/PA'}, {:concept_name => 'LEG Foot AP'},{:concept_name => 'ARM Hand AP'}])
 
       visit_page.navigate_to_patient_dashboard
-      patient_dashboard_page.navigate_to_visit_page('1 Mar 15')
-      radiology_section = find(".dashboard-radiology-section")
-      expect(radiology_section).to have_content("LEG Foot AP")
+      patient_dashboard_page.navigate_to_visit_page('01 Mar 15 - 02 Mar 15')
+      visit_page.verify_radiology_section([{:concept_name => 'LEG Foot AP'}])
     end
+
 
   end
 end
