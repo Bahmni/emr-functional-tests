@@ -88,4 +88,15 @@ class Clinical::VisitPage < Page
     wait_for_overlay_to_be_hidden
   end
 
+    def verify_radiology_section(radiology_image_concepts)
+      expect(page).to have_selector('.dashboard-radiology-section .radiology-doc-item', :count=>radiology_image_concepts.length)
+      radiology_image_concepts.each_with_index { |radiology_image_item, index|
+        expect(find(".dashboard-radiology-section .radiology-doc-item:nth-of-type(#{index+1}) a", :visible => true).text).to eq(radiology_image_item[:concept_name])
+        image_count = radiology_image_item[:image_count]
+        if(image_count)
+          expect(find(".dashboard-radiology-section .radiology-doc-item:nth-of-type(#{index+1}) span", :visible => true).text).to eq("(#{image_count})")
+        end
+      }
+    end
+
 end
