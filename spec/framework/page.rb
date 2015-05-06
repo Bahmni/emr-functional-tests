@@ -75,7 +75,7 @@ class Page
     expect(patient_information_section).to have_content("cluster #{patient_details[:cluster]}")
     expect(patient_information_section).to have_content("RationCard #{patient_details[:ration_card]}")
     expect(patient_information_section).to have_content("Family Income (per month in Rs) #{patient_details[:family_income]}")
-    end
+  end
 
   def verify_admission_details(patient_details)
     admission_details_section = page.find("#admissionDetails")
@@ -85,13 +85,34 @@ class Page
 
   def verify_diagnosis_details(diagnosis_details)
     diagnosis_details_section = page.find("#diagnosisSection")
-    diagnosis_details.each_with_index { |diagnosis,index |
-    expect(diagnosis_details_section.all("#diagnosisName")[index]).to have_content(diagnosis[:freeTextAnswer])
-    expect(diagnosis_details_section.all("#order")[index]).to have_content(diagnosis[:order])
-    expect(diagnosis_details_section.all("#certainty")[index]).to have_content(diagnosis[:certainty])
-    expect(diagnosis_details_section.all("#diagnosisComments")[index]).to have_content(diagnosis[:comments])
-    expect(diagnosis_details_section.all("#diagnosisDate")[index]).to have_content(diagnosis[:diagnosisDate])
-    expect(diagnosis_details_section.all("#status")[index]).to have_content(diagnosis[:status])
+    diagnosis_details.each_with_index { |diagnosis, index|
+      expect(diagnosis_details_section.all("#diagnosisName")[index]).to have_content(diagnosis[:freeTextAnswer])
+      expect(diagnosis_details_section.all("#order")[index]).to have_content(diagnosis[:order])
+      expect(diagnosis_details_section.all("#certainty")[index]).to have_content(diagnosis[:certainty])
+      expect(diagnosis_details_section.all("#diagnosisComments")[index]).to have_content(diagnosis[:comments])
+      expect(diagnosis_details_section.all("#diagnosisDate")[index]).to have_content(diagnosis[:diagnosisDate])
+      expect(diagnosis_details_section.all("#status")[index]).to have_content(diagnosis[:status])
     }
+  end
+
+  def verify_presence_of_start_consultation_link()
+      expect(page).to have_link("Consultation")
+  end
+
+  def verify_absence_of_start_consultation_link()
+    expect(page).to have_no_link("Consultation")
+  end
+
+  def verify_presence_of_current_visit()
+      expect(page).to have_selector("i#currentVisitIcon")
+  end
+
+  def verify_absence_of_current_visit()
+    expect(page).to have_no_selector("i#currentVisitIcon")
+  end
+
+  def verify_visit_type(visit_type)
+    visits_section = page.find("#visitDisplayTable").first("tr#eachVisit")
+    expect(visits_section.first("td#visitType")).to have_content(visit_type)
   end
 end
