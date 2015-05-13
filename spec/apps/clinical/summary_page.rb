@@ -9,7 +9,7 @@ class Clinical::SummaryPage < Page
         expect(table).to have_content(drug)
       end
     end
-    find('.back-btn .icon-circle-arrow-left').click
+    find('.back-btn .fa-arrow-circle-left').click
   # click_on "Back"
   end
 
