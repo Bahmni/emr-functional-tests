@@ -11,7 +11,7 @@ class Registration::VisitPage < Page
     end
 
   def navigate_to_home
-        find('.icon-home').click
+        find('.fa-home').click
   end
 
 end

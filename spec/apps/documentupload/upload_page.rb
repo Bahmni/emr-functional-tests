@@ -9,14 +9,14 @@ class Documentupload::UploadPage < Page
   end
 
   def create_new_visit(visit_type, start_date, end_date)
-    first(".icon-plus-sign", :visible => true).click
+    first(".fa-plus-circle", :visible => true).click
     select visit_type
     fill_in 'endDate', :with => end_date
     fill_in 'startDate', :with => start_date
   end
 
   def expand_current_visit
-    find(".icon-star").click
+    find(".fa-star").click
   end
 
   def remove_nth_image_in_current_visit(imageIndex)
@@ -34,7 +34,7 @@ class Documentupload::UploadPage < Page
   end
 
   def save_changes
-    find(".icon-save", :visible => true).click
+    find(".fa-save", :visible => true).click
   end
 
   def verify_images_in_order(concepts)
