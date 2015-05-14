@@ -17,12 +17,12 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_second_vitals_section(vitals)
-        expand_section "Second_Vitals"
+        select_template "Second_Vitals"
         fill_vitals_data(get_section("Second Vitals"), vitals)
     end
 
     def fill_obstetrics_section(obstetrics)
-        expand_section("Obstetrics")
+        select_template "Obstetrics"
         fill_in 'Fundal Height', :with => obstetrics[:fundal_height]  if obstetrics.has_key? :fundal_height
         click_on(obstetrics[:pa_presenting_part]) if obstetrics.has_key? :pa_presenting_part
         click_on(obstetrics[:fhs]) if obstetrics.has_key? :fhs
@@ -31,7 +31,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_gynaecology_section(gynaecology)
-        expand_section("Gynaecology")
+        select_template "Gynaecology"
         gynaecology[:ps_perSpeculum_cervix].each{ |item|
             click_on(item)
           }
@@ -44,6 +44,11 @@ class Clinical::ObservationsPage < Page
     def expand_section(name)
         find("##{name}").click
         wait_for_overlay_to_be_hidden
+    end
+
+    def select_template(name)
+        find("#template-control-panel-button").click
+        expand_section(name)
     end
 
     def fill_chief_complaints(chief_complaints)
