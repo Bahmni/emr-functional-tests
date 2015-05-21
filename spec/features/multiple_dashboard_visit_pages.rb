@@ -18,17 +18,17 @@ feature "Multiple dashboard & display of patient profile details" do
 
       go_to_app("clinical") do
       patient_search_page.view_patient_from_active_tab(patient_details[:given_name])
-      patient_dashboard_page.add_dashboard("General - 2")
-      patient_dashboard_page.verify_current_dashboard("General - 2")
+      patient_dashboard_page.add_dashboard("Trends")
+      patient_dashboard_page.verify_current_dashboard("Trends")
       patient_dashboard_page.verify_patient_profile_information(patient_details)
       patient_dashboard_page.navigate_to_dashboard("General")
 
       patient_dashboard_page.navigate_to_current_visit
       visit_page.verify_current_tab("General")
-      visit_page.add_tab("General - 2")
-      visit_page.verify_current_tab("General - 2")
+      visit_page.add_tab("Discharge Summary")
+      visit_page.verify_current_tab("Discharge Summary")
       visit_page.verify_patient_profile_information(patient_details)
-      visit_page.find_section("Pivot table")
+      visit_page.find_section("Advice on Discharge")
       visit_page.navigate_to_home
       end
 
