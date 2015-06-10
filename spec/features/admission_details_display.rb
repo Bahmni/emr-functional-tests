@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Multiple dashboard & display of admission details" do
+feature "Admission display control" do
   scenario "Verify display of admission details on ADT, dashboard & Visit page" do
 
     patient = "Test AdtDashboard"
