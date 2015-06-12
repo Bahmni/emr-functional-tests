@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature "new patient visit" do
-  scenario "registration and consultation" do
+feature "Radiology upload" do
+  scenario "Upload and delete radiology documents" do
     log_in_to_app_with_params("documentupload", "RADIOLOGY", :location => 'OPD-1' ) do
       patient_search_page.view_patient_from_active_tab('Test Radiology')
       upload_page.upload_image_for_concepts([{:image => "spec/images/sample-hand-scan.jpg", :concept_name=> 'ARM Hand AP'},

@@ -15,7 +15,7 @@ class Clinical::VisitPage < Page
         verify_chief_complaints(observations_section, observations[:chief_complaints]) if observations.has_key? :chief_complaints
         expect(observations_section).to have_content("History Notes #{observations[:history_notes]}") if observations.has_key? :history_notes
         expect(observations_section).to have_content("Examination Notes #{observations[:examination_notes]}") if observations.has_key? :examination_notes
-        expect(observations_section).to have_content("Sn Smoking History #{observations[:smoking_history]}") if observations.has_key? :smoking_history
+        expect(observations_section).to have_content("Smoking History #{observations[:smoking_history]}") if observations.has_key? :smoking_history
 
         #Vitals
         expect(observations_section).to have_content("Pulse #{observations[:pulse]} /min") if observations.has_key? :pulse

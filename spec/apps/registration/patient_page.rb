@@ -14,7 +14,7 @@ class Registration::PatientPage < Page
         if (patient.has_key? :additional_info) && (patient[:additional_info] == "true")
         click_link_with_text "Additional Patient Information"
         fill_in 'debt (in Rs)', :with => patient[:debt] if patient.has_key? :debt
-        fill_in 'distanceFromCenter (in km)', :with => patient[:distanceFromCenter] if patient.has_key? :distanceFromCenter
+        fill_in 'Distance From Center (in km)', :with => patient[:distanceFromCenter] if patient.has_key? :distanceFromCenter
         check 'isUrban'
         select(patient[:cluster], :from => "cluster") if patient.has_key? :cluster
         select(patient[:ration_card], :from => "RationCard") if patient.has_key? :ration_card

@@ -70,10 +70,10 @@ class Page
     expect(patient_information_section).to have_content("Education Details #{patient_details[:education_details]}")
     expect(patient_information_section).to have_content("Occupation #{patient_details[:occupation]}")
     expect(patient_information_section).to have_content("debt (in Rs) #{patient_details[:debt]}")
-    expect(patient_information_section).to have_content("distanceFromCenter (in km) #{patient_details[:distanceFromCenter]}")
-    expect(patient_information_section).to have_content("isUrban #{patient_details[:is_urban]}")
+    expect(patient_information_section).to have_content("Distance From Center (in km) #{patient_details[:distanceFromCenter]}")
+    expect(patient_information_section).to have_content("Urban #{patient_details[:is_urban]}")
     expect(patient_information_section).to have_content("cluster #{patient_details[:cluster]}")
-    expect(patient_information_section).to have_content("RationCard #{patient_details[:ration_card]}")
+    expect(patient_information_section).to have_content("Ration Card Type #{patient_details[:ration_card]}")
     expect(patient_information_section).to have_content("Family Income (per month in Rs) #{patient_details[:family_income]}")
   end
 
