@@ -4,7 +4,7 @@ feature "Admission display control" do
   scenario "Verify display of admission details on ADT, dashboard & Visit page" do
 
     patient = "Test AdtDashboard"
-    admission_details = {:admit_details => "Admission Date	25 Feb 15", :discharge_details => "Discharge Date	25 Feb 15"}
+    admission_details = {:admit_details => "Admission Date  25 Feb 15", :discharge_details => "Discharge Date	25 Feb 15"}
 
     log_in_to_app(:clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient)

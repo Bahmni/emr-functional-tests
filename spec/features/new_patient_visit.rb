@@ -9,8 +9,8 @@ feature "new patient visit" do
         history_and_examinations = {:chief_complaints => chief_complaints, :history_notes => "Smoking, Drinking", :examination_notes => "Concise text notes", :smoking_history => "No" }
         vitals = {:pulse => 72, :diastolic => 75, :systolic => 115, :posture => 'Supine', :temperature => 100, :rr => 18, :spo2 => 99}
         second_vitals = {:pulse => 75, :diastolic => 80, :systolic => 120, :posture => 'Sitting', :temperature => 105, :rr => 25, :spo2 => 95}
-        obstetrics = { :fundal_height => "4", :pa_presenting_part => "sn Breech", :fhs => "sn Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
-        gynaecology = {:ps_perSpeculum_cervix => ["Growth", "sn VIA +ve"] }
+        obstetrics = { :fundal_height => "4", :pa_presenting_part => "Breech", :fhs => "Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
+        gynaecology = {:ps_perSpeculum_cervix => ["Growth", "VIA +ve"] }
         diagnosis = {:index => 0, :name => 'cold', :order => 'PRIMARY', :certainty => 'PRESUMED'}
 
 

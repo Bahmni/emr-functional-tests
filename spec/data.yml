@@ -2,25 +2,25 @@
 
   "dashboard":
     - visit_date: "30 Sep 14"
-      drugs: ["Povidine 15g (Ointment) 5 Ointment - 5 Day(s)",
-              "Beclomethasone (Syrup) 2.25 Syrup - 3650 Day(s)",
-              "Chana (Food Supplement) 1 Food Supplement - 3650 Day(s)"]
+      drugs: ["Povidine 15g (Ointment) 5 Ointment - 10 Day(s)",
+              "Beclomethasone (Syrup) 2.25 Syrup - 7300 Day(s)",
+              "Chana (Food Supplement) 1 Food Supplement - 7300 Day(s)"]
 
     - visit_date: "29 Sep 14"
-      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic - 3650 Day(s)",
-              "Paracetamol 2ml (Injection) 1 Injection - 10 Day(s)",
-              "B-Complex (Tablet) 1 Tablet(s) - 3700 Day(s)"]
+      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic - 7300 Day(s)",
+              "Paracetamol 2ml (Injection) 1 Injection - 20 Day(s)",
+              "B-Complex (Tablet) 1 Tablet(s) - 7400 Day(s)"]
 
   "all_treatments_page":
     - visit_date: "30 Sep 14"
-      drugs: ["Povidine 15g (Ointment) 5 Ointment - 5 Day(s)",
-              "Beclomethasone (Syrup) 2.25 Syrup - 3650 Day(s)",
-              "Chana (Food Supplement) 1 Food Supplement - 3650 Day(s)"]
+      drugs: ["Povidine 15g (Ointment) 5 Ointment - 10 Day(s)",
+              "Beclomethasone (Syrup) 2.25 Syrup - 7300 Day(s)",
+              "Chana (Food Supplement) 1 Food Supplement - 7300 Day(s)"]
 
     - visit_date: "29 Sep 14"
-      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic - 3650 Day(s)",
-              "Paracetamol 2ml (Injection) 1 Injection - 10 Day(s)",
-              "B-Complex (Tablet) 1 Tablet(s) - 3700 Day(s)"]
+      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic - 7300 Day(s)",
+              "Paracetamol 2ml (Injection) 1 Injection - 20 Day(s)",
+              "B-Complex (Tablet) 1 Tablet(s) - 7400 Day(s)"]
 
   "first_visit_date": "29 Sep 14 - 30 Sep 14"
 
@@ -28,80 +28,80 @@
 
   "first_visit":
     - date:    "29 Sep 14"
-      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic - 3650 Day(s)",
-              "Paracetamol 2ml (Injection) 1 Injection - 10 Day(s)",
-              "B-Complex (Tablet) 1 Tablet(s) - 3700 Day(s)"]
+      drugs: ["Lajvanti Panchang 50gm (Ayurvedic) 2 Ayurvedic - 7300 Day(s)",
+              "Paracetamol 2ml (Injection) 1 Injection - 20 Day(s)",
+              "B-Complex (Tablet) 1 Tablet(s) - 7400 Day(s)"]
 
   "second_visit":
     - date:   "30 Sep 14"
-      drugs: ["Povidine 15g (Ointment) 5 Ointment - 5 Day(s)",
-              "Beclomethasone (Syrup) 2.25 Syrup - 3650 Day(s)",
-              "Chana (Food Supplement) 1 Food Supplement - 3650 Day(s)"]
+      drugs: ["Povidine 15g (Ointment) 5 Ointment - 10 Day(s)",
+              "Beclomethasone (Syrup) 2.25 Syrup - 7300 Day(s)",
+              "Chana (Food Supplement) 1 Food Supplement - 7300 Day(s)"]
 
 
 "Test DrugDataTwo":
 
   "dashboard":
     - visit_date: "03 Oct 14"
-      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler - 3650 Day(s)",
-              "Paracetamol 60ml (Syrup)	6.5 Syrup - 3650 Day(s)",
-              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution - 3650 Day(s)",
-              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder - 3650 Day(s)",
-              "Metronidazole 20g (Gel)	1 Gel - 3650 Day(s)",
-              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup - 3650 Day(s)",
-              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly - 3650 Day(s)",
-              "Placentex 60ml (Lotion)	3 Lotion - 3650 Day(s)",
-              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup - 3650 Day(s)",
-              "Paracetamol 500mg (Tablet)	2 Tablet(s) - 3650 Day(s)",
-              "Paracetamol 2ml (Injection)	1 Injection - 3650 Day(s)",
-              "Clobetasone 15g (Cream)	1 Cream - 3650 Day(s)",
-              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops - 3650 Day(s)",
-              "Aciclovir 250mg (Injection)	1 Injection - 2 Day(s)",
-              "Aciclovir 200mg (Tablet)	1 Tablet(s) - 2 Day(s)",
-              "Cephlexin 500mg (Capsule) 1 Capsule(s) - 1 Day(s)",
-              "Hepatitis - B 10ml (Injection)	1 Injection - 1 Day(s)"]
+      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler - 7300 Day(s)",
+              "Paracetamol 60ml (Syrup)	6.5 Syrup - 7300 Day(s)",
+              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution - 7300 Day(s)",
+              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder - 7300 Day(s)",
+              "Metronidazole 20g (Gel)	1 Gel - 7300 Day(s)",
+              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup - 7300 Day(s)",
+              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly - 7300 Day(s)",
+              "Placentex 60ml (Lotion)	3 Lotion - 7300 Day(s)",
+              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup - 7300 Day(s)",
+              "Paracetamol 500mg (Tablet)	2 Tablet(s) - 7300 Day(s)",
+              "Paracetamol 2ml (Injection)	1 Injection - 7300 Day(s)",
+              "Clobetasone 15g (Cream)	1 Cream - 7300 Day(s)",
+              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops - 7300 Day(s)",
+              "Aciclovir 250mg (Injection)	1 Injection - 4 Day(s)",
+              "Aciclovir 200mg (Tablet)	1 Tablet(s) - 4 Day(s)",
+              "Cephlexin 500mg (Capsule) 1 Capsule(s) - 2 Day(s)",
+              "Hepatitis - B 10ml (Injection)	1 Injection - 2 Day(s)"]
 
   "all_treatments_page":
     - visit_date: "03 Oct 14"
-      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler - 3650 Day(s)",
-              "Paracetamol 60ml (Syrup)	6.5 Syrup - 3650 Day(s)",
-              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution - 3650 Day(s)",
-              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder - 3650 Day(s)",
-              "Metronidazole 20g (Gel)	1 Gel - 3650 Day(s)",
-              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup - 3650 Day(s)",
-              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly - 3650 Day(s)",
-              "Placentex 60ml (Lotion)	3 Lotion - 3650 Day(s)",
-              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup - 3650 Day(s)",
-              "Paracetamol 500mg (Tablet)	2 Tablet(s) - 3650 Day(s)",
-              "Paracetamol 2ml (Injection)	1 Injection - 3650 Day(s)",
-              "Clobetasone 15g (Cream)	1 Cream - 3650 Day(s)",
-              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops - 3650 Day(s)",
-              "Aciclovir 250mg (Injection)	1 Injection - 2 Day(s)",
-              "Aciclovir 200mg (Tablet)	1 Tablet(s) - 2 Day(s)",
-              "Cephlexin 500mg (Capsule) 1 Capsule(s) - 1 Day(s)",
-              "Hepatitis - B 10ml (Injection)	1 Injection - 1 Day(s)"]
+      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler - 7300 Day(s)",
+              "Paracetamol 60ml (Syrup)	6.5 Syrup - 7300 Day(s)",
+              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution - 7300 Day(s)",
+              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder - 7300 Day(s)",
+              "Metronidazole 20g (Gel)	1 Gel - 7300 Day(s)",
+              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup - 7300 Day(s)",
+              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly - 7300 Day(s)",
+              "Placentex 60ml (Lotion)	3 Lotion - 7300 Day(s)",
+              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup - 7300 Day(s)",
+              "Paracetamol 500mg (Tablet)	2 Tablet(s) - 7300 Day(s)",
+              "Paracetamol 2ml (Injection)	1 Injection - 7300 Day(s)",
+              "Clobetasone 15g (Cream)	1 Cream - 7300 Day(s)",
+              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops - 7300 Day(s)",
+              "Aciclovir 250mg (Injection)	1 Injection - 4 Day(s)",
+              "Aciclovir 200mg (Tablet)	1 Tablet(s) - 4 Day(s)",
+              "Cephlexin 500mg (Capsule) 1 Capsule(s) - 2 Day(s)",
+              "Hepatitis - B 10ml (Injection)	1 Injection - 2 Day(s)"]
 
   "latest_visit_date": "03 Oct 14 - 03 Oct 14"
 
   "latest_visit":
     - date: "03 Oct 14"
-      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler - 3650 Day(s)",
-              "Paracetamol 60ml (Syrup)	6.5 Syrup - 3650 Day(s)",
-              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution - 3650 Day(s)",
-              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder - 3650 Day(s)",
-              "Metronidazole 20g (Gel)	1 Gel - 3650 Day(s)",
-              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup - 3650 Day(s)",
-              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly - 3650 Day(s)",
-              "Placentex 60ml (Lotion)	3 Lotion - 3650 Day(s)",
-              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup - 3650 Day(s)",
-              "Paracetamol 500mg (Tablet)	2 Tablet(s) - 3650 Day(s)",
-              "Paracetamol 2ml (Injection)	1 Injection - 3650 Day(s)",
-              "Clobetasone 15g (Cream)	1 Cream - 3650 Day(s)",
-              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops - 3650 Day(s)",
-              "Aciclovir 250mg (Injection)	1 Injection - 2 Day(s)",
-              "Aciclovir 200mg (Tablet)	1 Tablet(s) - 2 Day(s)",
-              "Cephlexin 500mg (Capsule) 1 Capsule(s) - 1 Day(s)",
-              "Hepatitis - B 10ml (Injection)	1 Injection - 1 Day(s)"]
+      drugs: ["Salbutamol inhaler (Inhaler)	2 Inhaler - 7300 Day(s)",
+              "Paracetamol 60ml (Syrup)	6.5 Syrup - 7300 Day(s)",
+              "Ipratropium Bromide Respirator Solution 15ml (Solution)	5.5 Solution - 7300 Day(s)",
+              "Sodium Thiosulphate Camical 500gm (Powder) 10.5 Powder - 7300 Day(s)",
+              "Metronidazole 20g (Gel)	1 Gel - 7300 Day(s)",
+              "Paracetamol 120mg/5ml (Syrup)	5.5 Syrup - 7300 Day(s)",
+              "Lignocaine Hydrochloride Jelly 2% (Jelly) 1 Jelly - 7300 Day(s)",
+              "Placentex 60ml (Lotion)	3 Lotion - 7300 Day(s)",
+              "Paracetamol 4.5 Litre (Syrup)	4.5 Syrup - 7300 Day(s)",
+              "Paracetamol 500mg (Tablet)	2 Tablet(s) - 7300 Day(s)",
+              "Paracetamol 2ml (Injection)	1 Injection - 7300 Day(s)",
+              "Clobetasone 15g (Cream)	1 Cream - 7300 Day(s)",
+              "Clotrimazole+Lignocaine Ear Drop (Drops) 1 Drops - 7300 Day(s)",
+              "Aciclovir 250mg (Injection)	1 Injection - 4 Day(s)",
+              "Aciclovir 200mg (Tablet)	1 Tablet(s) - 4 Day(s)",
+              "Cephlexin 500mg (Capsule) 1 Capsule(s) - 2 Day(s)",
+              "Hepatitis - B 10ml (Injection)	1 Injection - 2 Day(s)"]
 
 
 "Test DrugDataForwardSync":
