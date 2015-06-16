@@ -21,6 +21,10 @@ class Page
     wait_until { !page.find('#overlay').visible? }
   end
 
+  def wait_for_autocomplete_to_be_populated
+    wait_until {page.find('.ui-autocomplete', :visible => true ) }
+  end
+
   def verify_drug_details(section, *drugs)
     table = page.find(section)
     drugs.each do |drug|

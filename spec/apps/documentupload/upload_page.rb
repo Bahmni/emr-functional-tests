@@ -4,6 +4,7 @@ class Documentupload::UploadPage < Page
     image_url_and_concepts.each { |image_and_concept|
       attach_file('image-document-upload', File.expand_path("#{image_and_concept[:image]}"), :visible => true)
       fill_in "image0", :with => "#{image_and_concept[:concept_name]}", :visible => true
+      wait_for_autocomplete_to_be_populated
       find(".ui-menu-item", :visible => true).click
     }
   end
