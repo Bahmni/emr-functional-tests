@@ -38,7 +38,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def get_section(name)
-        page.all(".concept-set-group").find { |div| div.find(".title").text == name }
+        page.all(".concept-set-group").find { |div| div.find(".section-label").text == name }
     end
 
     def expand_section(name)
