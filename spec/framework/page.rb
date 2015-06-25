@@ -119,4 +119,10 @@ class Page
     visits_section = page.find("#visitDisplayTable").first("tr#eachVisit")
     expect(visits_section.first("td#visitType")).to have_content(visit_type)
   end
+
+  def verify_chief_complaints(observations_section, chief_complaints)
+    chief_complaints.each do |chief_complaint|
+      expect(observations_section).to have_content("Chief Complaint #{chief_complaint[:name]} since #{chief_complaint[:duration][:value]} #{chief_complaint[:duration][:unit]}")
+    end
+  end
 end

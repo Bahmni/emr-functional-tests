@@ -47,13 +47,6 @@ class Clinical::VisitPage < Page
         expect(observations_section).to have_content("P/S (Per Speculum) - Cervix #{observations[:ps_perSpeculum_cervix][0]}, #{observations[:ps_perSpeculum_cervix][1]}") if observations.has_key? :ps_perSpeculum_cervix
     end
 
-
-    def verify_chief_complaints(observations_section, chief_complaints)
-        chief_complaints.each do |chief_complaint|
-            expect(observations_section).to have_content("Chief Complaint #{chief_complaint[:name]} since #{chief_complaint[:duration][:value]} #{chief_complaint[:duration][:unit]}")
-        end
-    end
-
     def verify_existing_drugs(sections)
        sections.each do |section|
           table = page.find(TREATMENT_SECTION, text: section['date'])

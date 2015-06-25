@@ -12,6 +12,7 @@ feature "new patient visit" do
         obstetrics = { :fundal_height => "4", :pa_presenting_part => "Breech", :fhs => "Absent", :lmp => "29/07/2014", :amountOfLiquor => "twice per day"}
         gynaecology = {:ps_perSpeculum_cervix => ["Growth", "VIA +ve"] }
         diagnosis = {:index => 0, :name => 'cold', :order => 'PRIMARY', :certainty => 'PRESUMED'}
+        nutritional_values = {:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'}
 
 
         log_in_to_app(:registration, :location => 'Registration') do
@@ -22,7 +23,6 @@ feature "new patient visit" do
 
         log_in_to_app(:clinical, :location => 'OPD-1') do
             patient_search_page.view_patient_from_active_tab(new_patient[:given_name])
-            patient_dashboard_page.verify_visit_vitals_info({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
             patient_dashboard_page.start_consultation
             diagnosis_page.add_non_coded_diagnosis(diagnosis)
 
@@ -33,8 +33,26 @@ feature "new patient visit" do
             observations_page.fill_gynaecology_section(gynaecology)
             observations_page.save
             observations_page.go_to_dashboard_page
+            patient_dashboard_page.verify_nutritional_values(nutritional_values, "Nutritional Values")
+            patient_dashboard_page.verify_observations_on_all_details_page(nutritional_values, "Nutritional Values")
+
+            patient_dashboard_page.verify_vitals(vitals, "Vitals")
+            patient_dashboard_page.verify_observations_on_all_details_page(vitals, "Vitals")
+
+            patient_dashboard_page.verify_second_vitals(second_vitals, "Second Vitals")
+            patient_dashboard_page.verify_observations_on_all_details_page(second_vitals, "Second Vitals")
+
+            patient_dashboard_page.verify_history_and_examination_values(history_and_examinations, "History and Examinations")
+            patient_dashboard_page.verify_observations_on_all_details_page(history_and_examinations, "History and Examinations")
+
+            patient_dashboard_page.verify_gynaecology_values(gynaecology, "Gynaecology")
+            patient_dashboard_page.verify_observations_on_all_details_page(gynaecology, "Gynaecology")
+
+            patient_dashboard_page.verify_obstetrics_values(obstetrics, "Obstetrics")
+            patient_dashboard_page.verify_observations_on_all_details_page(obstetrics, "Obstetrics")
+
             patient_dashboard_page.navigate_to_current_visit
-            visit_page.verify_observations({:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'})
+            visit_page.verify_observations(nutritional_values)
             visit_page.verify_observations(vitals)
             visit_page.verify_observations(second_vitals)
             visit_page.verify_observations(history_and_examinations)
