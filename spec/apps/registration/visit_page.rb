@@ -12,6 +12,7 @@ class Registration::VisitPage < Page
 
   def navigate_to_home
         find('.fa-home').click
+        wait_for_overlay_to_be_hidden
   end
 
 end
