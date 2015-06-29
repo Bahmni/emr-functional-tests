@@ -1,2 +1,2 @@
-class Clinical::PatientSearchPage < CommonPatientSearchPage
+class Clinical::PatientSearchPage < Common::CommonPatientSearchPage
 end

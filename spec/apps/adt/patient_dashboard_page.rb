@@ -1,4 +1,4 @@
-class Adt::PatientDashboardPage < Page
+class Adt::PatientDashboardPage < Common::DisplayControlsPage
 
   def perform_action(action_details)
     select(action_details[:action], :from => "dispositionAction")

@@ -1,4 +1,4 @@
-class Clinical::VisitPage < Page
+class Clinical::VisitPage < Common::DisplayControlsPage
     include Clinical::ConsultationHeader
     include Clinical::ControlPanel
 
@@ -49,7 +49,7 @@ class Clinical::VisitPage < Page
 
     def verify_existing_drugs(sections)
        sections.each do |section|
-          table = page.find(TREATMENT_SECTION, text: section['date'])
+          table = page.find(TREATMENT_SECTION, :text => section['date'])
           section['drugs'].each do |drug|
             expect(table).to have_content(drug)
           end

@@ -1,10 +1,10 @@
-class Clinical::SummaryPage < Page
+class Clinical::SummaryPage < Common::DisplayControlsPage
 
   TREATMENT_SECTION = "#treatment-summary"
 
   def verify_existing_drugs(sections)
     sections.each do |section|
-      table = page.find(TREATMENT_SECTION, text: section['visit_date'])
+      table = page.find(TREATMENT_SECTION, :text => section['visit_date'])
       section['drugs'].each do |drug|
         expect(table).to have_content(drug)
       end

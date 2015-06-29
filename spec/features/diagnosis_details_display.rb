@@ -38,7 +38,7 @@ feature "Diagnosis" do
       diagnosis_page.verify_current_diagnosis(diagnoses)
       observations_page.go_to_dashboard_page
 
-      diagnosis_page.verify_diagnosis_details(diagnoses)
+      patient_dashboard_page.verify_diagnosis_details(diagnoses)
     end
   end
 
@@ -55,7 +55,7 @@ feature "Diagnosis" do
       diagnosis_page.verify_current_diagnosis([coded_diagnosis])
       observations_page.go_to_dashboard_page
 
-      diagnosis_page.verify_diagnosis_details([coded_diagnosis])
+      patient_dashboard_page.verify_diagnosis_details([coded_diagnosis])
     end
 
   end

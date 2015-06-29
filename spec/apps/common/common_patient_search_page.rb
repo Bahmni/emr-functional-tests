@@ -1,4 +1,4 @@
-class CommonPatientSearchPage < Page
+class Common::CommonPatientSearchPage < Page
 
     def view_patient_from_all_tab(patient)
       search_patient_in_all_tab( patient)

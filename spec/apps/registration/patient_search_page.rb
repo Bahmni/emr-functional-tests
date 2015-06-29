@@ -1,2 +1,2 @@
-class Registration::PatientSearchPage < Page
+class Registration::PatientSearchPage < Common::CommonPatientSearchPage
 end

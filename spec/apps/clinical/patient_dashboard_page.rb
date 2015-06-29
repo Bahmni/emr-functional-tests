@@ -1,4 +1,4 @@
-class Clinical::PatientDashboardPage < Page
+class Clinical::PatientDashboardPage < Common::DisplayControlsPage
 
   TREATMENT_SECTION = "#dashboard-treatments"
 
@@ -32,7 +32,7 @@ class Clinical::PatientDashboardPage < Page
 
     def verify_existing_drugs(sections)
       sections.each do |section|
-        table = page.find(TREATMENT_SECTION, text: section['visit_date'])
+        table = page.find(TREATMENT_SECTION, :text => section['visit_date'])
         section['drugs'].each do |drug|
           expect(table).to have_content(drug)
         end
@@ -128,4 +128,26 @@ class Clinical::PatientDashboardPage < Page
     verify_obstetrics_values(observations, observation_section) if observations.has_key? :fundal_height
     find("#backButton").click
   end
+
+  def verify_presence_of_start_consultation_link()
+    expect(page).to have_link("Consultation")
+  end
+
+  def verify_absence_of_start_consultation_link()
+    expect(page).to have_no_link("Consultation")
+  end
+
+  def verify_presence_of_current_visit()
+    expect(page).to have_selector("i#currentVisitIcon")
+  end
+
+  def verify_absence_of_current_visit()
+    expect(page).to have_no_selector("i#currentVisitIcon")
+  end
+
+  def verify_visit_type(visit_type)
+    visits_section = page.find("#visitDisplayTable").first("tr#eachVisit")
+    expect(visits_section.first("td#visitType")).to have_content(visit_type)
+  end
+
 end

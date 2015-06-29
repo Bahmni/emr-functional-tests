@@ -1,2 +1,2 @@
-class Documentupload::PatientSearchPage < CommonPatientSearchPage
+class Documentupload::PatientSearchPage < Common::CommonPatientSearchPage
 end
