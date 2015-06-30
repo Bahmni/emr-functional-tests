@@ -37,6 +37,6 @@ class Order::OrderFulfilmentPage < Page
   def find_notes_textarea(section_name)
     section_header = page.find('h2', :text => section_name)
     section = section_header.find(:xpath, '../..')
-    section.first('textarea')
+    section.find('textarea', :match => :first)
   end
 end
