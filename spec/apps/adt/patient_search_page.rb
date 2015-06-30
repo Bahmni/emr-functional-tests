@@ -1,9 +1,5 @@
 class Adt::PatientSearchPage < Common::CommonPatientSearchPage
 
-    def view_patient_from_all_tab(patient)
-      search_patient_in_all_tab( patient)
-    end
-
     def view_patient_from_to_admit_tab(patient)
       search_patient_in_tab("To Admit", patient)
       end

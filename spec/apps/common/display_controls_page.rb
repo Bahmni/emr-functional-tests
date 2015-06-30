@@ -62,4 +62,12 @@ class Common::DisplayControlsPage < Page
     end
   end
 
+  def verify_radiology_orders_section(identifier, radiology_tests)
+    radiology_order_notes = page.find(identifier)
+    radiology_tests.each do |test|
+      expect(radiology_order_notes).to have_content(test[:name])
+      test[:notes].each {|note| expect(radiology_order_notes).to have_content(note)}
+    end
+  end
+
 end

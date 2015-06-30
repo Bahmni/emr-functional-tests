@@ -33,17 +33,17 @@ feature "new patient visit" do
             observations_page.fill_gynaecology_section(gynaecology)
             observations_page.save
             observations_page.go_to_dashboard_page
-            patient_dashboard_page.verify_nutritional_values(nutritional_values, "Nutritional Values")
-            patient_dashboard_page.verify_observations_on_all_details_page(nutritional_values, "Nutritional Values")
+            patient_dashboard_page.verify_nutritional_values(nutritional_values, "Nutritional-Values")
+            patient_dashboard_page.verify_observations_on_all_details_page(nutritional_values, "Nutritional-Values")
 
             patient_dashboard_page.verify_vitals(vitals, "Vitals")
             patient_dashboard_page.verify_observations_on_all_details_page(vitals, "Vitals")
 
-            patient_dashboard_page.verify_second_vitals(second_vitals, "Second Vitals")
-            patient_dashboard_page.verify_observations_on_all_details_page(second_vitals, "Second Vitals")
+            patient_dashboard_page.verify_second_vitals(second_vitals, "Second-Vitals")
+            patient_dashboard_page.verify_observations_on_all_details_page(second_vitals, "Second-Vitals")
 
-            patient_dashboard_page.verify_history_and_examination_values(history_and_examinations, "History and Examinations")
-            patient_dashboard_page.verify_observations_on_all_details_page(history_and_examinations, "History and Examinations")
+            patient_dashboard_page.verify_history_and_examination_values(history_and_examinations, "History-and-Examinations")
+            patient_dashboard_page.verify_observations_on_all_details_page(history_and_examinations, "History-and-Examinations")
 
             patient_dashboard_page.verify_gynaecology_values(gynaecology, "Gynaecology")
             patient_dashboard_page.verify_observations_on_all_details_page(gynaecology, "Gynaecology")

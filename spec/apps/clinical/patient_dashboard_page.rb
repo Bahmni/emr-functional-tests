@@ -72,6 +72,7 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
       end
     }
   end
+
   def verify_vitals(observations,id)
     observations_section = find('[id="'+id+'"]')
     expect(observations_section).to have_content("Pulse #{observations[:pulse]} /min") if observations.has_key? :pulse
