@@ -2,7 +2,7 @@ class Order::OrderFulfilmentPage < Page
 
   def search_and_open_patient_orders(patient_name)
     fill_in("patientIdentifier", :with => patient_name)
-    page.all("td")[2].find("a").click #click on the FIRST ROW patient id hyperlink
+    page.all("td")[1].find("a").click #click on the FIRST ROW patient id hyperlink
   end
 
   def fill_radiology_notes(section_name, notes)
