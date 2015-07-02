@@ -4,3 +4,4 @@ screenshots
 .idea
 *.iml
 spec-results/*
+dbdump/*.sql
