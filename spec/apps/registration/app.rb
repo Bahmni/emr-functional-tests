@@ -13,15 +13,12 @@ class Registration::App < App
     end
 
     def verify_details_after_update_village(village)
-      #patient_search_page.search_patient_with_id(patient_id)
       patient_page.verify_update_village(village)
-      goto_search_page
     end
 
     def verify_details_in_patient_page(patient_id,options)
       patient_search_page.search_patient_with_id(patient_id)
       patient_page.verify_all_fields(options)
-      #goto_search_page
     end
 
     def verify_search_by_name_results(options)
