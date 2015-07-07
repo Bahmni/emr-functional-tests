@@ -43,4 +43,7 @@ class Page
     find('.dashboard-section h2', :text => name).parent
   end
 
+  def wait_for_loader_to_be_hidden
+    wait_until  {! page.find('#loader').visible? }
+  end
 end

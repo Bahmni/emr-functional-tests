@@ -16,7 +16,7 @@ feature "new patient visit" do
 
 
         log_in_to_app(:registration, :location => 'Registration') do
-            register_new_patient(:patient => new_patient, :visit_type => 'OPD')
+            register_new_patient_and_start_visit(:patient => new_patient, :visit_type => 'OPD')
             visit_page.should_be_current_page
             visit_page.save_new_patient_visit(visit_info)
         end

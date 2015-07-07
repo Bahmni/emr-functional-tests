@@ -1,10 +1,17 @@
 class Registration::PatientPage < Page
+
+    GIVEN_NAME = 'givenName'
+    FAMILY_NAME = 'familyName'
+    VILLAGE = 'cityVillage'
+    GENDER = 'gender'
+    AGE_YEARS = 'ageYears'
+
     def fill(patient)
-        fill_in 'givenName', :with => patient[:given_name]
-        fill_in 'familyName', :with => patient[:family_name]
-        select patient[:gender], :from => 'gender'
-        fill_in 'ageYears', :with => patient[:age][:years]
-        fill_in 'Village', :with => patient[:village]
+        fill_in GIVEN_NAME, :with => patient[:given_name]
+        fill_in FAMILY_NAME, :with => patient[:family_name]
+        select patient[:gender], :from => GENDER
+        fill_in AGE_YEARS, :with => patient[:age][:years]
+        fill_in VILLAGE, :with => patient[:village]
         fill_in 'House No., Street', :with => patient[:house_number] if patient.has_key? :house_number
         fill_in 'Gram Panchayat', :with => patient[:gram_panchayat] if patient.has_key? :gram_panchayat
         fill_in 'Caste', :with => patient[:caste] if patient.has_key? :caste
@@ -23,8 +30,80 @@ class Registration::PatientPage < Page
         self
     end
 
-    def start_visit(type)
-        click_on "Start #{type} visit"
+    def start_visit_type(type)
+        start_visit "Start #{type} visit"
+    end
+
+    def enter_visit_page
+        start_visit "Enter Visit Details"
+    end
+
+    def start_visit(text)
+        click_on text
         wait_for_overlay_to_be_hidden
     end
+
+    def fill_village_and_save(village)
+        fill_village(village)
+        save
+    end
+
+    def fill_village(village)
+        fill_in VILLAGE, :with => village
+    end
+
+    def save()
+        click_on("Save")
+        sleep 1 #error page is coming up if not sleep. Some page page response issue when Save button clicked. Need to investigate
+        wait_for_overlay_to_be_hidden
+        verify_new_user_created
+    end
+
+    def verify_village(village)
+       field_value= find_by_id("cityVillage").value
+       expect(field_value).to eq(village)
+    end
+
+    def find_by_id(id)
+        return find('[id="'+id+'"]')
+    end
+
+    def get_patient_id
+        patient_id=get_patient_id_text
+        return patient_id.gsub(/[A-Z]/,'')
+    end
+
+    def verify_update_village(village)
+      fill_village_and_save(village)
+      verify_village(village)
+    end
+
+    def verify_all_fields(patient)
+      wait_for_element_to_load(GIVEN_NAME) #looking for verification before page loads
+      verify(GIVEN_NAME, patient[:given_name])
+      verify(FAMILY_NAME, patient[:family_name])
+      patient[:gender]=="Male" ? verify(GENDER, "M") : verify(GENDER, "F")
+      verify(AGE_YEARS, patient[:age][:years])
+      verify(VILLAGE, patient[:village])
+    end
+
+    def verify(identifier, value)
+      field_value= find("##{identifier}").value
+      expect(field_value).to eq(value)
+    end
+
+    def wait_for_element_to_load(elem)
+      wait_until {page.find("##{elem}").visible? }
+    end
+
+    def get_patient_id_text
+      return find('legend.mylegend span strong',:match => :first).text
+    end
+
+    def verify_new_user_created
+      #sometimes page getting errored when creating new patient, because of that new patient and ID not created. Test should fail here itself.
+      patient_id=get_patient_id_text
+      expect(patient_id).not_to eq("New Patient Registration (Patient Profile Information)")
+    end
+
 end

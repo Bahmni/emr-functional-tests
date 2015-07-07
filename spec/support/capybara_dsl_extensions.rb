@@ -10,4 +10,10 @@ module CapybaraDslExtensions
     def wait_until
         Timeout.timeout(Capybara.default_wait_time) { value = yield until value }
     end
-end    
+
+    def click_button_with_text(text, index=1)
+      #find('button', :text => text, :match => :first).click
+      find(:xpath, "(//button[text()='#{text}'])[#{index}]").click
+    end
+
+end

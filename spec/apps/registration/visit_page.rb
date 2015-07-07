@@ -10,9 +10,14 @@ class Registration::VisitPage < Page
         wait_for_overlay_to_be_hidden
     end
 
-  def navigate_to_home
+    def navigate_to_home
         find('.fa-home').click
         wait_for_overlay_to_be_hidden
-  end
+    end
+
+    def goto_patient_page
+        click_on("Back")
+        wait_for_overlay_to_be_hidden
+    end
 
 end

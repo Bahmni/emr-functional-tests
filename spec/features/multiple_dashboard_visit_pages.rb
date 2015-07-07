@@ -11,7 +11,7 @@ feature "Multiple dashboard & display of patient profile details" do
     visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
 
     log_in_to_app(:registration, :location => 'Registration') do
-      register_new_patient(:patient => patient_details, :visit_type => 'OPD')
+      register_new_patient_and_start_visit(:patient => patient_details, :visit_type => 'OPD')
       visit_page.should_be_current_page
       patient_details[:identifier] = visit_page.save_new_patient_visit(visit_info)
       visit_page.navigate_to_home
