@@ -14,3 +14,8 @@ ci:
     <<: *default
     root_url: https://172.18.2.18
     headless: true
+
+soak:
+    <<: *default
+    root_url: https://172.18.2.43
+    headless: true
