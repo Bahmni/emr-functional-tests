@@ -151,4 +151,34 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     expect(visits_section.first("td#visitType")).to have_content(visit_type)
   end
 
+  def verify_retrospective_date(location,retro_date)
+    verify_retrospective_date_tab(location,retro_date)
+    verify_retrospective_date_in_visit_section(retro_date)
+  end
+
+  def verify_retrospective_data(retro_date,vitals)
+    verify_retrospective_date_in_visits_page(vitals)
+    verify_retrospective_date_in_all_vitals_page(retro_date)
+  end
+
+  def verify_retrospective_date_tab(location,retro_date)
+    expected=find("div.retro-date-widget-header").text
+    expect(expected).to eq(location+","+retro_date)
+  end
+
+  def verify_retrospective_date_in_visit_section(retro_date)
+    expected=find("#Visits").text
+    expect(expected).to match(retro_date+" - "+retro_date)
+  end
+
+  def verify_retrospective_date_in_visits_page(vitals)
+    click_link_with_text "Vitals"
+    visit_page.verify_observations(vitals)
+  end
+
+  def verify_retrospective_date_in_all_vitals_page(retro_date)
+    expected=find("#Visits").text
+    expect(expected).to be(retro_date+" - "+retro_date)
+  end
+
 end

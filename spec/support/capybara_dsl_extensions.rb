@@ -12,7 +12,6 @@ module CapybaraDslExtensions
     end
 
     def click_button_with_text(text, index=1)
-      #find('button', :text => text, :match => :first).click
       find(:xpath, "(//button[text()='#{text}'])[#{index}]").click
     end
 

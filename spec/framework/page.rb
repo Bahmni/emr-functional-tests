@@ -21,6 +21,10 @@ class Page
     wait_until { !page.find('#overlay').visible? }
   end
 
+  def wait_for_retro_widget_to_load
+    wait_until { page.find('.retro-date-widget-panel').visible? }
+  end
+
   def wait_for_autocomplete_to_be_populated
     wait_until {page.find('.ui-autocomplete', :visible => true ) }
   end
@@ -46,4 +50,5 @@ class Page
   def wait_for_loader_to_be_hidden
     wait_until  {! page.find('#loader').visible? }
   end
+
 end

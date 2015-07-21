@@ -30,4 +30,13 @@ class Common::CommonPatientSearchPage < Page
       find('.active-patient', :text => patient).click
       wait_for_overlay_to_be_hidden
     end
+
+    def enter_retrospective_date(retrospective_date)
+      click_button_with_text("OPD-1")
+      wait_for_retro_widget
+      find('div.date-widget-container input.ng-valid-max').set(retrospective_date)
+      click_button_with_text("OK")
+      wait_for_overlay_to_be_hidden
+    end
+
 end
