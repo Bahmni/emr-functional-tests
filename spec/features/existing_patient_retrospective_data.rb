@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "Existing patient retrospective data" do
   scenario "Verify retrospective entry of data" do
     new_patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
-    #chief_complaints = [{:name => 'Cough', :duration => {:value => 2, :unit => 'Days'}, :coded => false}]
+    chief_complaints = [{:name => 'Cough', :duration => {:value => 2, :unit => 'Days'}, :coded => false}]
     history_and_examinations = {:chief_complaints => chief_complaints, :history_notes => "Smoking, Drinking", :examination_notes => "Concise text notes", :smoking_history => "No" }
     vitals = {:pulse => 76, :diastolic => 77, :systolic => 119, :posture => 'Supine', :temperature => 101, :rr => 18, :spo2 => 98}
     diagnosis = {:index => 0, :name => 'cold', :order => 'PRIMARY', :certainty => 'PRESUMED'}

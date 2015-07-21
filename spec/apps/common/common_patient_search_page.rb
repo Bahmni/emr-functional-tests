@@ -33,7 +33,7 @@ class Common::CommonPatientSearchPage < Page
 
     def enter_retrospective_date(retrospective_date)
       click_button_with_text("OPD-1")
-      wait_for_retro_widget
+      wait_for_retro_widget_to_load
       find('div.date-widget-container input.ng-valid-max').set(retrospective_date)
       click_button_with_text("OK")
       wait_for_overlay_to_be_hidden
