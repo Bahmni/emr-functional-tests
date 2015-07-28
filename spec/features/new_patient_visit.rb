@@ -60,4 +60,27 @@ feature "new patient visit" do
             visit_page.verify_observations(gynaecology)
         end
     end
+
+    scenario "Verify Uploading Consultation images" do
+      new_patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
+      log_in_to_app(:registration, :location => 'Registration') do
+        register_new_patient(:patient => new_patient, :visit_type => 'OPD')
+      end
+
+      log_in_to_app(:clinical, :location => 'OPD-1') do
+        patient_search_page.view_patient_from_active_tab(new_patient[:given_name ])
+        patient_dashboard_page.start_consultation
+        observations_page.add_consultation_images_in_history_and_examinations_section([{:image => "spec/images/sample-hand-scan.jpg"},
+                                                                                       {:image =>"spec/images/sample-head-scan.jpg"}])
+        observations_page.save
+        observations_page.verify_saved_images(2)
+        observations_page.delete_existing_images
+        observations_page.undo_delete
+        observations_page.add_consultation_images([{:image =>"spec/images/sample-leg-scan.jpg"},
+                                                   {:image =>"spec/images/sample-spine-scan.jpg"}])
+        observations_page.save
+        observations_page.verify_saved_images(3)
+      end
+
+    end
 end

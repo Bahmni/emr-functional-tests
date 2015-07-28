@@ -11,6 +11,39 @@ class Clinical::ObservationsPage < Page
         click_on(details[:smoking_history]) if details.has_key? :smoking_history
     end
 
+    def add_consultation_images_in_history_and_examinations_section(image_urls)
+        go_to_tab ("Observations")
+        wait_for_overlay_to_be_hidden
+        wait_for_element_to_be_visible('//*[@id="History_and_Examination"]')
+        expand_section "History_and_Examination"
+        wait_for_element_to_be_visible('//label/span[text()="Chief Complaint Notes"]')
+        add_consultation_images(image_urls)
+    end
+
+    def add_consultation_images(image_urls)
+        image_urls.each {|image_path|
+          elements=page.all(:xpath,'//button[contains(@id,"image_addmore_observation")]')
+          elements[elements.length-1].click #click the last addmore button. This is to avoid some sync issue.
+          index=page.all(:xpath,'//input[@name="image"]').length
+          id= find(:xpath,"(//input[@name='image'])[#{index}]")[:id]
+          attach_file(id, File.expand_path("#{image_path[:image]}"), :visible => true)
+          wait_for_overlay_to_be_hidden
+        }
+    end
+
+    def verify_saved_images(expected_image_count)
+        actual_image_count=page.all('div.file img').length
+        expect(actual_image_count).to eq(expected_image_count)
+    end
+
+    def delete_existing_images
+        page.all('div.file-remove button.row-remover').each {|element| element.click}
+    end
+
+    def undo_delete
+      page.all('div.file-remove button.row-remover span.fa-undo')[1].click
+    end
+
     def fill_vitals_section(vitals)
         expand_section "Vitals"
         fill_vitals_data(get_section('Vitals'), vitals)
@@ -37,13 +70,20 @@ class Clinical::ObservationsPage < Page
           }
     end
 
+    def save()
+      click_on("Save")
+      wait_for_overlay_to_be_hidden
+    end
+
     def get_section(name)
         page.all(".concept-set-group").find { |div| div.find(".section-label").text == name }
     end
 
     def expand_section(name)
-        find("##{name}").click
-        wait_for_overlay_to_be_hidden
+        if find("div##{name} h2.section-title i.fa-caret-right",:visible =>true)
+          find_by_id(name).click
+          wait_for_overlay_to_be_hidden
+        end
     end
 
     def select_template(name)

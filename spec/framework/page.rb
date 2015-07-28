@@ -21,6 +21,10 @@ class Page
     wait_until { !page.find('#overlay').visible? }
   end
 
+  def wait_for_element_to_be_visible(locator)
+    wait_until { page.find(:xpath,locator).visible? }
+  end
+
   def wait_for_retro_widget_to_load
     wait_until { page.find('.retro-date-widget-panel').visible? }
   end
