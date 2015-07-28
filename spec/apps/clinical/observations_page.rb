@@ -80,7 +80,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def expand_section(name)
-        if find("div##{name} h2.section-title i.fa-caret-right",:visible =>true)
+        if find("div##{name} h2.section-title i.fa-caret-right").visible?
           find_by_id(name).click
           wait_for_overlay_to_be_hidden
         end
@@ -88,6 +88,7 @@ class Clinical::ObservationsPage < Page
 
     def select_template(name)
         find("#template-control-panel-button").click
+        find_by_id(name).click
         expand_section(name)
     end
 

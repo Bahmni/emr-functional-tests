@@ -54,6 +54,7 @@ class Registration::PatientPage < Page
     end
 
     def save()
+        sleep 1
         click_on("Save")
         sleep 1 #error page is coming up if not sleep. Some page page response issue when Save button clicked. Need to investigate
         wait_for_overlay_to_be_hidden
