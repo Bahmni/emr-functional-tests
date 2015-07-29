@@ -15,7 +15,6 @@ Capybara.default_wait_time = 30
 Capybara.ignore_hidden_elements = false
 Capybara.save_and_open_page_path = File.expand_path("../../screenshots", __FILE__)
 Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
-Capybara.page.driver.browser.manage.window.maximize
 
 Headless.new.start if Settings.headless
 

@@ -135,7 +135,8 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
   end
 
   def verify_absence_of_start_consultation_link()
-    expect(page).to have_no_link("Consultation")
+    dashboard_header_right_section= page.find('div.dashboard-header-right-wrapper')
+    expect(dashboard_header_right_section).to have_no_link("Consultation")
   end
 
   def verify_presence_of_current_visit()
