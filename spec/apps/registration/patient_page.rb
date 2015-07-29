@@ -40,8 +40,7 @@ class Registration::PatientPage < Page
 
     def start_visit(text)
         click_on text
-        sleep 1 # error message coming up because of the 2 overlays, need to find the solution
-        wait_for_overlay_to_be_hidden
+        wait_for_element_to_be_visible('//button[text()="Close Visit"]')
     end
 
     def fill_village_and_save(village)

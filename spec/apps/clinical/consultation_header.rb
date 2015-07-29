@@ -18,4 +18,10 @@ module Clinical::ConsultationHeader
         find('.header-tabs a', :text => tab_name).click
         wait_for_overlay_to_be_hidden
     end
+
+    def go_to_adt_page
+      find(:xpath,'//a[@title="Go to IPD dashboard"]').click
+      wait_for_overlay_to_be_hidden
+    end
+
 end

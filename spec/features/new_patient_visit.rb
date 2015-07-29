@@ -64,7 +64,7 @@ feature "new patient visit" do
     scenario "Verify Uploading Consultation images" do
       new_patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
       log_in_to_app(:registration, :location => 'Registration') do
-        register_new_patient(:patient => new_patient, :visit_type => 'OPD')
+        register_new_patient_and_start_visit(:patient => new_patient, :visit_type => 'OPD')
       end
 
       log_in_to_app(:clinical, :location => 'OPD-1') do
@@ -80,6 +80,8 @@ feature "new patient visit" do
                                                    {:image =>"spec/images/sample-spine-scan.jpg"}])
         observations_page.save
         observations_page.verify_saved_images(3)
+        observations_page.go_to_adt_page # this is to avoid angular expections caught in observations page by spec_helper.rb. Can be removed if no failures
+
       end
 
     end

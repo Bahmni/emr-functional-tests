@@ -4,6 +4,7 @@ class Clinical::ObservationsPage < Page
     def fill_history_and_examinations_section(details)
         go_to_tab ("Observations")
         wait_for_overlay_to_be_hidden
+        sleep 1
         expand_section "History_and_Examination"
         fill_chief_complaints details[:chief_complaints] if details.has_key? :chief_complaints
         fill_in "History", :with => details[:history_notes] if details.has_key? :history_notes
@@ -22,6 +23,7 @@ class Clinical::ObservationsPage < Page
 
     def add_consultation_images(image_urls)
         image_urls.each {|image_path|
+          sleep 1
           elements=page.all(:xpath,'//button[contains(@id,"image_addmore_observation")]')
           elements[elements.length-1].click #click the last addmore button. This is to avoid some sync issue.
           index=page.all(:xpath,'//input[@name="image"]').length
@@ -32,15 +34,17 @@ class Clinical::ObservationsPage < Page
     end
 
     def verify_saved_images(expected_image_count)
+        wait_for_element_to_be_visible('//strong[text()="Consultation Images"]')
         actual_image_count=page.all('div.file img').length
         expect(actual_image_count).to eq(expected_image_count)
     end
 
     def delete_existing_images
-        page.all('div.file-remove button.row-remover').each {|element| element.click}
+        page.all('div.file-remove button.row-remover').each {|element| element.click; sleep 0.5}
     end
 
     def undo_delete
+      sleep 1
       page.all('div.file-remove button.row-remover span.fa-undo')[1].click
     end
 
@@ -68,11 +72,6 @@ class Clinical::ObservationsPage < Page
         gynaecology[:ps_perSpeculum_cervix].each{ |item|
             click_on(item)
           }
-    end
-
-    def save()
-      click_on("Save")
-      wait_for_overlay_to_be_hidden
     end
 
     def get_section(name)
