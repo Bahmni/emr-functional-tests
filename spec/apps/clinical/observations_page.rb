@@ -23,14 +23,16 @@ class Clinical::ObservationsPage < Page
 
     def add_consultation_images(image_urls)
         image_urls.each {|image_path|
-          sleep 1
           elements=page.all(:xpath,'//button[contains(@id,"image_addmore_observation")]')
           elements[elements.length-1].click #click the last addmore button. This is to avoid some sync issue.
+          sleep 2
           index=page.all(:xpath,'//input[@name="image"]').length
           id= find(:xpath,"(//input[@name='image'])[#{index}]")[:id]
           attach_file(id, File.expand_path("#{image_path[:image]}"), :visible => true)
           wait_for_overlay_to_be_hidden
+          page.execute_script('window.scrollTo(0,2000)')
         }
+
     end
 
     def verify_saved_images(expected_image_count)
