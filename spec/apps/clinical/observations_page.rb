@@ -25,13 +25,15 @@ class Clinical::ObservationsPage < Page
         image_urls.each {|image_path|
           elements=page.all(:xpath,'//button[contains(@id,"image_addmore_observation")]')
           elements[elements.length-1].click #click the last addmore button. This is to avoid some sync issue.
-          sleep 2
+          sleep 1
           index=page.all(:xpath,'//input[@name="image"]').length
           id= find(:xpath,"(//input[@name='image'])[#{index}]")[:id]
           attach_file(id, File.expand_path("#{image_path[:image]}"), :visible => true)
+          sleep 1
           wait_for_overlay_to_be_hidden
           page.execute_script('window.scrollTo(0,2000)')
         }
+      sleep 1
 
     end
 
