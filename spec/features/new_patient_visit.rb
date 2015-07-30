@@ -68,6 +68,7 @@ feature "new patient visit" do
       end
 
       log_in_to_app(:clinical, :location => 'OPD-1') do
+        patient_search_page.zoom_in # zoom is to avoid template-control-panel-button in observations page to overlap with added consulation images
         patient_search_page.view_patient_from_active_tab(new_patient[:given_name ])
         patient_dashboard_page.start_consultation
         observations_page.add_consultation_images_in_history_and_examinations_section([{:image => "spec/images/sample-hand-scan.jpg"},

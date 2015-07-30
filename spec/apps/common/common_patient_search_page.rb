@@ -39,4 +39,9 @@ class Common::CommonPatientSearchPage < Page
       wait_for_overlay_to_be_hidden
     end
 
+    def zoom_in
+      elem=page.find('html').native
+      4.times { elem.send_keys(:command,:subtract); sleep 0.2}
+    end
+
 end
