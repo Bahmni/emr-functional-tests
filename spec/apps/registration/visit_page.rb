@@ -17,7 +17,7 @@ class Registration::VisitPage < Page
 
     def goto_patient_page
         click_on("Back")
-        wait_for_overlay_to_be_hidden
+        wait_for_element_with_xpath_to_be_visible('//input[@id="givenName"]')
     end
 
 end

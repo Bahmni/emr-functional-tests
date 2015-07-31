@@ -40,10 +40,11 @@ class Registration::PatientPage < Page
 
     def start_visit(text)
         click_on text
-        wait_for_element_to_be_visible('//button[text()="Close Visit"]')
+        wait_for_element_with_xpath_to_be_visible('//button[text()="Close Visit"]')
     end
 
     def fill_village_and_save(village)
+        wait_for_element_to_load("cityVillage")
         fill_village(village)
         save
     end
@@ -53,11 +54,10 @@ class Registration::PatientPage < Page
     end
 
     def save()
-        sleep 1
         click_on("Save")
-        sleep 1 #error page is coming up if not sleep. Some page page response issue when Save button clicked. Need to investigate
+        sleep 1
         wait_for_overlay_to_be_hidden
-        verify_new_user_created
+        wait_for_element_with_xpath_to_be_visible('//label[text()="Registration Date"]')
     end
 
     def verify_village(village)
@@ -70,8 +70,8 @@ class Registration::PatientPage < Page
     end
 
     def get_patient_id
-        patient_id=get_patient_id_text
-        return patient_id.gsub(/[A-Z]/,'')
+        sleep 1
+        return find('legend.mylegend span strong',:match => :first).text.gsub(/[A-Z]/,'')
     end
 
     def verify_update_village(village)
@@ -99,12 +99,6 @@ class Registration::PatientPage < Page
 
     def get_patient_id_text
       return find('legend.mylegend span strong',:match => :first).text
-    end
-
-    def verify_new_user_created
-      #sometimes page getting errored when creating new patient, because of that new patient and ID not created. Test should fail here itself.
-      patient_id=get_patient_id_text
-      expect(patient_id).not_to eq("New Patient Registration (Patient Profile Information)")
     end
 
 end
