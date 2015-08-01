@@ -16,7 +16,7 @@ feature "Registration search " do
       verify_search_by_name_results(new_patient)
       verify_details_in_patient_page(patient_id,new_patient)
       verify_back_button_in_visit_page(:visit_type => 'OPD')
-      verify_details_after_update_village(updated_patient_details[:village])
+      #verify_details_after_update_village(updated_patient_details[:village])
       save_existing_patient_visit(visit_info)
     end
 
