@@ -9,6 +9,7 @@ class ParallelRun
     #cleanup
     feature_list.each do |file|
       pid = spawn("bundle exec rspec #{file} --format documentation --format html --out spec-results/index.html")
+      Process.detach(pid)
       pid_list << pid
       sleep 1
       while pid_list.size >= parallel_instances
