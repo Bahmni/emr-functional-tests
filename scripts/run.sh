@@ -5,7 +5,7 @@ bundle install
 if [ "$TEST_ENV" = "soak" ]
 then
         bundle exec rspec spec/features/{multiple_dashboard_visit_pages.rb,new_patient_visit.rb} --format documentation --format html --out spec-results/index.html
-elif [ "$TEST_ENV" = "ci" ]
+elif [ "$TEST_ENV" = "parallel" ]
 then
         ruby scripts/parallel_run.rb $PARALLEL_INSTANCES
 else
