@@ -53,6 +53,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_vitals_section(vitals)
+        sleep 1
         expand_section "Vitals"
         fill_vitals_data(get_section('Vitals'), vitals)
     end
