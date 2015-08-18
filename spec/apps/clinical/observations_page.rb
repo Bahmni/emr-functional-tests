@@ -53,7 +53,6 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_vitals_section(vitals)
-        sleep 1
         expand_section "Vitals"
         fill_vitals_data(get_section('Vitals'), vitals)
     end
@@ -96,8 +95,14 @@ class Clinical::ObservationsPage < Page
         expand_section(name)
     end
 
+    def add_more_chief_complaint_row
+      chief_complaint_row = page.all('.leaf-observation-node', :text => 'Chief Complaint')[0]
+      chief_complaint_row.find('.add-more-btn').click
+    end
+
     def fill_chief_complaints(chief_complaints)
         wait_until {first('.leaf-observation-node', :visible => true)}
+        add_more_chief_complaint_row
         chief_complaint_rows = page.all('.leaf-observation-node', :text => 'Chief Complaint')
         raise "There are only #{chief_complaint_rows.size} rows to fill #{chief_complaints.size} chief complaints" if chief_complaint_rows.size < chief_complaints.size
         chief_complaints.each_with_index do |chief_complaint, index|
@@ -110,6 +115,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def fill_vitals_data(section, vitals)
+
           section.fill_in 'Pulse', :with => vitals[:pulse] if vitals.has_key? :pulse
           section.fill_in 'Diastolic', :with => vitals[:diastolic] if vitals.has_key? :diastolic
           section.fill_in 'Systolic', :with => vitals[:systolic] if vitals.has_key? :systolic
