@@ -48,7 +48,7 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     end
 
     def navigate_to_current_visit
-      find(".visits i[title='Current Visit']").click
+      find("#Visits i[title='Current Visit']").click
       wait_for_overlay_to_be_hidden
     end
 
