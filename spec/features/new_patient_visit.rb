@@ -2,7 +2,8 @@ require 'spec_helper'
 
 feature "new patient visit" do
     scenario "registration and consultation" do
-        new_patient = {:given_name => "Ram#{Time.now.to_i}", :family_name => 'Singh', :gender => 'Male', :age => {:years => 40}, :village => 'Ganiyari'}
+        name = Utils.generate_random_string(6)
+        new_patient = {:given_name => "Ram#{name}", :family_name => 'Singh', :gender => 'Male', :age => {:years => 40}, :village => 'Ganiyari'}
         visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
         chief_complaints = [{:name => 'Cough', :duration => {:value => 2, :unit => 'Days'}, :coded => false},
                             {:name => 'Fever', :duration => {:value => 3, :unit => 'Weeks'}, :coded => false}]
@@ -62,7 +63,8 @@ feature "new patient visit" do
     end
 
     scenario "Verify Uploading Consultation images" do
-      new_patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
+      name = Utils.generate_random_string(6)
+      new_patient = {:given_name => "Ram#{name}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
       log_in_to_app(:registration, :location => 'Registration') do
         register_new_patient_and_start_visit(:patient => new_patient, :visit_type => 'OPD')
       end

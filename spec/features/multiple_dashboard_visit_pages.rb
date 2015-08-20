@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "Multiple dashboard & display of patient profile details" do
   scenario "Verify display of patient profile on ADT, dashboard & Visit page" do
 
-    name = Utils.generate_random_string
+    name = Utils.generate_random_string(6)
     patient_details = {:given_name => "Ram#{name}", :family_name => 'Singh', :gender => 'Male', :age => {:years => 40}, :identifier =>"",
                    :house_number => "155", :gram_panchayat => "gram panchayat", :village => 'Ganiyari', :address => "155, gram panchayat, Ganiyari",
                    :caste => "hindu", :class => "OBC", :education_details => "Uneducated", :occupation => "Unemployed", :additional_info => "true",
