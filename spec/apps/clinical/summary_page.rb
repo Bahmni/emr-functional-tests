@@ -9,7 +9,7 @@ class Clinical::SummaryPage < Common::DisplayControlsPage
         expect(table).to have_content(drug)
       end
     end
-    find('.ngdialog-theme-default.ng-dialog-all-details-page .ngdialog-close').click
+    find('.back-btn .fa-arrow-circle-left').click
   # click_on "Back"
   end
 
