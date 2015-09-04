@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "Radiology upload" do
   scenario "Upload and delete radiology documents" do
-    go_to_app("Document Upload", :location => 'OPD-1' ) do
+    log_in_to_app('Radiology Upload', :location => 'OPD-1' ) do
       patient_search_page.view_patient_from_active_tab('Test Radiology')
       upload_page.upload_image_for_concepts([{:image => "spec/images/sample-hand-scan.jpg", :concept_name=> 'ARM Hand AP'},
                                             {:image =>"spec/images/sample-head-scan.jpg", :concept_name=>'HEAD Nose lateral'},

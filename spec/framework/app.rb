@@ -4,7 +4,8 @@ class App
     include CapybaraDslExtensions
 
     @app_name_map = {
-        :InPatient => :adt
+        :InPatient => :adt,
+        'Radiology Upload' => 'Documentupload'
     }
 
     def self.create(name, context)
