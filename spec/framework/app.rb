@@ -3,8 +3,13 @@ class App
     include RSpec::Matchers
     include CapybaraDslExtensions
 
+    @app_name_map = {
+        :InPatient => :adt
+    }
+
     def self.create(name, context)
-        app_class_full_name = name.to_s.classify + '::' + 'App'
+        app_name = @app_name_map[name] || name;
+        app_class_full_name = app_name.to_s.classify + '::' + 'App'
         app_class_full_name.constantize.new(context)
     end
 

@@ -16,13 +16,13 @@ feature "new patient visit" do
         nutritional_values = {:weight => 70, :height => 170, :bmi => 24.22, :bmi_status => 'Normal'}
 
 
-        log_in_to_app(:registration, :location => 'Registration') do
+        log_in_to_app(:Registration, :location => 'Registration') do
             register_new_patient_and_start_visit(:patient => new_patient, :visit_type => 'OPD')
             visit_page.should_be_current_page
             visit_page.save_new_patient_visit(visit_info)
         end
 
-        log_in_to_app(:clinical, :location => 'OPD-1') do
+        log_in_to_app(:Clinical, :location => 'OPD-1') do
             patient_search_page.view_patient_from_active_tab(new_patient[:given_name])
             patient_dashboard_page.start_consultation
             diagnosis_page.add_non_coded_diagnosis(diagnosis)
@@ -65,11 +65,11 @@ feature "new patient visit" do
     scenario "Verify Uploading Consultation images" do
       name = Utils.generate_random_string(6)
       new_patient = {:given_name => "Ram#{name}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
-      log_in_to_app(:registration, :location => 'Registration') do
+      log_in_to_app(:Registration, :location => 'Registration') do
         register_new_patient_and_start_visit(:patient => new_patient, :visit_type => 'OPD')
       end
 
-      log_in_to_app(:clinical, :location => 'OPD-1') do
+      log_in_to_app(:Clinical, :location => 'OPD-1') do
         #patient_search_page.zoom_in # zoom is to avoid template-control-panel-button in observations page to overlap with added consulation images
         patient_search_page.view_patient_from_active_tab(new_patient[:given_name ])
         patient_dashboard_page.start_consultation

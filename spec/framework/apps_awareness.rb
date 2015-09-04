@@ -1,6 +1,7 @@
 module AppsAwareness
     def go_to_app(name, &block)
-        visit "/bahmni/#{name}"
+        visit '/bahmni/home'
+        page.find("a", :text => name, :visible => :true).click
         App.create(name, self).instance_eval(&block)
     end
 
@@ -10,23 +11,10 @@ module AppsAwareness
         go_to_app name, &block
     end
 
-    def go_to_app_with_params(name, query_param, &block)
-        app_name = name
-        if name == 'documentupload'
-            app_name = "document-upload"
-        end
-        visit "/bahmni/#{app_name}" + "?encounterType=" + query_param
-        App.create(name, self).instance_eval(&block)
-    end
-
-    def log_in_to_app_with_params(name, query_param, credentials, &block)
-        Capybara.reset_sessions!
-        login credentials
-        go_to_app_with_params name,query_param, &block
-    end
-
     def login(credentials)
-        go_to_app(:home) { login credentials }
+        visit '/bahmni/home'
+        loginApp = App.create("home", self)
+        loginApp.login(credentials)
     end
 
     def log_in_as_different_user(name, &block)

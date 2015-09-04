@@ -10,7 +10,7 @@ feature "patient admit and discharge verification" do
     discharge_details = {:action => "Discharge Patient", :notes => "Discharge the patient"}
     undo_discharge_details = {:action => "Undo Discharge", :notes => "Undo Discharge"}
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_active_tab(patient1)
       patient_dashboard_page.start_consultation
       disposition_page.provide_disposition(admit_disposition_details)
@@ -20,7 +20,7 @@ feature "patient admit and discharge verification" do
       patient_dashboard_page.navigate_to_current_visit
       visit_page.verify_disposition_details(admit_disposition_details)
       visit_page.navigate_to_home
-      go_to_app("adt") do
+      go_to_app(:InPatient) do
         patient_search_page.view_patient_from_to_admit_tab(patient1)
         patient_dashboard_page.verify_disposition_details(admit_disposition_details)
         patient_dashboard_page.perform_admit_action(admit_details)
@@ -29,7 +29,7 @@ feature "patient admit and discharge verification" do
       end
     end
 
-    log_in_as_different_user(:clinical) do
+    log_in_as_different_user(:Clinical) do
       patient_search_page.view_patient_from_active_tab(patient1)
       patient_dashboard_page.start_consultation
       disposition_page.provide_disposition(discharge_disposition_details)
@@ -39,7 +39,7 @@ feature "patient admit and discharge verification" do
       patient_dashboard_page.navigate_to_current_visit
       visit_page.verify_disposition_details(discharge_disposition_details)
       visit_page.navigate_to_home
-      go_to_app("adt") do
+      go_to_app(:InPatient) do
         patient_search_page.view_patient_from_to_discharge_tab(patient1)
         patient_dashboard_page.verify_disposition_details(discharge_disposition_details)
         patient_dashboard_page.perform_discharge_action(discharge_details)
@@ -56,7 +56,7 @@ feature "patient admit and discharge verification" do
     admit_disposition_details = {:disposition => "Admit Patient", :notes => "Admit the patient"}
     undo_disposition_details = {:disposition => "", :notes => "undo disposition"}
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_active_tab(patient)
       patient_dashboard_page.start_consultation
       disposition_page.provide_disposition(admit_disposition_details)
@@ -66,7 +66,7 @@ feature "patient admit and discharge verification" do
       patient_dashboard_page.navigate_to_current_visit
       visit_page.verify_absence_of_disposition_details(admit_disposition_details)
       visit_page.navigate_to_home
-      go_to_app("adt") do
+      go_to_app(:InPatient) do
         patient_search_page.verify_patient_not_found_in_to_admit_tab(patient)
       end
     end

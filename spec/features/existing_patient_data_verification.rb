@@ -11,7 +11,7 @@ feature "exisitng patient data verification" do
     patient2_data = data["Test DrugDataTwo"]
     patient3_data = data["Test DrugDataForwardSync"]
 
-  log_in_to_app(:clinical, :location => 'OPD-1') do
+  log_in_to_app(:Clinical, :location => 'OPD-1') do
     # Patient 1
     patient_search_page.view_patient_from_all_tab(patient1)
     patient_dashboard_page.verify_current_dashboard("General")

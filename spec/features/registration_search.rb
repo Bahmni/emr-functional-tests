@@ -7,12 +7,12 @@ feature "Registration search " do
     patient_id=""
     visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
 
-    log_in_to_app(:registration, :location => 'OPD-1') do
+    log_in_to_app(:Registration, :location => 'OPD-1') do
       register_new_patient(:patient => new_patient)
       patient_id= patient_page.get_patient_id
     end
 
-    log_in_to_app(:registration, :location => 'OPD-1') do
+    log_in_to_app(:Registration, :location => 'OPD-1') do
       verify_search_by_name_results(new_patient)
       verify_details_in_patient_page(patient_id,new_patient)
       verify_back_button_in_visit_page(:visit_type => 'OPD')

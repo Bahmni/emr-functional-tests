@@ -17,11 +17,11 @@ feature "Existing patient retrospective data" do
     retrospective_date= '2015-01-03'
     retrospective_date_with_month_in_words='03 Jan 15'
 
-    log_in_to_app(:registration, :location => 'Registration') do
+    log_in_to_app(:Registration, :location => 'Registration') do
       register_new_patient_and_start_visit(:patient => new_patient, :visit_type => 'OPD')
     end
 
-    log_in_to_app(:clinical, :location => location) do
+    log_in_to_app(:Clinical, :location => location) do
       patient_search_page.enter_retrospective_date(retrospective_date)
       patient_search_page.view_patient_from_active_tab(new_patient[:given_name ])
       patient_dashboard_page.start_consultation
@@ -45,7 +45,7 @@ feature "Existing patient retrospective data" do
 
     end
 
-    log_in_as_different_user(:clinical) do
+    log_in_as_different_user(:Clinical) do
 
       patient_search_page.enter_retrospective_date(retrospective_date)
       patient_search_page.view_patient_from_active_tab(new_patient[:given_name ])

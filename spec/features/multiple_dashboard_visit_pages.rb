@@ -10,13 +10,13 @@ feature "Multiple dashboard & display of patient profile details" do
                    :debt => "120000", :distanceFromCenter  => "15.8" ,:is_urban => "Yes", :cluster => "Semariya", :ration_card => "None", :family_income => ">=36017"}
     visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
 
-    log_in_to_app(:registration, :location => 'Registration') do
+    log_in_to_app(:Registration, :location => 'Registration') do
       register_new_patient_and_start_visit(:patient => patient_details, :visit_type => 'OPD')
       visit_page.should_be_current_page
       patient_details[:identifier] = visit_page.save_new_patient_visit(visit_info)
       visit_page.navigate_to_home
 
-      go_to_app("clinical") do
+      go_to_app(:Clinical) do
       patient_search_page.view_patient_from_active_tab(patient_details[:given_name])
       patient_dashboard_page.add_dashboard("Trends")
       patient_dashboard_page.verify_current_dashboard("Trends")
@@ -32,7 +32,7 @@ feature "Multiple dashboard & display of patient profile details" do
       visit_page.navigate_to_home
       end
 
-      go_to_app("adt") do
+      go_to_app(:InPatient) do
       patient_search_page.view_patient_from_all_tab(patient_details[:given_name])
       patient_dashboard_page.verify_patient_profile_information(patient_details)
       end
