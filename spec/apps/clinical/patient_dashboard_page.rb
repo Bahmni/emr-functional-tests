@@ -127,7 +127,7 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     verify_second_vitals(observations, observation_section) if observations.has_key? :pulse
     verify_vitals(observations, observation_section) if observations.has_key? :pulse
     verify_obstetrics_values(observations, observation_section) if observations.has_key? :fundal_height
-    find("#backButton").click
+    find('.ngdialog-theme-default.ng-dialog-all-details-page .ngdialog-close').click
   end
 
   def verify_presence_of_start_consultation_link()

@@ -17,7 +17,7 @@ feature "treatments" do
              :instructions => "In the morning", :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :additional_instructions => "Injection to be taken..",
              :quantity => "2", :quantity_units => "Unit(s)"}
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
       patient_dashboard_page.start_consultation
 
@@ -77,7 +77,7 @@ feature "treatments" do
     refilled_placentex = {:drug_name => "Placentex 60ml (Lotion)", :dose => "1", :dose_unit => "mg", :frequency => "Once a day", :sos => false, :start_date => "04 Oct 31",
                          :duration => "200", :duration_unit => "Day(s)", :drug_route => "Topical", :quantity => "200", :quantity_units => "Unit(s)"}
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
       patient_dashboard_page.start_consultation
 

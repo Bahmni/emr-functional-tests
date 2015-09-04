@@ -8,14 +8,14 @@ feature "Diagnosis" do
     diagnosis_details[0] = {:order => "PRIMARY", :certainty => "CONFIRMED", :diagnosisDateTime => "25 Feb 15",
                             :freeTextAnswer => "nausea", :comments => "After admitting.."}
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient)
       patient_dashboard_page.verify_diagnosis_details(diagnosis_details)
 
       patient_dashboard_page.navigate_to_current_visit
       visit_page.verify_diagnosis_details(diagnosis_details)
 
-      go_to_app("adt") do
+      go_to_app(:InPatient) do
       patient_search_page.view_patient_from_all_tab(patient)
       patient_dashboard_page.verify_diagnosis_details(diagnosis_details)
       end
@@ -28,7 +28,7 @@ feature "Diagnosis" do
     non_coded_diagnosis = {:index => 0, :name => 'Cat bite', :order => 'PRIMARY', :certainty => 'PRESUMED'}
     diagnoses = [coded_diagnosis, non_coded_diagnosis]
 
-    log_in_to_app(:clinical, :location => 'OPD-1') do
+    log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient)
       patient_dashboard_page.start_consultation
       diagnosis_page.add_coded_diagnosis(coded_diagnosis)
@@ -45,7 +45,7 @@ feature "Diagnosis" do
   scenario 'Edit coded diagnosis for existing patient' do
     patient = 'Test AdtDashboard'
 
-    log_in_as_different_user(:clinical) do
+    log_in_as_different_user(:Clinical) do
       coded_diagnosis = {:index => 0, :name => 'Dog bite', :order => 'PRIMARY', :certainty => 'PRESUMED'}
       patient_search_page.view_patient_from_all_tab(patient)
       patient_dashboard_page.start_consultation
