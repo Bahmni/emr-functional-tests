@@ -12,7 +12,7 @@ development:
 
 ci:
     <<: *default
-    root_url: https://172.18.2.18
+    root_url: https://localhost
     headless: true
 
 soak:
