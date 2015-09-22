@@ -18,6 +18,14 @@ class Common::DisplayControlsPage < Page
     }
   end
 
+  def verify_lab_orders_section(identifier, radiology_orders)
+    radiology_order_section = page.find(identifier)
+    radiology_orders.each do |order|
+      expect(radiology_order_section).to have_content(order[:name])
+    end
+  end
+
+
   def verify_admission_details(patient_details)
     admission_details_section = page.find("#admissionDetails")
     expect(admission_details_section).to have_content(patient_details[:admit_details])
@@ -67,6 +75,13 @@ class Common::DisplayControlsPage < Page
     radiology_tests.each do |test|
       expect(radiology_order_notes).to have_content(test[:name])
       test[:notes].each {|note| expect(radiology_order_notes).to have_content(note)}
+    end
+  end
+
+  def verify_radiology_orders_section_not_have_deleted_order(identifier, radiology_tests)
+    radiology_order_notes_content = page.find(identifier).text
+    radiology_tests.each do |test|
+      expect(radiology_order_notes_content).not_to include(test[:name])
     end
   end
 

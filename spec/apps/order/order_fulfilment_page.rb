@@ -2,7 +2,7 @@ class Order::OrderFulfilmentPage < Page
 
   def search_and_open_patient_orders(patient_name)
     fill_in("patientIdentifier", :with => patient_name)
-    page.all("td")[1].find("a").click #click on the FIRST ROW patient id hyperlink
+    page.find("span",:text=>patient_name).click
   end
 
   def fill_radiology_notes(section_name, notes)
@@ -14,6 +14,11 @@ class Order::OrderFulfilmentPage < Page
     click_on "Save"
     wait_for_overlay_to_be_hidden
     self
+  end
+
+  def verify_radiology_orders_section_not_have_deleted_order(section_name)
+    orders_section_content = page.find('#view-content').text
+    expect(orders_section_content).not_to include(section_name)
   end
 
   def verify_radiology_notes_history(section_name, history_note)
