@@ -21,7 +21,7 @@ feature "treatments" do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
       patient_dashboard_page.start_consultation
 
-      observations_page.go_to_tab("Treatment")
+      observations_page.go_to_tab("Medications")
       treatment_page.add_new_drug(drug1, drug2, drug3)
       treatment_page.save
       treatment_page.verify_drug_on_tab("Recent", drug1, drug2, drug3)
@@ -81,7 +81,7 @@ feature "treatments" do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
       patient_dashboard_page.start_consultation
 
-      observations_page.go_to_tab("Treatment")
+      observations_page.go_to_tab("Medications")
       treatment_page.verify_drug_on_tab("Recent", paracetamol, cytalon)
       treatment_page.refill_drug(patient[:current_visit_date], paracetamol, ipratropium, cytalon)
       treatment_page.verify_drug_on_new_prescription(refilled_cytalon, refilled_ipratropium, refilled_paracetamol)
