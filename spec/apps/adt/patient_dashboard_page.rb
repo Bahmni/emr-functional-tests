@@ -29,4 +29,17 @@ class Adt::PatientDashboardPage < Common::DisplayControlsPage
     click_on "Undo Discharge"
     wait_for_overlay_to_be_hidden
   end
+
+  def perform_transfer_action(action_details)
+    perform_action(action_details)
+    click_on "Transfer"
+    wait_for_overlay_to_be_hidden
+  end
+
+  def verify_admission_details(admit_details)
+    admission_details_section= page.find('#admissionDetails').text
+    expect(admission_details_section).to include(admit_details[:notes])
+    expect(admission_details_section).to include(admit_details[:ward])
+    expect(admission_details_section).to include(admit_details[:bed_detail])
+  end
 end
