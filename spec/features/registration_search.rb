@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "Registration search " do
   scenario "registration search by name results, search by id patient details and patient Visit" do
     updated_patient_details = {:village => 'Nandhigama'}
-    new_patient = {:given_name => "Ram#{(0...8).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
+    new_patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
     patient_id=""
     visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
 

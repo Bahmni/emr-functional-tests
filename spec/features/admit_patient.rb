@@ -53,7 +53,7 @@ feature "admit patient" do
 
       ward_list_page.verify_bed_details_and_notes(new_patient[:given_name],admit_details)
       ward_list_page.goto_patient_dashboard_from_id_link(new_patient[:given_name])
-      patient_dashboard_page.verify_admission_details(admit_details)
+      patient_dashboard_page.verify_adt_admission_details(admit_details)
 
       patient_dashboard_page.perform_transfer_action(transfer_details)
       #available_bed_count_before_transfer_to_another_ward= ward_list_page.available_bed_count(transfer_details[:ward])
@@ -66,7 +66,7 @@ feature "admit patient" do
 
       ward_list_page.verify_bed_details_and_notes(new_patient[:given_name],transfer_details)
       ward_list_page.goto_patient_dashboard_from_id_link(new_patient[:given_name])
-      patient_dashboard_page.verify_admission_details(transfer_details)
+      patient_dashboard_page.verify_adt_admission_details(transfer_details)
 
       patient_dashboard_page.perform_discharge_action(discharge_details)
 
