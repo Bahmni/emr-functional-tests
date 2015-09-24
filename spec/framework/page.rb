@@ -29,6 +29,10 @@ class Page
     wait_until { page.find(:css,locator).visible? }
   end
 
+  def wait_for_element_with_css_with_text(locator,text)
+    wait_until { page.find("#{locator}",:text=>text).visible? }
+  end
+
   def wait_for_retro_widget_to_load
     wait_until { page.find('.retro-date-widget-panel').visible? }
   end

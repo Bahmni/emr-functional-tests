@@ -54,10 +54,10 @@ class Registration::PatientPage < Page
     end
 
     def save()
-        click_on("Save")
         sleep 1
+        click_on("Save")
         wait_for_overlay_to_be_hidden
-        wait_for_element_with_xpath_to_be_visible('//label[text()="Registration Date"]')
+        wait_for_element_with_css_with_text('strong','Paper')
     end
 
     def verify_village(village)

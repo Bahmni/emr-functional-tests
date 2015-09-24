@@ -26,7 +26,7 @@ class Adt::PatientDashboardPage < Common::DisplayControlsPage
   end
 
   def perform_transfer_action(action_details)
-    perform_action(action_details,"Transfer")
+    perform_action(action_details,"Save")
   end
 
   def verify_adt_admission_details(admit_details)
