@@ -84,14 +84,14 @@ class Clinical::ObservationsPage < Page
 
     def expand_section(name)
         if find("div##{name} h2.section-title i.fa-caret-right").visible?
-          find_by_id(name).click
+          find(".concept-set-title ##{name}").click
           wait_for_overlay_to_be_hidden
         end
     end
 
     def select_template(name)
         find("#template-control-panel-button").click
-        find_by_id(name).click
+        find(".template-control-panel ##{name}").click
         expand_section(name)
     end
 

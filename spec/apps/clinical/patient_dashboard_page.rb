@@ -27,7 +27,7 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     end
 
     def start_consultation
-        find("a", :text => 'Consultation', :match => :prefer_exact).click
+        find(".grouped-buttons a", :text => 'Consultation', :match => :prefer_exact).click
     end
 
     def verify_existing_drugs(sections)
