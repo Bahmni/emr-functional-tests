@@ -66,7 +66,7 @@ class Clinical::OrdersPage < Page
   private
 
   def open_orders_section(section)
-    section_header = page.find("h2", :text => section)
+    section_header = page.find("h2", :text => section, :visible=>true)
     expanded = section_header.find(".fa-caret-down").visible?
     if(!expanded)
       section_header.click

@@ -71,7 +71,7 @@ class Clinical::VisitPage < Common::DisplayControlsPage
    end
 
   def verify_current_tab(name)
-    tab = find('#consultation-header', :text => name, :match => :prefer_exact).parent
+    tab = find('#consultation-header', :text => name, :match => :prefer_exact, :visible => true).parent
     expect(tab).to have_selector('.tab-selected')
   end
 

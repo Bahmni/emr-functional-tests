@@ -44,8 +44,8 @@ class Registration::PatientPage < Page
     end
 
     def fill_village_and_save(village)
-        wait_for_element_to_load("cityVillage")
         fill_village(village)
+        wait_for_element_to_load("cityVillage")
         save
     end
 
@@ -66,7 +66,7 @@ class Registration::PatientPage < Page
     end
 
     def find_by_id(id)
-        return find('[id="'+id+'"]')
+        return find('[id="'+id+'"]', :match => :prefer_exact)
     end
 
     def get_patient_id

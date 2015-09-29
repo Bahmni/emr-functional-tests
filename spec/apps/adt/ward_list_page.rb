@@ -7,6 +7,7 @@ class Adt::WardListPage < Page
 
   def assign_or_transfer_bed(assign_or_transfer,ward_name)
     #expand_ward_section('General Ward')
+    sleep 1
     bed_details=page.find('ward.ng-isolate-scope',:text=>ward_name).all('ul.bed-assignment-inner-wrapper li.available')[0].first('span').text
     page.find('ward.ng-isolate-scope',:text=>ward_name).all('ul.bed-assignment-inner-wrapper li.available')[0].click
     wait_for_element_with_css_to_be_visible("a.#{assign_or_transfer}")
