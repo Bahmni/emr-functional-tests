@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'capybara', :require => ['capybara/rspec']
 gem 'selenium-webdriver'
-gem 'shoulda-matchers'
+gem 'shoulda-matchers', '=2.8.0'
 gem 'rspec'
 gem 'headless', '=2.1.0'
 gem 'activesupport', :require => ['active_support/dependencies', 'active_support/inflector']
