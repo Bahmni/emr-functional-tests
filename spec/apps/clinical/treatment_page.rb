@@ -14,7 +14,7 @@ class Clinical::TreatmentPage < Page
       select(drug[:instructions], :from => "instructions") if drug.has_key? :instructions
       fill_in "duration", :with => drug[:duration] if drug.has_key? :duration
       fill_in "start-date", :with => drug[:start_date] if drug.has_key? :start_date
-      if drug[:quantity_units]!= 'Tablet(s)' && drug[:quantity_units] != 'Capsule(s)' && drug[:quantity_units] != 'Teaspoons'
+      if drug[:quantity_units]!= 'Tablet(s)' && drug[:quantity_units] != 'Capsule(s)' && drug[:quantity_units] != 'Teaspoon'
          fill_in "quantity", :with => drug[:quantity] if drug.has_key? :quantity
       end
       fill_in "additional-instructions", :with => drug[:additional_instructions] if drug.has_key? :additional_instructions
