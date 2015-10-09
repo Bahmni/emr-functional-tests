@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'capybara', :require => ['capybara/rspec']
-gem 'selenium-webdriver'
+gem 'selenium-webdriver', '=2.47.1'
 gem 'shoulda-matchers', '=2.8.0'
 gem 'rspec'
 gem 'headless', '=2.1.0'
