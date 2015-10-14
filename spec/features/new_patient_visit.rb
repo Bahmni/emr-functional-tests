@@ -63,6 +63,7 @@ feature "new patient visit" do
     end
 
     scenario "Verify Uploading Consultation images" do
+      pending("Problem with emrapi-1.12-SNAPSHOT.omod when saving an voided observation")
       name = Utils.generate_random_string(6)
       new_patient = {:given_name => "Ram#{name}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
       log_in_to_app(:Registration, :location => 'Registration') do
