@@ -15,7 +15,7 @@ feature "treatments" do
 
     drug3 = {:drug_name => "Hepatitis - B 1ml (Injection)", :dose => "1", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => (date + 20).strftime("%F"),
              :instructions => "In the morning", :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :additional_instructions => "Injection to be taken..",
-             :quantity => "2", :quantity_units => "Unit(s)"}
+             :quantity => "2", :quantity_units => "mg"}
 
     log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient[:given_name])
@@ -43,7 +43,7 @@ feature "treatments" do
     patient = {:given_name => "Test RefillDrugScenario", :current_visit_date => "15 Jan 15"}
     paracetamol = {:drug_name => "Paracetamol 4.5 Litre (Syrup)", :dose => "1", :dose_unit => "ml", :frequency => "Once a month", :sos => true, :start_date => "15 Jan 15",
                    :instructions => "At bedtime", :duration => "200", :duration_unit => "Month(s)", :drug_route => "Oral", :additional_instructions => "On medication",
-                   :quantity => "200", :quantity_units => "Unit(s)"}
+                   :quantity => "200", :quantity_units => "ml"}
     refilled_paracetamol = {:drug_name => "Paracetamol 4.5 Litre (Syrup)", :dose => "1", :dose_unit => "ml", :frequency => "Once a month", :sos => true, :start_date => "15 Sep 31",
                             :instructions => "At bedtime", :duration => "200", :duration_unit => "Month(s)", :drug_route => "Oral", :additional_instructions => "On medication",
                             :quantity => "200", :quantity_units => "Unit(s)"}
@@ -60,7 +60,7 @@ feature "treatments" do
                             :quantity => "9", :quantity_units => "Unit(s)"}
 
     cytalon= {:drug_name => "Cytalon 100mg (Injection)", :dose => "1.5", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => "15 Jan 30",
-              :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :quantity => "3", :quantity_units => "Unit(s)"}
+              :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :quantity => "3", :quantity_units => "mg"}
 
     refilled_cytalon= {:drug_name => "Cytalon 100mg (Injection)", :dose => "1.5", :dose_unit => "mg", :frequency => "Once a month", :sos => false, :start_date => "15 Mar 30",
                        :duration => "2", :duration_unit => "Month(s)", :drug_route => "Intravenous", :quantity => "3", :quantity_units => "Unit(s)"}
