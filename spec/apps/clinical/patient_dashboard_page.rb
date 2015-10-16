@@ -172,6 +172,11 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     expect(expected).to match(retro_date+" - "+retro_date)
   end
 
+  def verify_retrospective_date_in_drug_section(retro_date)
+    expected=find("treatment-table thead").text
+    expect(expected).to match(retro_date)
+  end
+
   def verify_retrospective_date_in_visits_page(vitals)
     click_link_with_text "Vitals"
     visit_page.verify_observations(vitals)

@@ -70,4 +70,50 @@ feature "Existing patient retrospective data" do
 
     end
   end
+
+  scenario "Verify retrospective entry of Drugs data" do
+    date = Date.today();
+    patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :village => 'Ganiyari'}
+    drug1 = {:drug_name => "Albendazole 400mg (Tablet)", :dose => "2", :dose_unit => "Tablet(s)", :frequency => "Twice a day", :sos => false, :start_date => date.strftime("%F"),
+             :instructions => "After meals", :duration => "1", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "On medication",
+             :quantity => "4", :quantity_units => "Tablet(s)"}
+
+    drug2 = {:drug_name => "Albendazole 400mg (Tablet)", :morning_dose => "1.5", :noon_dose => "0", :night_dose => "1", :dose_unit => "Tablet(s)", :sos => true, :start_date => (date + 1).strftime("%F"),
+             :instructions => "After meals", :duration => "4", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "Take medicine as required",
+             :quantity => "10", :quantity_units => "Tablet(s)"}
+
+
+    location= 'OPD-1'
+    retrospective_date= '2015-01-03'
+    retrospective_date_with_month_in_words='03 Jan 15'
+
+    log_in_to_app(:Registration, :location => 'Registration') do
+      register_new_patient_and_start_visit(:patient => patient, :visit_type => 'OPD')
+    end
+
+    log_in_to_app(:Clinical, :location => location) do
+      patient_search_page.enter_retrospective_date(retrospective_date)
+      patient_search_page.view_patient_from_all_tab(patient[:given_name])
+      patient_dashboard_page.start_consultation
+
+      observations_page.go_to_tab("Medications")
+      treatment_page.add_new_drug(drug1, drug2)
+      treatment_page.save
+
+      treatment_page.verify_drug_on_tab("Recent", drug1, drug2)
+      treatment_page.verify_drug_on_tab(retrospective_date_with_month_in_words, drug1, drug2)
+
+      treatment_page.go_to_dashboard_page
+      patient_dashboard_page.verify_retrospective_date_in_drug_section(retrospective_date_with_month_in_words)
+      patient_dashboard_page.verify_new_drugs(drug1, drug2)
+
+      patient_dashboard_page.navigate_to_visit_page(retrospective_date_with_month_in_words)
+      visit_page.verify_new_drugs(drug1, drug2)
+      visit_page.navigate_to_patient_dashboard
+
+      patient_dashboard_page.navigate_to_all_treatments_page
+      summary_page.verify_new_drugs(drug1, drug2)
+
+    end
+  end
 end
