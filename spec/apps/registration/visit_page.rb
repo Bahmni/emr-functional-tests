@@ -20,4 +20,13 @@ class Registration::VisitPage < Page
         wait_for_element_with_xpath_to_be_visible('//input[@id="givenName"]')
     end
 
+    def close_visit
+        click_on("Close Visit")
+        sleep 0.3
+    end
+
+    def verify_message_cannot_be_closed_for_admitted
+        popup_text=page.first('div.error-message').text
+        expect(popup_text).to include("Admitted patient's visit cannot be closed. Discharge the patient and try again")
+    end
 end

@@ -21,4 +21,36 @@ feature "Registration search " do
     end
 
   end
+
+  scenario "close visit for a discharged patient" do
+    patient_name="Test CloseVisit"
+    patient_id="200061"
+    discharge_details = {:action => "Discharge Patient", :notes => "Discharge the patient"}
+    log_in_to_app(:Registration, :location => 'OPD-1') do
+      #patient_search_page.search_patient_with_name(patient_name)
+
+      patient_search_page.search_patient_with_id(patient_id)
+      patient_page.enter_visit_page
+      visit_page.close_visit
+      visit_page.verify_message_cannot_be_closed_for_admitted
+    end
+    go_to_app(:InPatient) do
+      patient_search_page.view_patient_from_admitted_tab(patient_name)
+      patient_dashboard_page.perform_discharge_action(discharge_details)
+    end
+    go_to_app(:Registration) do
+      patient_search_page.search_patient_with_id(patient_id)
+      patient_page.enter_visit_page
+      visit_page.close_visit
+      page.driver.browser.switch_to.alert.accept
+      patient_search_page.search_patient_with_id(patient_id)
+      patient_page.verify_start_visit_button
+    end
+    #go_to_app(:InPatient) do
+    #  patient_search_page.search_patient_in_all_tab(patient_name)
+    #  debugger
+    #  patient_dashboard_page.verify_only_undoDischarge_option_available
+    #end
+
+  end
 end

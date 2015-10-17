@@ -12,6 +12,13 @@ class Adt::PatientSearchPage < Common::CommonPatientSearchPage
       search_patient_in_tab("Admitted", patient)
     end
 
+    def search_patient_in_all_tab(patient)
+      go_to_tab("All")
+      fill_in "patientIdentifier", :with => patient
+      find_button('Search').click
+      wait_for_overlay_to_be_hidden
+    end
+
     def verify_patient_not_found_in_to_admit_tab(patient)
        go_to_tab("To Admit")
        fill_in "patientIdentifier", :with => patient
@@ -21,13 +28,6 @@ class Adt::PatientSearchPage < Common::CommonPatientSearchPage
     end
 
     private
-
-    def search_patient_in_all_tab(patient)
-      go_to_tab("All")
-      fill_in "patientIdentifier", :with => patient
-      find_button('Search').click
-      wait_for_overlay_to_be_hidden
-    end
 
     def search_patient_in_tab(tab, patient)
       go_to_tab(tab)

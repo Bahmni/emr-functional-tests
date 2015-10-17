@@ -35,4 +35,9 @@ class Adt::PatientDashboardPage < Common::DisplayControlsPage
     expect(admission_details_section).to include(admit_details[:ward])
     expect(admission_details_section).to include(admit_details[:bed_detail])
   end
+
+  def verify_only_undoDischarge_option_available
+    expect(page).to have_select('dispositionAction', :selected => 'Undo Discharge')
+    expect(page).to have_select('dispositionAction', :options => ['Select','Undo Discharge'])
+  end
 end

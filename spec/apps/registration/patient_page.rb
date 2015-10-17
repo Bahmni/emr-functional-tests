@@ -36,6 +36,7 @@ class Registration::PatientPage < Page
 
     def enter_visit_page
         start_visit "Enter Visit Details"
+        wait_for_overlay_to_be_hidden
     end
 
     def start_visit(text)
@@ -101,4 +102,7 @@ class Registration::PatientPage < Page
       return find('legend.mylegend span strong',:match => :first).text
     end
 
+    def verify_start_visit_button
+      expect(page).to have_button('Start OPD visit')
+    end
 end
