@@ -62,7 +62,7 @@ class Clinical::VisitPage < Common::DisplayControlsPage
 
     def navigate_to_patient_search_page
       find('#patients-link').click
-     click_on "Patients"
+     click_on "My Patients"
    end
 
    def navigate_to_patient_dashboard ##  use this method for navigating back from current visit page
