@@ -6,7 +6,7 @@ feature "Multiple dashboard & display of patient profile details" do
     name = Utils.generate_random_string(6)
     patient_details = {:given_name => "Ram#{name}", :family_name => 'Singh', :gender => 'Male', :age => {:years => 40}, :identifier =>"",
                    :house_number => "155", :gram_panchayat => "gram panchayat", :village => 'Ganiyari', :address => "155, gram panchayat, Ganiyari",
-                   :caste => "hindu", :class => "OBC", :education_details => "Uneducated", :occupation => "Unemployed", :additional_info => "true",
+                   :caste => "hindu", :class => "obc", :education_details => "uneducated", :occupation => "unemployed", :additional_info => "true",
                    :debt => "120000", :distanceFromCenter  => "15.8" ,:is_urban => "Yes", :cluster => "Semariya", :ration_card => "None", :family_income => ">=36017"}
     visit_info = {:fee => 15, :weight => 70, :height => 170, :comments => 'Billed'}
 
