@@ -21,7 +21,7 @@ class Registration::PatientSearchPage < Common::CommonPatientSearchPage
 
   def verify(field,expected)
     #the column position in the search result section. The position can be get during runtime. Can be done later
-    results_map={"ID"=>2,"Name"=>3,"Gender"=>7,"Age"=>8,"Village"=>9}
+    results_map={"ID"=>1,"Name"=>2,"Gender"=>6,"Age"=>7,"Village"=>8}
 
     field_value=find(:xpath,"(//div[@class='registraition-search-results-container']//tbody/tr/td)[#{results_map[field]}]").text
     expect(field_value).to include(expected)
