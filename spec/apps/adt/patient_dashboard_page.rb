@@ -1,10 +1,14 @@
 class Adt::PatientDashboardPage < Common::DisplayControlsPage
 
-  def perform_action(action_details,action)
+  def perform_action(action_details, action)
     select(action_details[:action], :from => "dispositionAction")
     find("#adtNotes textArea").set(action_details[:notes]) if action_details.has_key? :notes
     sleep 0.2
     click_on action
+    begin
+      page.driver.browser.switch_to.alert.accept
+    rescue => ex
+    end
     wait_for_overlay_to_be_hidden
   end
 
