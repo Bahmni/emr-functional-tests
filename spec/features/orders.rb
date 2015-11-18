@@ -18,19 +18,19 @@ feature 'Orders' do
 
     log_in_to_app(:Orders, :location => 'OPD-1') do
       order_fulfilment_page.search_and_open_patient_orders(patient)
-      order_fulfilment_page.fill_radiology_notes('Chest, 1 view', 'Hairline fracture spotted')
-      order_fulfilment_page.fill_radiology_notes('Ribs - Right, 2 views', 'One right rib missing')
+      order_fulfilment_page.fill_radiology_notes('chest, 1 view (x-ray)', 'Hairline fracture spotted')
+      order_fulfilment_page.fill_radiology_notes('ribs - right, 2 views (x-ray)', 'One right rib missing')
       order_fulfilment_page.save
     end
 
     log_in_as_different_user(:Orders) do
       order_fulfilment_page.search_and_open_patient_orders(patient)
-      order_fulfilment_page.fill_radiology_notes('Ribs - Right, 2 views', 'Not the right one, but the left rib missing')
+      order_fulfilment_page.fill_radiology_notes('ribs - right, 2 views (x-ray)', 'Not the right one, but the left rib missing')
       order_fulfilment_page.save
 
-      order_fulfilment_page.verify_radiology_notes_history('Chest, 1 view', 'Hairline fracture spotted')
-      order_fulfilment_page.verify_radiology_notes_history('Ribs - Right, 2 views', 'One right rib missing')
-      order_fulfilment_page.verify_radiology_notes_history('Ribs - Right, 2 views', 'Not the right one, but the left rib missing')
+      order_fulfilment_page.verify_radiology_notes_history('chest, 1 view (x-ray)', 'Hairline fracture spotted')
+      order_fulfilment_page.verify_radiology_notes_history('ribs - right, 2 views (x-ray)', 'One right rib missing')
+      order_fulfilment_page.verify_radiology_notes_history('ribs - right, 2 views (x-ray)', 'Not the right one, but the left rib missing')
     end
 
     log_in_to_app(:Clinical, {:location => 'OPD-1'}) do
@@ -103,7 +103,7 @@ feature 'Orders' do
 
     log_in_to_app(:Orders, :location => 'OPD-1') do
       order_fulfilment_page.search_and_open_patient_orders(patient)
-      order_fulfilment_page.fill_radiology_notes('Acromioclavicular joints - Bilateral (X-ray)', 'Hairline fracture spotted')
+      order_fulfilment_page.fill_radiology_notes('acromioclavicular joints - bilateral (x-ray)', 'Hairline fracture spotted')
       order_fulfilment_page.save
     end
 
@@ -127,7 +127,7 @@ feature 'Orders' do
 
     log_in_to_app(:Orders, :location => 'OPD-1') do
       order_fulfilment_page.search_and_open_patient_orders(patient)
-      order_fulfilment_page.verify_radiology_orders_section_not_have_deleted_order('Acromioclavicular joints - Bilateral (X-ray)')
+      order_fulfilment_page.verify_radiology_orders_section_not_have_deleted_order('acromioclavicular joints - bilateral (x-ray)')
     end
 
   end
