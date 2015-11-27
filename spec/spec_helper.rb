@@ -18,8 +18,6 @@ Selenium::WebDriver::Firefox::Binary.path=Settings.firefox_path
 
 Headless.new.start if Settings.headless
 
-Debugger.start
-
 RSpec.configure do |config|
   config.include AppsAwareness
   config.after(:each) do
