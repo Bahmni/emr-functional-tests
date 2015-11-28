@@ -83,7 +83,7 @@ class Clinical::TreatmentPage < Page
   end
 
   def fill_variable_dosing_details(details)
-    find('.variable-frequency', :visible => false).click
+    find('.exchange-btn').click if find('.variable-frequency', :visible => false)
     fill_in "morning-dose", :with => details[:morning_dose] if details.has_key? :morning_dose
     fill_in "afternoon-dose", :with => details[:noon_dose] if details.has_key? :noon_dose
     fill_in "evening-dose", :with => details[:night_dose] if details.has_key? :night_dose
