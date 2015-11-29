@@ -1,6 +1,4 @@
 .DS_Store
-screenshots
 .idea
 *.iml
-spec-results/*
 dbdump/*.sql
