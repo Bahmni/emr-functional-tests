@@ -10,4 +10,5 @@ service httpd restart
 
 sleep 30
 
-bundle exec rspec spec/features/*.rb --format documentation --format html --out spec-results/index.html
+cd /emr-functional-tests
+./scripts/run.sh
