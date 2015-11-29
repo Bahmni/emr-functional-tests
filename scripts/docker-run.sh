@@ -1,1 +1,1 @@
-docker exec -it bahmni /emr-functional-tests/scripts/run-inside-docker-container.sh
+docker exec -i bahmni /emr-functional-tests/scripts/run-inside-docker-container.sh
