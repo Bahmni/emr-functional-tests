@@ -1,5 +1,5 @@
 #!/bin/bash --login
-rvm use 2.0.0
+rvm use 1.9.3
 set -ex
 bundle install
 if [ "$TEST_ENV" = "soak" ]
