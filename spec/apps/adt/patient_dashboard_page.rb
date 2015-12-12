@@ -41,7 +41,7 @@ class Adt::PatientDashboardPage < Common::DisplayControlsPage
   end
 
   def verify_only_undoDischarge_option_available
-    expect(page).to have_select('dispositionAction', :selected => 'Undo Discharge')
+    expect(page).to have_select('dispositionAction', :selected => 'Select')
     expect(page).to have_select('dispositionAction', :options => ['Select','Undo Discharge'])
   end
 
