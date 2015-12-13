@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "admit patient" do
   scenario "verify patient admit with no open visit" do
 
-    patient1 = "TestNoOpenVisit Scenario"
+    patient1 = "Test NoOpenVisit Scenario"
     admit_details = {:action => "Admit Patient", :notes => "Admit the patient"}
 
     log_in_to_app(:Clinical, :location => 'OPD-1') do
