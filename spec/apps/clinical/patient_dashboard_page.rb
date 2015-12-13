@@ -148,8 +148,8 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
   end
 
   def verify_visit_type(visit_type)
-    visits_section = page.find("#visitDisplayTable").first("li.eachVisit")
-    expect(visits_section.first("span.visitType")).to have_content(visit_type)
+    visits_section = page.find("#visitDisplayTable").first("tr#eachVisit")
+    expect(visits_section.first("td#visitType")).to have_content(visit_type)
   end
 
   def verify_retrospective_date(location,retro_date)
