@@ -58,7 +58,7 @@ class Registration::PatientPage < Page
         sleep 1
         click_on("Save")
         wait_for_overlay_to_be_hidden
-        wait_for_element_with_css_with_text('strong','Paper')
+        # wait_for_element_with_css_with_text('strong','Paper')
     end
 
     def verify_village(village)
@@ -72,7 +72,7 @@ class Registration::PatientPage < Page
 
     def get_patient_id
         sleep 1
-        return find('legend.mylegend span strong',:match => :first).text.gsub(/[A-Z]/,'')
+        return find('legend.registraion_legend span.mylegend',:match => :first).text.gsub(/[A-Z]/,'')
     end
 
     def verify_update_village(village)
