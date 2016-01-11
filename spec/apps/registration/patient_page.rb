@@ -72,7 +72,7 @@ class Registration::PatientPage < Page
 
     def get_patient_id
         sleep 1
-        return find('legend.registraion_legend span.mylegend',:match => :first).text.gsub(/[A-Z]/,'')
+        return find('legend.registraion_legend span.mylegend span',:match => :first).text.gsub(/[A-Z]/,'')
     end
 
     def verify_update_village(village)
