@@ -75,13 +75,13 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
 
   def verify_vitals(observations,id)
     observations_section = find('[id="'+id+'"]')
-    expect(observations_section).to have_content("Pulse #{observations[:pulse]} (72 - 72) /min") if observations.has_key? :pulse
-    expect(observations_section).to have_content("Diastolic #{observations[:diastolic]} (70 - 85) mm Hg") if observations.has_key? :diastolic
-    expect(observations_section).to have_content("Systolic #{observations[:systolic]} (110 - 140) mm Hg") if observations.has_key? :systolic
+    expect(observations_section).to have_content("Pulse (72 - 72) #{observations[:pulse]} /min") if observations.has_key? :pulse
+    expect(observations_section).to have_content("Diastolic (70 - 85) #{observations[:diastolic]} mm Hg") if observations.has_key? :diastolic
+    expect(observations_section).to have_content("Systolic (110 - 140) #{observations[:systolic]} mm Hg") if observations.has_key? :systolic
     expect(observations_section).to have_content("Posture #{observations[:posture]}") if observations.has_key? :posture
-    expect(observations_section).to have_content("Temperature #{observations[:temperature]} (98.6 - 98.6) F") if observations.has_key? :temperature
-    expect(observations_section).to have_content("RR #{observations[:rr]} (16 - 20) /min") if observations.has_key? :rr
-    expect(observations_section).to have_content("SPO2 #{observations[:spo2]} (> 97) %") if observations.has_key? :spo2
+    expect(observations_section).to have_content("Temperature (98.6 - 98.6) #{observations[:temperature]} F") if observations.has_key? :temperature
+    expect(observations_section).to have_content("RR (16 - 20) #{observations[:rr]} /min") if observations.has_key? :rr
+    expect(observations_section).to have_content("SPO2 (> 97) #{observations[:spo2]} %") if observations.has_key? :spo2
   end
 
   def verify_second_vitals(observations,id)
