@@ -5,11 +5,11 @@ feature "treatments" do
   scenario "add drugs" do
     date = Date.today();
     patient = {:given_name => "Test AddDrugScenario", :current_visit_date => "15 Jan 15"}
-    drug1 = {:drug_name => "Albendazole 400mg", :dose => "2", :dose_unit => "Tablet(s)", :frequency => "Twice a day", :sos => false, :start_date => date.strftime("%F"),
+    drug1 = {:drug_name => "Albendazole 400mg (Tablet)", :dose => "2", :dose_unit => "Tablet(s)", :frequency => "Twice a day", :sos => false, :start_date => date.strftime("%F"),
              :instructions => "After meals", :duration => "1", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "On medication",
              :quantity => "4", :quantity_units => "Tablet(s)"}
 
-    drug2 = {:drug_name => "Albendazole 400mg", :morning_dose => "1.5", :noon_dose => "0", :night_dose => "1", :dose_unit => "Tablet(s)", :sos => true, :start_date => (date + 1).strftime("%F"),
+    drug2 = {:drug_name => "Albendazole 400mg (Tablet)", :morning_dose => "1.5", :noon_dose => "0", :night_dose => "1", :dose_unit => "Tablet(s)", :sos => true, :start_date => (date + 1).strftime("%F"),
              :instructions => "After meals", :duration => "4", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "Take medicine as required",
              :quantity => "10", :quantity_units => "Tablet(s)"}
 
