@@ -26,7 +26,7 @@ class Registration::VisitPage < Page
     end
 
     def verify_message_cannot_be_closed_for_admitted
-        popup_text=page.first('div.error-message-container error-message').text
+        popup_text=page.first('div.messages').text
         expect(popup_text).to include("Admitted patient's visit cannot be closed. Discharge the patient and try again")
     end
 end
