@@ -23,7 +23,7 @@ class Registration::PatientSearchPage < Common::CommonPatientSearchPage
     #the column position in the search result section. The position can be get during runtime. Can be done later
     results_map={"ID"=>1,"Name"=>2,"Gender"=>6,"Age"=>7,"Village"=>8}
 
-    field_value=find(:xpath,"(//div[@class='registraition-search-results-container']//tbody/tr/td)[#{results_map[field]}]").text
+    field_value=page.find(".registraition-search-results-container tbody tr td:nth-child(#{results_map[field]})").text
     expect(field_value).to include(expected)
   end
 end
