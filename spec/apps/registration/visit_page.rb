@@ -1,5 +1,5 @@
 class Registration::VisitPage < Page
-    set_url '/bahmni/registration/#/patient/{patient_id}/visit'
+  set_url '/bahmni/registration/index.html#/patient/{patient_id}/visit'
 
     def save_new_patient_visit(visit_info)
         fill_in("REGISTRATION FEES", :with => visit_info[:fee])
