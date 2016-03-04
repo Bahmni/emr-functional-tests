@@ -6,7 +6,7 @@ class Adt::PatientDashboardPage < Common::DisplayControlsPage
     sleep 0.2
     click_on action
     begin
-      page.driver.browser.switch_to.alert.accept
+      find("#modal-revise-button1").click
     rescue => ex
     end
     wait_for_overlay_to_be_hidden
