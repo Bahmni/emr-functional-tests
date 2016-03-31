@@ -1,6 +1,5 @@
 module AppsAwareness
     def go_to_app(name, &block)
-        visit '/bahmni/home'
         page.find("a", :text => name, :visible => :true).click
         App.create(name, self).instance_eval(&block)
     end
@@ -12,7 +11,13 @@ module AppsAwareness
     end
 
     def login(credentials)
-        visit '/bahmni/home'
+        if ENV['TEST_ENV'] == 'offline-ci'
+            visit '/index.html'
+            fill_in "Please Enter IP", :with => 'test.bahmnidev.org'
+            click_on 'Enter'
+        else
+            visit '/bahmni/home'
+        end
         loginApp = App.create("home", self)
         loginApp.login(credentials)
     end
