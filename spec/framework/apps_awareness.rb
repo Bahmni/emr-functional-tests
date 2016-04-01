@@ -1,5 +1,6 @@
 module AppsAwareness
     def go_to_app(name, &block)
+        visit '/bahmni/home' if ENV['TEST_ENV'] != 'offline-ci'
         page.find("a", :text => name, :visible => :true).click
         App.create(name, self).instance_eval(&block)
     end
