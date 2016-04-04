@@ -14,7 +14,7 @@ module AppsAwareness
     def login(credentials)
         if ENV['TEST_ENV'] == 'offline-ci'
             visit '/index.html'
-            fill_in "Please Enter IP", :with => 'test.bahmnidev.org'
+            fill_in "Please Enter IP", :with => '172.18.2.44'
             click_on 'Enter'
         else
             visit '/bahmni/home'
