@@ -23,5 +23,5 @@ soak:
 offline-ci:
     default_username: armanvuiyan
     default_password: Dghs1234
-    root_url: chrome-extension://akgemjphbnkkphikcgfjplhfemmgfolc
+    root_url: chrome-extension://khcefkfpglbcjndlfliehjfaaenkjdmi
     headless: true
