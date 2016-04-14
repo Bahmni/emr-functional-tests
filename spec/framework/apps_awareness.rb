@@ -30,7 +30,7 @@ module AppsAwareness
         page.execute_script("window.localStorage.removeItem('host');")
         loginApp = App.create("home", self)
         loginApp.login(credentials)
-        go_to_app name,false &block
+        go_to_app name,false, &block
     end
 
     def log_in_as_different_user(name, &block)
