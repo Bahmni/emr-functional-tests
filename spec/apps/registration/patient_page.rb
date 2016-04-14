@@ -11,7 +11,8 @@ class Registration::PatientPage < Page
         fill_in FAMILY_NAME, :with => patient[:family_name]
         select patient[:gender], :from => GENDER
         fill_in AGE_YEARS, :with => patient[:age][:years]
-        fill_in VILLAGE, :with => patient[:village]
+        fill_in VILLAGE, :with => patient[:village] if patient.has_key? :village
+        fill_in "Address Line", :with => patient[:address_line] if patient.has_key? :address_line
         fill_in 'House No., Street', :with => patient[:house_number] if patient.has_key? :house_number
         fill_in 'Gram Panchayat', :with => patient[:gram_panchayat] if patient.has_key? :gram_panchayat
         fill_in 'Caste', :with => patient[:caste] if patient.has_key? :caste
@@ -54,6 +55,10 @@ class Registration::PatientPage < Page
         fill_in VILLAGE, :with => village
     end
 
+    def fill_age(age)
+        fill_in AGE_YEARS, :with => age
+    end
+
     def save()
         sleep 1
         click_on("Save")
@@ -73,11 +78,21 @@ class Registration::PatientPage < Page
     def get_patient_id
         sleep 1
         return find('legend.registraion_legend span.mylegend span',:match => :first).text.gsub(/[A-Z]/,'')
+        # return find('legend.registraion_legend span.mylegend span',:match => :first).text.gsub(/[:alnum:]/,'')
+
     end
 
     def verify_update_village(village)
       fill_village_and_save(village)
       verify_village(village)
+    end
+
+    def verify_update_age(age)
+        click_link_with_text('Not Assigned')
+
+        fill_age(age)
+        save
+        verify(AGE_YEARS, age.to_s)
     end
 
     def verify_all_fields(patient)
