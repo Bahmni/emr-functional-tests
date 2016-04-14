@@ -16,6 +16,10 @@ class Registration::App < App
       patient_page.verify_update_village(village)
     end
 
+    def verify_details_after_update_age(age)
+      patient_page.verify_update_age(age)
+    end
+
     def verify_details_in_patient_page(patient_id,options)
       patient_search_page.search_patient_with_id(patient_id)
       patient_page.verify_all_fields(options)

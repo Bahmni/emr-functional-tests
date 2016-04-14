@@ -20,8 +20,12 @@ soak:
     root_url: https://172.18.2.43
     headless: true
 
-offline-ci:
+offline-ci: &offline
     default_username: armanvuiyan
     default_password: Dghs1234
     root_url: chrome-extension://khcefkfpglbcjndlfliehjfaaenkjdmi
     headless: true
+
+offline-developement:
+    <<: *offline
+    headless: false
