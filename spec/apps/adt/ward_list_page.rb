@@ -4,6 +4,11 @@ class Adt::WardListPage < Page
     find('#adtHomeBackLink').click
     wait_for_overlay_to_be_hidden
   end
+  def navigate_back_to_ward_list_tab_in_patient_search_page
+    find('#adtHomeBackLink').click
+    find('.ward-list-tab').click
+    wait_for_overlay_to_be_hidden
+  end
 
   def assign_or_transfer_bed(assign_or_transfer,ward_name)
     #expand_ward_section('General Ward')

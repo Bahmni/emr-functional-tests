@@ -49,7 +49,7 @@ feature "admit patient" do
       available_bed_count_after_admit = ward_list_page.available_bed_count(admit_details[:ward])
       ward_list_page.validate_bed_count_after_assign(available_bed_count_before_admit,available_bed_count_after_admit,1)
 
-      ward_list_page.navigate_back_to_patient_search_page
+      ward_list_page.navigate_back_to_ward_list_tab_in_patient_search_page
 
       ward_list_page.verify_bed_details_and_notes(new_patient[:given_name],admit_details)
       ward_list_page.goto_patient_dashboard_from_id_link(new_patient[:given_name])
@@ -62,7 +62,7 @@ feature "admit patient" do
       available_beds_after_transfer = ward_list_page.available_bed_count(transfer_details[:ward])
       ward_list_page.validate_bed_count_after_assign(available_bed_count_after_admit,available_beds_after_transfer,0)
 
-      ward_list_page.navigate_back_to_patient_search_page
+      ward_list_page.navigate_back_to_ward_list_tab_in_patient_search_page
 
       ward_list_page.verify_bed_details_and_notes(new_patient[:given_name],transfer_details)
       ward_list_page.goto_patient_dashboard_from_id_link(new_patient[:given_name])
