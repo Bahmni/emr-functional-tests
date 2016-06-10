@@ -21,6 +21,7 @@ module AppsAwareness
         visit '/index.html'
         fill_in "Please Enter IP", :with => '172.18.2.44'
         click_on 'Enter'
+        page.accept_alert
         loginApp = App.create("home", self)
         loginApp.login(credentials)
     end
