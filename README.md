@@ -12,7 +12,7 @@ Functional tests suit for emr apps
 
 * Set up database using base dbdump
 
-            ./scripts/setup-database.sh
+            ./scripts/setup_database.sh
 
 * Running tests
 
