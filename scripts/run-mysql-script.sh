@@ -16,5 +16,4 @@ if [ -z $sqlfile ]; then
 	exit 1
 fi
 
-mysql -uroot -p$rootPassword  -e "show databases" | grep -v Database | grep -v mysql| grep -v information_schema| grep -v test | grep -v OLD |gawk '{print "drop database " $1 ";select sleep(0.1);"}' | mysql -uroot -ppassword
 mysql -uroot -p$rootPassword < $sqlfile
