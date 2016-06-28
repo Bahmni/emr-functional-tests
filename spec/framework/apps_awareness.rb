@@ -1,4 +1,7 @@
 module AppsAwareness
+    include Capybara::DSL
+    include RSpec::Matchers
+    include CapybaraDslExtensions
     def go_to_app(name, online = true, &block)
         visit '/bahmni/home' if online
         page.find("a", :text => name, :visible => :true).click
@@ -28,9 +31,13 @@ module AppsAwareness
 
     def offline_login(name, credentials, &block)
         visit '/index.html'
-        page.execute_script("window.localStorage.removeItem('host');")
+        # page.execute_script("window.localStorage.removeItem('host');")
         loginApp = App.create("home", self)
         loginApp.login(credentials)
+        Capybara.default_wait_time = 500
+        wait_until { page.find('.secondary-button') }
+        click_on("OK")
+        Capybara.default_wait_time = 30
         go_to_app name,false, &block
     end
 
