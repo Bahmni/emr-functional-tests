@@ -27,6 +27,10 @@ module AppsAwareness
         page.accept_alert
         loginApp = App.create("home", self)
         loginApp.login(credentials)
+        Capybara.default_wait_time = 500
+        wait_until { page.find('.secondary-button') }
+        click_on("OK")
+        Capybara.default_wait_time = 30
     end
 
     def offline_login(name, credentials, &block)
@@ -34,10 +38,6 @@ module AppsAwareness
         # page.execute_script("window.localStorage.removeItem('host');")
         loginApp = App.create("home", self)
         loginApp.login(credentials)
-        Capybara.default_wait_time = 500
-        wait_until { page.find('.secondary-button') }
-        click_on("OK")
-        Capybara.default_wait_time = 30
         go_to_app name,false, &block
     end
 
