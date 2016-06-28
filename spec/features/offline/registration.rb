@@ -15,11 +15,21 @@ feature 'Offline' do
       verify_search_by_name_results(new_patient)
 
       verify_details_after_update_age(20)
-      new_patient[:age] = {:years => "20"};
+      new_patient[:age] = {:years => "20"}
 
       goto_search_page
       verify_search_by_name_results(new_patient)
+    end
+  end
+
+  scenario 'should sync Patient data without failures' do
+    offline_login(:Registration, :location => "Chandaiya CC - Kaliganj (10005345)") do
+      click_on("Sync")
       sleep 5
+      hasExceptions = page.first(:css, '.error-message-container')
+      if(hasExceptions)
+        fail "Sync failure"
+      end
     end
   end
 
