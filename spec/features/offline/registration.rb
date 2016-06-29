@@ -1,11 +1,6 @@
 require 'offline_spec_helper'
 
 feature 'Offline' do
-  scenario 'first login to sync app data' do
-    offline_first_login(:location =>  "Chandaiya CC - Kaliganj (10005345)") do
-      sleep 10
-    end
-  end
 
   scenario 'create, edit and search a patient in local database' do
     new_patient = {:given_name => "Ram#{(0...5).map { (97 + rand(26)).chr }.join}", :family_name => 'Singh', :gender => 'Male', :age => {:years => "40"}, :address_line => 'Offline', :isOffline => true}
@@ -22,15 +17,14 @@ feature 'Offline' do
     end
   end
 
-  scenario 'should sync Patient data without failures' do
+  scenario 'should sync Patient registration data without failures' do
     offline_login(:Registration, :location => "Chandaiya CC - Kaliganj (10005345)") do
       click_on("Sync")
       sleep 5
       hasExceptions = page.first(:css, '.error-message-container')
       if(hasExceptions)
-        fail "Sync failure"
+        fail "Sync Error : " + hasExceptions.text
       end
     end
   end
-
 end

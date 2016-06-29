@@ -124,4 +124,11 @@ class Clinical::ObservationsPage < Page
           section.fill_in 'RR', :with => vitals[:rr] if vitals.has_key? :rr
           section.fill_in 'SPO2', :with => vitals[:spo2] if vitals.has_key? :spo2
     end
+
+    def fill_anc_data(anc_data)
+      expand_section "ANC_visit_information"
+      section = get_section('ANC visit information')
+      section.click_on anc_data[:Danger_sign]
+      section.click_on anc_data[:ANC_Visit_Number]
+    end
 end

@@ -109,6 +109,12 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     expect(observations_section).to have_content("P/S (Per Speculum) - Cervix #{observations[:ps_perSpeculum_cervix][0]}, #{observations[:ps_perSpeculum_cervix][1]}") if observations.has_key? :ps_perSpeculum_cervix
   end
 
+  def verify_anc_values(observations, id)
+    observations_section = find('[id="'+id+'"]')
+    expect(observations_section).to have_content("#{observations[:Danger_sign]}")
+    expect(observations_section).to have_content("#{observations[:ANC_Visit_Number]}")
+  end
+
   def verify_obstetrics_values(observations,id)
     observations_section = find('[id="'+id+'"]')
     expect(observations_section).to have_content("Fundal Height (Weeks) #{observations[:fundal_height]}") if observations.has_key? :fundal_height

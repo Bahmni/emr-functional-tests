@@ -35,7 +35,6 @@ module AppsAwareness
 
     def offline_login(name, credentials, &block)
         visit '/index.html'
-        # page.execute_script("window.localStorage.removeItem('host');")
         loginApp = App.create("home", self)
         loginApp.login(credentials)
         go_to_app name,false, &block
