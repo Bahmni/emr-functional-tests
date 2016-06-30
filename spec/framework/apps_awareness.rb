@@ -27,7 +27,7 @@ module AppsAwareness
         page.accept_alert
         loginApp = App.create("home", self)
         loginApp.login(credentials)
-        Capybara.default_wait_time = 500
+        Capybara.default_wait_time = 800
         wait_until { page.find('.secondary-button') }
         click_on("OK")
         Capybara.default_wait_time = 30
