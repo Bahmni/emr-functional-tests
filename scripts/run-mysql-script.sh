@@ -15,5 +15,5 @@ if [ -z $sqlfile ]; then
 	echo "[USAGE] $0 <mysqlRootPassword> <sqlDumpFile>"
 	exit 1
 fi
-
-mysql -uroot -p$rootPassword < $sqlfile
+mysql -uroot -p$rootPassword -e "CREATE DATABASE openmrs;"
+mysql -uroot -p$rootPassword openmrs < $sqlfile

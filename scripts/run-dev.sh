@@ -8,6 +8,6 @@ DBDUMP_DIR="/bahmni/emr-functional-tests/dbdump"
 BAHMNI_DB_SCRIPTS="/bahmni/emr-functional-tests/scripts"
 
 # Restore only the mysql database
-sh ${BAHMNI_DB_SCRIPTS}/setup_databases.sh
+sh ${SCRIPT_DIR}/setup_databases.sh
 
 /bin/bash scripts/run.sh
