@@ -72,14 +72,23 @@ class Clinical::TreatmentPage < Page
 
   def fill_drug_name(details)
     searchable_drug_name = details[:drug_name].split(" (")[0];
-    fill_in "drug-name", :with => searchable_drug_name if details.has_key? :drug_name
-    find('.ui-menu-item').click
+    fill_in "drug-name", :with => searchable_drug_name
+    begin
+    if details.has_key? :drug_name
+    	find('.ui-menu-item').click
+    end	
+    rescue
+    	find(:id, 'accept-button').click
+    end
+    
+		
   end
 
   def fill_uniform_dosing_details(details)
     fill_in "uniform-dose", :with => details[:dose]
     select(details[:dose_unit], :from => "uniform-dose-unit") if details.has_key? :dose_unit
     select(details[:frequency], :from => "frequency") if details.has_key? :frequency
+    select(details[:drug_route], :from => "route") if details.has_key? :drug_route
   end
 
   def fill_variable_dosing_details(details)

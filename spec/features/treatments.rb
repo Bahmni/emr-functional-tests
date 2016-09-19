@@ -5,7 +5,7 @@ feature "treatments" do
   scenario "add drugs" do
     date = Date.today();
     patient = {:given_name => "Test AddDrugScenario", :current_visit_date => "15 Jan 15"}
-    drug1 = {:drug_name => "Albendazole 400mg (Tablet)", :dose => "2", :dose_unit => "Tablet(s)", :frequency => "Twice a day", :sos => false, :start_date => date.strftime("%F"),
+    drug1 = {:drug_name => "Free text drug name", :dose => "2", :dose_unit => "Tablet(s)", :frequency => "Twice a day", :sos => false, :start_date => date.strftime("%F"),
              :instructions => "After meals", :duration => "1", :duration_unit => "Day(s)", :drug_route => "Oral", :additional_instructions => "On medication",
              :quantity => "4", :quantity_units => "Tablet(s)"}
 
