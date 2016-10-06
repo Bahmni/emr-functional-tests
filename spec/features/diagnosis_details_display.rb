@@ -49,7 +49,7 @@ feature "Diagnosis" do
       coded_diagnosis = {:index => 0, :name => 'Dog bite', :order => 'PRIMARY', :certainty => 'PRESUMED'}
       patient_search_page.view_patient_from_all_tab(patient)
       patient_dashboard_page.start_consultation
-      coded_diagnosis[:status] = 'Inactive'
+      coded_diagnosis[:status] = 'CURED'
       diagnosis_page.edit_past_diagnosis(coded_diagnosis)
       diagnosis_page.save
       diagnosis_page.verify_current_diagnosis([coded_diagnosis])
