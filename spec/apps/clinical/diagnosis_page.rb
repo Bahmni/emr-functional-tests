@@ -19,9 +19,9 @@ class Clinical::DiagnosisPage < Page
 
   def edit_past_diagnosis(details)
     go_to_tab("Diagnosis")
-    history_diagnosis = page.find("div > .history-diagnosis")
-    history_diagnosis.first(".diagnosis .view-past .diagnosis-name span", :text => details[:name]).click
-    history_diagnosis.first(".edit-diagnosis button", :text => details[:status], :visible => true).click if details[:status]
+    history_diagnosis = page.find("div > .past-diagnosis")
+    history_diagnosis.find("div.table-body .diagnosis-row .view-past .diagnosis-name span", :text => details[:name]).click
+    history_diagnosis.find(".edit-diagnosis button", :text => details[:status], :visible => true).click if details[:status]
   end
 
   def verify_current_diagnosis(diagnoses)

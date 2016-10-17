@@ -6,7 +6,10 @@ class Common::DisplayControlsPage < Page
     end
   end
 
-  def verify_diagnosis_details(diagnosis_details)
+  def verify_diagnosis_details(diagnosis_details, spinner_class)
+    wait_until{
+      page.should have_no_css(spinner_class)
+    }
     diagnosis_details_section = page.find("#diagnosisSection")
     diagnosis_details.each_with_index { |diagnosis, index|
       expect(diagnosis_details_section.all("#diagnosisName")[index]).to have_content(diagnosis[:freeTextAnswer])

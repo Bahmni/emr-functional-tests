@@ -10,14 +10,16 @@ feature "Diagnosis" do
 
     log_in_to_app(:Clinical, :location => 'OPD-1') do
       patient_search_page.view_patient_from_all_tab(patient)
-      patient_dashboard_page.verify_diagnosis_details(diagnosis_details)
+      spinner_dashboard_diagnosis = "#Diagnosis .dashboard-section-loader"
+      patient_dashboard_page.verify_diagnosis_details(diagnosis_details, spinner_dashboard_diagnosis)
 
       patient_dashboard_page.navigate_to_current_visit
-      visit_page.verify_diagnosis_details(diagnosis_details)
+      spinner_visit_page_diagnosis = "#diagnosisSection .dashboard-section-loader"
+      visit_page.verify_diagnosis_details(diagnosis_details, spinner_visit_page_diagnosis)
 
       go_to_app(:InPatient) do
       patient_search_page.view_patient_from_all_tab(patient)
-      patient_dashboard_page.verify_diagnosis_details(diagnosis_details)
+      patient_dashboard_page.verify_diagnosis_details(diagnosis_details, spinner_dashboard_diagnosis)
       end
     end
   end
@@ -38,7 +40,8 @@ feature "Diagnosis" do
       diagnosis_page.verify_current_diagnosis(diagnoses)
       observations_page.go_to_dashboard_page
 
-      patient_dashboard_page.verify_diagnosis_details(diagnoses)
+      spinner_dashboard_diagnosis = "#Diagnosis .dashboard-section-loader"
+      patient_dashboard_page.verify_diagnosis_details(diagnoses,spinner_dashboard_diagnosis)
     end
   end
 
@@ -49,13 +52,14 @@ feature "Diagnosis" do
       coded_diagnosis = {:index => 0, :name => 'Dog bite', :order => 'PRIMARY', :certainty => 'PRESUMED'}
       patient_search_page.view_patient_from_all_tab(patient)
       patient_dashboard_page.start_consultation
-      coded_diagnosis[:status] = 'CURED'
+      coded_diagnosis[:status] = 'Inactive'
       diagnosis_page.edit_past_diagnosis(coded_diagnosis)
       diagnosis_page.save
       diagnosis_page.verify_current_diagnosis([coded_diagnosis])
       observations_page.go_to_dashboard_page
 
-      patient_dashboard_page.verify_diagnosis_details([coded_diagnosis])
+      spinner_dashboard_diagnosis = "#Diagnosis .dashboard-section-loader"
+      patient_dashboard_page.verify_diagnosis_details([coded_diagnosis],spinner_dashboard_diagnosis)
     end
 
   end
