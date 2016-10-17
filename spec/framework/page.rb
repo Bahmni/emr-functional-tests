@@ -18,9 +18,7 @@ class Page
   end
 
   def wait_for_overlay_to_be_hidden
-    if page.has_css?('#overlay')
-        page.should have_no_selector('#overlay')
-    end
+    wait_until { !page.find('#overlay').visible? }
   end
 
   def wait_for_element_with_xpath_to_be_visible(locator)
