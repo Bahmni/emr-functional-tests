@@ -52,7 +52,7 @@ class Clinical::OrdersPage < Page
       if order[:state] == deleteOrUnDelete
         page.all("ul.selected-items li").each do |item|
           if item.text == order[:name]
-            item.all("i")[1].click
+            item.all("i.fa")[item.all("i.fa").count()-1].click
             break
           end
         end
