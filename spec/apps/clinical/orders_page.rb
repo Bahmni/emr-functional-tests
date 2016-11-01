@@ -51,7 +51,7 @@ class Clinical::OrdersPage < Page
     orders.each do |order|
       if order[:state] == deleteOrUnDelete
         page.all("ul.selected-items li").each do |item|
-          if item.find("span").text == order[:name]
+          if item.text == order[:name]
             item.all("i")[1].click
             break
           end

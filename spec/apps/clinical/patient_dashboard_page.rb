@@ -174,7 +174,7 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
   end
 
   def verify_retrospective_date_in_visit_section(retro_date)
-    expected=find("#Visits").text
+    expected=find("#visitDisplayTable").text
     expect(expected).to match(retro_date+" - "+retro_date)
   end
 
