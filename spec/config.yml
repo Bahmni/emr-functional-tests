@@ -3,6 +3,10 @@ default: &default
     firefox_path: /usr/bin/firefox
     default_username: superman
     default_password: Admin123
+    erp_default_username: admin
+    erp_default_password: password
+    elis_default_username: admin
+    elis_default_password: adminADMIN!
 
 development:
     <<: *default

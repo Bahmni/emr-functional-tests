@@ -20,6 +20,22 @@ module AppsAwareness
         loginApp.login(credentials)
     end
 
+    def log_in_to_erp(&block)
+        Capybara.reset_sessions!
+        visit (Settings.root_url.gsub("https://","http://") + ':8069')
+        loginApp = App.create("erp", self)
+        loginApp.login
+        App.create("erp", self).instance_eval(&block)
+    end
+
+    def log_in_to_elis(&block)
+         Capybara.reset_sessions!
+        visit '/openelis'
+        loginApp = App.create("eli", self)
+        loginApp.login
+        App.create("eli", self).instance_eval(&block)
+    end
+
     def offline_first_login(credentials)
         visit '/index.html'
         fill_in "Please Enter IP", :with => '172.18.2.44'

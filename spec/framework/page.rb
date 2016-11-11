@@ -21,6 +21,12 @@ class Page
     wait_until { !page.find('#overlay').visible? }
   end
 
+  def wait_for_erploading_to_complete
+      wait_for_element_with_css_to_be_visible('.oe_view_manager')
+      wait_until { !page.find('.oe_loading').visible? }
+      sleep 1
+  end
+
   def wait_for_element_with_xpath_to_be_visible(locator)
     wait_until { page.find(:xpath,locator).visible? }
   end

@@ -193,4 +193,9 @@ class Clinical::PatientDashboardPage < Common::DisplayControlsPage
     expect(expected).to be(retro_date+" - "+retro_date)
   end
 
+  def verify_lab_results
+    page.all(:css , '.dashboard-laborders-section span.value').each do |result|
+      expect(result.text).to include("10")
+    end
+  end
 end
