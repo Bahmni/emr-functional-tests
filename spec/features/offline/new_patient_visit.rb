@@ -3,7 +3,7 @@ require 'offline_spec_helper'
 feature "Offline" do
     scenario 'first login to sync app data' do
         offline_first_login(:location =>  "Chandaiya CC - Kaliganj (10005345)") do
-          sleep 10
+          sleep 20
         end
     end
 
