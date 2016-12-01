@@ -22,7 +22,7 @@ end
 
 Capybara.app_host = Settings.root_url
 Capybara.run_server = false
-Capybara.default_wait_time = 30
+Capybara.default_wait_time = 50
 Capybara.ignore_hidden_elements = false
 Capybara.save_and_open_page_path = File.expand_path("../../screenshots", __FILE__)
 
