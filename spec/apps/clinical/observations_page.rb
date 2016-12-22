@@ -3,7 +3,6 @@ class Clinical::ObservationsPage < Page
 
     def fill_history_and_examinations_section(details)
         go_to_tab ("Observations")
-        wait_for_overlay_to_be_hidden
         sleep 1
         expand_section "History_and_Examination"
         fill_chief_complaints details[:chief_complaints] if details.has_key? :chief_complaints
@@ -14,8 +13,7 @@ class Clinical::ObservationsPage < Page
 
     def add_consultation_images_in_history_and_examinations_section(image_urls)
         go_to_tab ("Observations")
-        wait_for_overlay_to_be_hidden
-        wait_for_element_with_xpath_to_be_visible('//*[@id="History_and_Examination"]')
+        sleep 1
         expand_section "History_and_Examination"
         wait_for_element_with_xpath_to_be_visible('//label/span[text()="Chief Complaint Notes"]')
         add_consultation_images(image_urls)
@@ -38,7 +36,7 @@ class Clinical::ObservationsPage < Page
     end
 
     def verify_saved_images(expected_image_count)
-        wait_for_element_with_xpath_to_be_visible('//strong[text()="Consultation Images"]')
+        expand_section "History_and_Examination"
         actual_image_count=page.all('div.file img').length
         expect(actual_image_count).to eq(expected_image_count)
     end
@@ -83,10 +81,12 @@ class Clinical::ObservationsPage < Page
     end
 
     def expand_section(name)
-        if find("div##{name} h2.section-title i.fa-caret-right").visible?
-          find_by_id(name, :visible=>true).click
-          wait_for_overlay_to_be_hidden
-        end
+      prev_name=name
+      name=name.gsub("_"," ")
+      observations=page.all("section.concept-set-panel-left  li").find { |li| li.find(".concept-set-name").text.strip.include?name }
+      observations.find('a').click
+      name=prev_name
+      wait_for_overlay_to_be_hidden
     end
 
     def select_template(name)

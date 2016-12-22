@@ -75,10 +75,16 @@ class Common::DisplayControlsPage < Page
 
   def verify_radiology_orders_section(identifier, radiology_tests)
     radiology_order_notes = page.find(identifier)
+    if identifier == "#Pacs"
+       radiology_tests.each do |test|
+         expect(radiology_order_notes).to have_content(test[:name].downcase)
+       end
+    else
     radiology_tests.each do |test|
       expect(radiology_order_notes).to have_content(test[:name])
       test[:notes].each {|note| expect(radiology_order_notes).to have_content(note)}
     end
+      end
   end
 
   def verify_radiology_orders_section_not_have_deleted_order(identifier, radiology_tests)
