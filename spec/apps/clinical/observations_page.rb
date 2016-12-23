@@ -36,7 +36,9 @@ class Clinical::ObservationsPage < Page
     end
 
     def verify_saved_images(expected_image_count)
+        sleep 1
         expand_section "History_and_Examination"
+        wait_for_element_with_xpath_to_be_visible('//strong[text()="Consultation Images"]')
         actual_image_count=page.all('div.file img').length
         expect(actual_image_count).to eq(expected_image_count)
     end
