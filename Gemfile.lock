@@ -81,7 +81,6 @@ DEPENDENCIES
   addressable
   capybara
   capybara-screenshot
-  debugger
   headless (= 2.1.0)
   pry
   rspec
