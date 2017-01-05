@@ -9,7 +9,6 @@ gem 'headless', '=2.1.0'
 gem 'activesupport', '=4.2.1', :require => ['active_support/dependencies', 'active_support/inflector']
 gem 'settingslogic', '=2.0.9'
 gem 'addressable', '=2.3.7', :require => ["addressable/template"]
-gem 'debugger', '=1.6.8'
 gem 'pry', '=0.10.1'
 gem 'parallel_tests'
 gem 'mime-types', '=2.6.2'
