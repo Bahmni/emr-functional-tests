@@ -4,7 +4,7 @@ gem 'capybara', '=2.4.4', :require => ['capybara/rspec']
 gem 'capybara-screenshot', '=1.0.7'
 gem 'selenium-webdriver', '=2.47.1'
 gem 'shoulda-matchers', '=2.8.0'
-gem 'rspec', '=3.2.0'
+gem 'rspec', '=3.5.0'
 gem 'headless', '=2.1.0'
 gem 'activesupport', '=4.2.1', :require => ['active_support/dependencies', 'active_support/inflector']
 gem 'settingslogic', '=2.0.9'
