@@ -28,8 +28,6 @@ Capybara.save_and_open_page_path = File.expand_path("../../screenshots", __FILE_
 
 Headless.new.start if Settings.headless
 
-Debugger.start
-
 RSpec.configure do |config|
   config.include AppsAwareness
   config.after(:each) do
